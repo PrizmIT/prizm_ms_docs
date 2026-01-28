@@ -1,0 +1,9 @@
+site_name: Prizm Management System Documentation
+site_url: https://docs.prizm-energy.com
+theme:
+  name: readthedocs
+nav:
+  - Home: index.md
+  - Purchases: purchases.md
+  - About: about.md
+  - API: api.md
