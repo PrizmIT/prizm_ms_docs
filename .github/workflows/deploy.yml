@@ -10,30 +10,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Python
+      # 2. Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
+      # 3. Install MkDocs dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Build MkDocs site
+      # 4. Build MkDocs static site
+      - name: Build site
         run: |
           mkdocs build --clean
 
-      - name: Upload site via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      # 5. Deploy to VPS via SFTP (password auth)
+      - name: Deploy via SFTP
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: ${{ secrets.FTP_HOST }}
-          port: ${{ secrets.SFTP_PORT }}
+          host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local_path: site/*
-          remote_path: ${{ secrets.FTP_PATH }}
-          sftp_only: true
+          port: 22
+          source: "site/*"
+          target: ${{ secrets.FTP_PATH }}
+          strip_components: 1
