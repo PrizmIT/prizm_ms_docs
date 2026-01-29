@@ -37,8 +37,6 @@ jobs:
         with:
           ssh-private-key: |
             ${{ secrets.VPS_SSH_KEY }}
-        env:
-          SSH_PASSPHRASE: ${{ secrets.VPS_SSH_PASSPHRASE }}
 
       # 6. Deploy using rsync over SSH
       - name: Deploy to VPS via rsync
