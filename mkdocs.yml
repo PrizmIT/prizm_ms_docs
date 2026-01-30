@@ -5,5 +5,6 @@ theme:
 nav:
   - Home: index.md
   - Purchases: purchases.md
+  - Tenders: tenders.md
   - About: about.md
   - API: api.md
