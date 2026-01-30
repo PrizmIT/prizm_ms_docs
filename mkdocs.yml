@@ -6,5 +6,6 @@ nav:
   - Home: index.md
   - Purchases: purchases.md
   - Tenders: tenders.md
+  - Budget: budget.md
   - About: about.md
   - API: api.md
