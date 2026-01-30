@@ -7,5 +7,6 @@ nav:
   - Purchases: purchases.md
   - Tenders: tenders.md
   - Budget: budget.md
+  - Resource Manager: resource-manager.md
   - About: about.md
   - API: api.md
