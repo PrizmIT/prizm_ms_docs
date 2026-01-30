@@ -9,4 +9,5 @@ Welcome to the Prizm Management System documentation. Use the navigation to acce
 - [Opportunities](opportunities.md)
 - [RFQ](rfq.md)
 - [Gatepass](gatepass.md)
+- [Technical Analysis](technical-analysis.md)
 - [About](about.md)
