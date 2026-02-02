@@ -83,7 +83,7 @@ Provides a real-time overview of procurement activity.
 
 Purchase Requests are used to formally request goods or services internally before engaging with suppliers. This is the starting point of the procurement process.
 
-![Purchase Request Summary](img/purchase_request_summary.png)
+![Purchase Request Summary](purchases/img/purchase_request_summary.PNG)
 
 The Purchase Request screen provides a comprehensive overview with:
 

@@ -1,7 +1,7 @@
 # PRIZM Technical Analysis Module – User Guide
 
 ## Overview
-![Placeholder - Overview](technical-analysis/img/)
+<!-- ![Placeholder - Overview](technical-analysis/img/) -->
 
 The **Technical Analysis** module is a core engineering governance component within the PRIZM ENERGY ERP Admin Portal. It provides a structured framework for performing, documenting, reviewing, and approving technical evaluations related to projects, opportunities, vendors, and engineering decisions.
 
@@ -17,7 +17,7 @@ Technical Analysis supports:
 ---
 
 ## Navigation to Technical Analysis
-![Placeholder - Navigation to Technical Analysis](technical-analysis/img/)
+<!-- ![Placeholder - Navigation to Technical Analysis](technical-analysis/img/) -->
 
 The Technical Analysis module is accessible from the Admin Portal main navigation menu. Users with appropriate permissions can locate it under the engineering or technical governance section of the sidebar.
 
@@ -29,7 +29,7 @@ Access visibility depends on assigned user roles and permissions.
 ---
 
 ## Technical Analysis Dashboard
-![Placeholder - Technical Analysis Dashboard](technical-analysis/img/)
+<!-- ![Placeholder - Technical Analysis Dashboard](technical-analysis/img/) -->
 
 The dashboard provides a consolidated overview of all Technical Analysis activities.
 
@@ -49,7 +49,7 @@ The dashboard helps prioritize reviews, monitor engineering throughput, and iden
 ---
 
 ## Technical Analysis List / Register
-![Placeholder - Technical Analysis List / Register](technical-analysis/img/)
+<!-- ![Placeholder - Technical Analysis List / Register](technical-analysis/img/) -->
 
 The Technical Analysis Register displays all records in a searchable and filterable list.
 
@@ -64,7 +64,7 @@ This screen acts as the central control point for managing the full Technical An
 ---
 
 ## Technical Analysis Creation
-![Placeholder - Technical Analysis Creation](technical-analysis/img/)
+<!-- ![Placeholder - Technical Analysis Creation](technical-analysis/img/) -->
 
 Creating a Technical Analysis initiates a formal technical evaluation process.
 
@@ -85,7 +85,7 @@ Typical creators:
 ---
 
 ## Technical Analysis Types
-![Placeholder - Technical Analysis Types](technical-analysis/img/)
+<!-- ![Placeholder - Technical Analysis Types](technical-analysis/img/) -->
 
 The module supports multiple Technical Analysis types to cover diverse engineering use cases, including:
 - Project-based Technical Analysis
@@ -99,7 +99,7 @@ The selected type determines applicable evaluation criteria, review participants
 ---
 
 ## Technical Analysis Stages & Statuses
-![Placeholder - Technical Analysis Stages & Statuses](technical-analysis/img/)
+<!-- ![Placeholder - Technical Analysis Stages & Statuses](technical-analysis/img/) -->
 
 Each Technical Analysis follows a controlled lifecycle with defined statuses:
 
@@ -121,7 +121,7 @@ Status rules:
 ---
 
 ## Technical Analysis Details View
-![Placeholder - Technical Analysis Details View](technical-analysis/img/)
+<!-- ![Placeholder - Technical Analysis Details View](technical-analysis/img/) -->
 
 The detail view is the central workspace for each Technical Analysis record.
 
@@ -140,7 +140,7 @@ Actions may include:
 ---
 
 ## Technical Scope & Evaluation Criteria
-![Placeholder - Technical Scope & Evaluation Criteria](technical-analysis/img/)
+<!-- ![Placeholder - Technical Scope & Evaluation Criteria](technical-analysis/img/) -->
 
 This section captures the core engineering assessment.
 
@@ -156,7 +156,7 @@ Completion of mandatory technical sections is required before submission or appr
 ---
 
 ## Attachments & Supporting Documents
-![Placeholder - Attachments & Supporting Documents](technical-analysis/img/)
+<!-- ![Placeholder - Attachments & Supporting Documents](technical-analysis/img/) -->
 
 Users can attach supporting documentation such as:
 - Drawings and schematics
@@ -170,7 +170,7 @@ Certain Technical Analysis types require mandatory attachments. Attachments beco
 ---
 
 ## Review & Clarifications
-![Placeholder - Review & Clarifications](technical-analysis/img/)
+<!-- ![Placeholder - Review & Clarifications](technical-analysis/img/) -->
 
 Reviewers use this section to:
 - Add technical comments
@@ -183,7 +183,7 @@ Clarification requests temporarily return the record to the requestor for update
 ---
 
 ## Approval Workflow
-![Placeholder - Approval Workflow](technical-analysis/img/)
+<!-- ![Placeholder - Approval Workflow](technical-analysis/img/) -->
 
 The Technical Analysis approval workflow enforces governance and accountability.
 
@@ -198,7 +198,7 @@ Only authorized approvers can finalize decisions.
 ---
 
 ## Revision & Version History
-![Placeholder - Revision & Version History](technical-analysis/img/)
+<!-- ![Placeholder - Revision & Version History](technical-analysis/img/) -->
 
 The module maintains a complete revision history.
 
@@ -213,7 +213,7 @@ Revisions ensure continuous improvement while maintaining traceability.
 ---
 
 ## Technical Analysis Reports & Audit
-![Placeholder - Technical Analysis Reports & Audit](technical-analysis/img/)
+<!-- ![Placeholder - Technical Analysis Reports & Audit](technical-analysis/img/) -->
 
 Reporting and audit features provide:
 - Status-based Technical Analysis reports
@@ -226,7 +226,7 @@ These reports support compliance audits and management reviews.
 ---
 
 ## Integration with Other Modules
-![Placeholder - Integration with Other Modules](technical-analysis/img/)
+<!-- ![Placeholder - Integration with Other Modules](technical-analysis/img/) -->
 
 Technical Analysis integrates tightly with:
 - Opportunities
@@ -242,7 +242,7 @@ Integration ensures technical decisions directly inform commercial, project, and
 ---
 
 ## Permissions & Roles
-![Placeholder - Permissions & Roles](technical-analysis/img/)
+<!-- ![Placeholder - Permissions & Roles](technical-analysis/img/) -->
 
 Access is controlled through role-based permissions, including:
 - Create and edit Technical Analysis
@@ -256,7 +256,7 @@ Permissions ensure segregation of duties and governance compliance.
 ---
 
 ## Common Technical Scenarios
-![Placeholder - Common Technical Scenarios](technical-analysis/img/)
+<!-- ![Placeholder - Common Technical Scenarios](technical-analysis/img/) -->
 
 Typical use cases include:
 - Evaluating design feasibility for a new project
@@ -267,7 +267,7 @@ Typical use cases include:
 ---
 
 ## Best Practices & Tips
-![Placeholder - Best Practices & Tips](technical-analysis/img/)
+<!-- ![Placeholder - Best Practices & Tips](technical-analysis/img/) -->
 
 - Clearly define technical scope and assumptions
 - Attach all relevant supporting documents
@@ -278,7 +278,7 @@ Typical use cases include:
 ---
 
 ## Known Limitations / Notes
-![Placeholder - Known Limitations / Notes](technical-analysis/img/)
+<!-- ![Placeholder - Known Limitations / Notes](technical-analysis/img/) -->
 
 - Approved records cannot be edited
 - Deletion is restricted after submission
