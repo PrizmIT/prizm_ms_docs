@@ -30,6 +30,8 @@ jobs:
       - name: Build site
         run: |
           mkdocs build --clean
+          ls -la site/
+          ls -la site/ar/
 
       # 5. Deploy via FTP (password authentication)
       - name: Deploy via FTP
@@ -42,3 +44,4 @@ jobs:
           local-dir: site/
           server-dir: /
           dangerous-clean-slate: true
+          log-level: verbose
