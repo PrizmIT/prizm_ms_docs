@@ -26,7 +26,6 @@ plugins:
             direction: rtl
           nav_translations:
             Home: الرئيسية
-            RFQ Guide: دليل طلب عروض الأسعار
             Purchases: المشتريات
             Tenders: المناقصات
             Budget: الميزانية
@@ -39,7 +38,6 @@ plugins:
 
 nav:
   - Home: index.md
-  - RFQ Guide: guide.md
   - Purchases: purchases.md
   - Tenders: tenders.md
   - Budget: budget.md
