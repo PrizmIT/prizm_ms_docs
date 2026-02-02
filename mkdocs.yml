@@ -1,7 +1,23 @@
-site_name: Prizm Management System Documentation
-site_url: https://docs.prizm-energy.com
+site_name: Documentation
+
 theme:
-  name: readthedocs
+  name: material
+  features:
+    - navigation.instant
+    - navigation.sections
+    - content.code.copy
+
+plugins:
+  - i18n:
+      default_language: en
+      languages:
+        en:
+          name: English
+          direction: ltr
+        ar:
+          name: العربية
+          direction: rtl
+
 nav:
   - Home: index.md
   - Purchases: purchases.md
