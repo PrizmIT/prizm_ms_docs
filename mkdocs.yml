@@ -12,6 +12,7 @@ plugins:
   - search
   - i18n:
       reconfigure_material: true
+      reconfigure_search: true
       languages:
         - locale: en
           name: English
