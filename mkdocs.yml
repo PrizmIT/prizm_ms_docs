@@ -11,6 +11,7 @@ theme:
 plugins:
   - search
   - i18n:
+      reconfigure_material: true
       languages:
         - locale: en
           name: English
