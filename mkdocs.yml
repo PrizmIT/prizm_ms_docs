@@ -3,8 +3,8 @@ site_url: https://ms.prizm-energy.com/userguide/
 
 theme:
   name: material
+  direction: ltr
   features:
-    - navigation.instant
     - navigation.sections
     - content.code.copy
 
@@ -19,16 +19,31 @@ plugins:
         - locale: ar
           name: العربية
           build: true
+          site_name: وثائق
+          theme:
+            direction: rtl
+          nav_translations:
+            Home: الرئيسية
+            RFQ Guide: دليل طلب عروض الأسعار
+            Purchases: المشتريات
+            Tenders: المناقصات
+            Budget: الميزانية
+            Resource Manager: مدير الموارد
+            Opportunities: الفرص
+            RFQ: طلب عروض الأسعار
+            Gatepass: تصريح المرور
+            Technical Analysis: التحليل الفني
+            About: حول
 
 nav:
   - Home: index.en.md
   - RFQ Guide: guide.en.md
-  - Purchases: purchases.md
-  - Tenders: tenders.md
-  - Budget: budget.md
-  - Resource Manager: resource-manager.md
-  - Opportunities: opportunities.md
-  - RFQ: rfq.md
-  - Gatepass: gatepass.md
-  - Technical Analysis: technical-analysis.md
-  - About: about.md
+  - Purchases: purchases.en.md
+  - Tenders: tenders.en.md
+  - Budget: budget.en.md
+  - Resource Manager: resource-manager.en.md
+  - Opportunities: opportunities.en.md
+  - RFQ: rfq.en.md
+  - Gatepass: gatepass.en.md
+  - Technical Analysis: technical-analysis.en.md
+  - About: about.en.md
