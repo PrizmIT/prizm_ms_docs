@@ -192,6 +192,7 @@ Used for audits and performance reviews.
 ## Integration with Other Modules
 
 RFQ integrates with:
+
 - Suppliers
 - Projects and budgets
 - Purchase Orders
