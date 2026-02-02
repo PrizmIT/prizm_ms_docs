@@ -34,9 +34,9 @@ jobs:
           ls -la site/ar/
 
       # 4b. Copy markdown sources for direct access (legacy links expect *.md)
-      - name: Copy markdown sources
+      - name: Copy English markdown sources
         run: |
-          find docs -maxdepth 1 -name '*.md' -exec cp {} site/ \;
+          find docs -maxdepth 1 -name '*.en.md' -exec cp {} site/ \;
 
       # 5. Deploy via FTP (password authentication)
       - name: Deploy via FTP
