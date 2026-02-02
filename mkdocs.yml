@@ -38,14 +38,14 @@ plugins:
             About: حول
 
 nav:
-  - Home: index.en.md
-  - RFQ Guide: guide.en.md
-  - Purchases: purchases.en.md
-  - Tenders: tenders.en.md
-  - Budget: budget.en.md
-  - Resource Manager: resource-manager.en.md
-  - Opportunities: opportunities.en.md
-  - RFQ: rfq.en.md
-  - Gatepass: gatepass.en.md
-  - Technical Analysis: technical-analysis.en.md
-  - About: about.en.md
+  - Home: index.md
+  - RFQ Guide: guide.md
+  - Purchases: purchases.md
+  - Tenders: tenders.md
+  - Budget: budget.md
+  - Resource Manager: resource-manager.md
+  - Opportunities: opportunities.md
+  - RFQ: rfq.md
+  - Gatepass: gatepass.md
+  - Technical Analysis: technical-analysis.md
+  - About: about.md
