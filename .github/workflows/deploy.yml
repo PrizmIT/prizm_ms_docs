@@ -33,6 +33,11 @@ jobs:
           ls -la site/
           ls -la site/ar/
 
+      # 4b. Copy markdown sources for direct access (legacy links expect *.md)
+      - name: Copy markdown sources
+        run: |
+          find docs -maxdepth 1 -name '*.md' -exec cp {} site/ \;
+
       # 5. Deploy via FTP (password authentication)
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
