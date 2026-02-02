@@ -8,18 +8,20 @@ theme:
     - content.code.copy
 
 plugins:
+  - search
   - i18n:
-      default_language: en
       languages:
-        en:
+        - locale: en
           name: English
-          direction: ltr
-        ar:
+          build: true
+          default: true
+        - locale: ar
           name: العربية
-          direction: rtl
+          build: true
 
 nav:
-  - Home: index.md
+  - Home: index.en.md
+  - RFQ Guide: guide.en.md
   - Purchases: purchases.md
   - Tenders: tenders.md
   - Budget: budget.md
