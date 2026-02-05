@@ -132,7 +132,18 @@ Draft
 - **Approved** - Ready to convert to Purchase Order
 - **Rejected** - Requires revision
 
-### 5.5 Best Practices
+### 5.5 Bin Records (Deleted PRs)
+
+The **Bin Records** area stores purchase requests that have been deleted from the main list.
+
+![Deleted Purchase Requests](purchases/img/deleted_prs.PNG)
+
+**Actions:**
+
+- **View**: Open the deleted request to check details.
+- **Delete Permanently**: Remove the request from the system entirely. This cannot be undone.
+
+### 5.6 Best Practices
 
 - Provide detailed item specifications
 - Link to appropriate projects and cost centers
