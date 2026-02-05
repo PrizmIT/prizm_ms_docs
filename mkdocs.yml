@@ -29,6 +29,7 @@ plugins:
             Purchases: المشتريات
             Tenders: المناقصات
             Budget: الميزانية
+            QuickBooks: تكامل QuickBooks
             Resource Manager: مدير الموارد
             Opportunities: الفرص
             RFQ: طلب عروض الأسعار
@@ -41,6 +42,7 @@ nav:
   - Purchases: purchases.md
   - Tenders: tenders.md
   - Budget: budget.md
+  - QuickBooks: quickbooks.md
   - Resource Manager: resource-manager.md
   - Opportunities: opportunities.md
   - RFQ: rfq.md
