@@ -79,7 +79,7 @@ Provides a real-time overview of procurement activity.
 
 ## 5. Purchase Requests (PR)
 
-### 5.1 Purpose
+### 5.1 Overview
 
 Purchase Requests are used to formally request goods or services internally before engaging with suppliers. This is the starting point of the procurement process.
 
