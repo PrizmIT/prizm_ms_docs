@@ -136,7 +136,7 @@ Draft
 
 The **Bin Records** area stores purchase requests that have been deleted from the main list.
 
-![Deleted Purchase Requests](purchases/img/deleted_prs.PNG)
+<!-- ![Deleted Purchase Requests](purchases/img/deleted_prs.PNG) -->
 
 **Actions:**
 
