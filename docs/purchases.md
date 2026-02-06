@@ -153,7 +153,11 @@ The **Bin Records** area stores purchase requests that have been deleted from th
 - **View**: Open the deleted request to check details.
 - **Delete Permanently**: Remove the request from the system entirely. This cannot be undone.
 
-### 5.6 Best Practices
+### 5.6 Activity Log
+
+![Activity Log](purchases/img/activitylog_prs.png)
+
+### 5.7 Best Practices
 
 - Provide detailed item specifications
 - Link to appropriate projects and cost centers
