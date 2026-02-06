@@ -194,6 +194,10 @@ The system prevents submission if expenses exceed available funds, ensuring fina
 
 Expense requests follow a strict approval workflow to ensure proper authorization before payment processing.
 
+### Bin Records (Deleted ERs)
+
+![Expense Request Bin](purchases/img/expense_request_bin.png)
+
 ## 7. Purchase Items Backlog
 
 ### Purpose
