@@ -127,6 +127,8 @@ Draft
    → Rejected → Can be Resubmitted
 ```
 
+![View Purchase Request (Submitted)](purchases/img/view_prs.png)
+
 ### 5.4 Status Types
 
 - **Draft** - Initial creation, not yet submitted
