@@ -108,6 +108,8 @@ The Purchase Request screen provides a comprehensive overview with:
 - Request Type (Material / Service)
 - Notes
 
+![Attachments](purchases/img/attachments_prs.png)
+
 **Item Details:**
 
 - Item Name
