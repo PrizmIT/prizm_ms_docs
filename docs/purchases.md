@@ -172,6 +172,8 @@ The **Bin Records** area stores purchase requests that have been deleted from th
 
 Expense Requests are used for:
 
+![Expense Request Overview](purchases/img/expense_request_overview.png)
+
 - Operational expenses
 - Employee reimbursements
 - Advance cash reconciliation
