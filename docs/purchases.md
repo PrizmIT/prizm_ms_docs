@@ -186,6 +186,10 @@ Expense Requests are used for:
 - Budget validation
 - Link to advance cash records
 
+### Creating an Expense Request
+
+![Create Expense Request](purchases/img/create_expense_request.png)
+
 ### Budget Validation
 
 The system prevents submission if expenses exceed available funds, ensuring financial control and compliance with budget limits.
