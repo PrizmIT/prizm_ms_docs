@@ -119,6 +119,10 @@ The Purchase Request screen provides a comprehensive overview with:
 - Tax
 - Subtotal (auto-calculated)
 
+**Comparison Sheet:**
+
+![Comparison Sheet](purchases/img/comparison_sheet_prs.png)
+
 ### 5.3 Approval Workflow
 
 ```
