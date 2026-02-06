@@ -58,6 +58,8 @@ Prizm Purchase
 
 Provides a real-time overview of procurement activity.
 
+![Purchases Dashboard](purchases/img/dashboard_purchases.png)
+
 ### Key Elements
 
 - Total Purchase Requests by status
