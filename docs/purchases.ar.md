@@ -191,6 +191,8 @@
 
 مشابه لطلبات الشراء مع إمكان إضافة مراجعات من الإدارة المالية.
 
+![عرض طلب المصروف](purchases/img/view_expense_request.png)
+
 ### 6.4 سجلات المحذوفات (Bin Records)
 
 ![سجلات المصروفات المحذوفة](purchases/img/expense_request_bin.png)
