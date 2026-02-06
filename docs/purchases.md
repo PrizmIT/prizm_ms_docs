@@ -95,6 +95,8 @@ The Purchase Request screen provides a comprehensive overview with:
 
 ### 5.2 Creating a Purchase Request
 
+![Create Purchase Request](purchases/img/create_prs.png)
+
 **Required Information:**
 
 - Purchase Request Code (auto-generated or manual)
