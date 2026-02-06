@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-![Overview](quickbooks/img/overview.png)
+<!-- ![Overview](quickbooks/img/overview.png) -->
 
 The **QuickBooks Integration** module connects PRIZM ENERGY ERP with QuickBooks to ensure accurate, consistent, and auditable financial records across both systems. It enables controlled synchronization of accounting data while clearly defining system ownership, approval boundaries, and compliance traceability.
 
@@ -18,7 +18,7 @@ This integration is designed to support finance operations, audits, and manageme
 
 ## 2. Navigation to QuickBooks Integration
 
-![Navigation to QuickBooks Integration](quickbooks/img/navigation.png)
+<!-- ![Navigation to QuickBooks Integration](quickbooks/img/navigation.png) -->
 
 The QuickBooks Integration module is accessible from the PRIZM ENERGY Admin Portal main navigation.
 
@@ -29,7 +29,7 @@ Access visibility depends on assigned roles and permissions.
 
 ## 3. QuickBooks Integration Dashboard
 
-![QuickBooks Integration Dashboard](quickbooks/img/dashboard.png)
+<!-- ![QuickBooks Integration Dashboard](quickbooks/img/dashboard.png) -->
 
 The dashboard provides a high‑level overview of integration health and financial synchronization status.
 
@@ -51,7 +51,7 @@ The dashboard acts as a financial control center, allowing finance teams to quic
 
 ## 4. Connection & Authorization
 
-![Connection & Authorization](quickbooks/img/connection.png)
+<!-- ![Connection & Authorization](quickbooks/img/connection.png) -->
 
 This screen manages the secure authorization between PRIZM ENERGY ERP and QuickBooks.
 
@@ -72,7 +72,7 @@ This screen manages the secure authorization between PRIZM ENERGY ERP and QuickB
 
 ## 5. Sync Configuration & Settings
 
-![Sync Configuration & Settings](quickbooks/img/settings.png)
+<!-- ![Sync Configuration & Settings](quickbooks/img/settings.png) -->
 
 This section defines how and when data synchronization occurs.
 
@@ -92,7 +92,7 @@ Proper configuration ensures accurate postings, prevents premature data transfer
 
 ## 6. Account & Data Mapping
 
-![Account & Data Mapping](quickbooks/img/mapping.png)
+<!-- ![Account & Data Mapping](quickbooks/img/mapping.png) -->
 
 Account and data mapping ensures that PRIZM financial structures align correctly with QuickBooks.
 
@@ -112,7 +112,7 @@ Correct mapping is critical to ensure financial statements remain accurate and c
 
 ## 7. Customer & Vendor Synchronization
 
-![Customer & Vendor Synchronization](quickbooks/img/customer_vendor_sync.png)
+<!-- ![Customer & Vendor Synchronization](quickbooks/img/customer_vendor_sync.png) -->
 
 This view manages the synchronization of business partners.
 
@@ -132,7 +132,7 @@ This view manages the synchronization of business partners.
 
 ## 8. Invoice, Bill & Expense Synchronization
 
-![Invoice, Bill & Expense Synchronization](quickbooks/img/invoice_sync.png)
+<!-- ![Invoice, Bill & Expense Synchronization](quickbooks/img/invoice_sync.png) -->
 
 This screen handles transactional financial documents.
 
@@ -155,7 +155,7 @@ Ensures that operational transactions are accurately reflected in financial stat
 
 ## 9. Payment & Credit Handling
 
-![Payment & Credit Handling](quickbooks/img/payment_sync.png)
+<!-- ![Payment & Credit Handling](quickbooks/img/payment_sync.png) -->
 
 This section manages the synchronization of financial settlements.
 
@@ -174,7 +174,7 @@ All payment‑related syncs maintain full traceability for audit review.
 
 ## 10. Sync Statuses & Lifecycle
 
-![Sync Statuses & Lifecycle](quickbooks/img/lifecycle.png)
+<!-- ![Sync Statuses & Lifecycle](quickbooks/img/lifecycle.png) -->
 
 Every synchronized record follows a defined lifecycle.
 
@@ -196,7 +196,7 @@ Every synchronized record follows a defined lifecycle.
 
 ## 11. Manual Sync & Retry Operations
 
-![Manual Sync & Retry Operations](quickbooks/img/manual_sync.png)
+<!-- ![Manual Sync & Retry Operations](quickbooks/img/manual_sync.png) -->
 
 Manual controls allow intervention when automation is insufficient.
 
@@ -212,7 +212,7 @@ Manual controls allow intervention when automation is insufficient.
 
 ## 12. Error Handling & Troubleshooting
 
-![Error Handling & Troubleshooting](quickbooks/img/errors.png)
+<!-- ![Error Handling & Troubleshooting](quickbooks/img/errors.png) -->
 
 This screen provides visibility into integration issues.
 
@@ -228,7 +228,7 @@ This screen provides visibility into integration issues.
 
 ## 13. Reconciliation & Audit Reports
 
-![Reconciliation & Audit Reports](quickbooks/img/reports.png)
+<!-- ![Reconciliation & Audit Reports](quickbooks/img/reports.png) -->
 
 Designed for finance teams and auditors.
 
@@ -243,7 +243,7 @@ Supports internal controls, external audits, and regulatory compliance.
 
 ## 14. Integration with Other PRIZM Modules
 
-![Integration with Other PRIZM Modules](quickbooks/img/integration.png)
+<!-- ![Integration with Other PRIZM Modules](quickbooks/img/integration.png) -->
 
 QuickBooks Integration works in coordination with other PRIZM modules, including:
 
@@ -257,7 +257,7 @@ Data flows respect ownership boundaries and approval workflows across modules.
 
 ## 15. Permissions & Roles
 
-![Permissions & Roles](quickbooks/img/roles.png)
+<!-- ![Permissions & Roles](quickbooks/img/roles.png) -->
 
 Access is role‑based.
 
@@ -275,7 +275,7 @@ Access is role‑based.
 
 ## 16. Common Accounting Scenarios
 
-![Common Accounting Scenarios](quickbooks/img/scenarios.png)
+<!-- ![Common Accounting Scenarios](quickbooks/img/scenarios.png) -->
 
 ### Period‑End Close
 - Ensure all eligible records are synced
@@ -293,7 +293,7 @@ Access is role‑based.
 
 ## 17. Best Practices & Tips
 
-![Best Practices & Tips](quickbooks/img/best_practices.png)
+<!-- ![Best Practices & Tips](quickbooks/img/best_practices.png) -->
 
 - Complete mappings before enabling sync
 - Avoid edits after synchronization
@@ -303,7 +303,7 @@ Access is role‑based.
 
 ## 18. Known Limitations / Notes
 
-![Known Limitations / Notes](quickbooks/img/notes.png)
+<!-- ![Known Limitations / Notes](quickbooks/img/notes.png) -->
 
 - Historical records remain immutable after sync
 - Closed accounting periods cannot be altered
