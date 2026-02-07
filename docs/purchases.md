@@ -199,6 +199,7 @@ The system prevents submission if expenses exceed available funds, ensuring fina
 Expense requests follow a strict approval workflow to ensure proper authorization before payment processing.
 
 ![View Expense Request](purchases/img/view_expense_request.png)
+![View Expense Request Details](purchases/img/view_expense_request_2.png)
 
 ### Bin Records (Deleted ERs)
 
