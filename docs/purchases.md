@@ -211,6 +211,8 @@ Expense requests follow a strict approval workflow to ensure proper authorizatio
 
 The Purchase Items Backlog acts as a staging area between approved Purchase Requests and Purchase Orders.
 
+![Backlog PRs for PO](purchases/img/backlog_prs_for_PO.png)
+
 ### How It Works
 
 - Displays approved Purchase Request items not yet ordered
