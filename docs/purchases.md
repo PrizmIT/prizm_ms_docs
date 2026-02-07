@@ -228,6 +228,8 @@ The Purchase Items Backlog acts as a staging area between approved Purchase Requ
 
 ## 8. Purchase Orders (PO)
 
+![Purchase Orders Overview](purchases/img/PO_overview_list.png)
+
 ### 8.1 Creating Purchase Orders
 
 Purchase Orders are created from items in the backlog.
