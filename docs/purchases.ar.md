@@ -271,6 +271,7 @@
 ![إضافة مورد 1](purchases/img/add_supplier_1.png)
 ![إضافة مورد 2](purchases/img/add_supplier_2.png)
 ![ملاحظات المورد](purchases/img/add_supplier_notes.png)
+![نافذة إضافة ملاحظة](purchases/img/supplier_note_add.png)
 
 **الإضافة الجماعية:**
 ![إضافة موردين بالجملة](purchases/img/supplier_batch_add.png)
@@ -299,7 +300,13 @@
 - تصنيف الموردين حسب الفئات
 - متابعة تقييم المورد وجودة الخدمة
 
+![إحصائيات الموردين](purchases/img/supplier_statistics.png)
+
 ### 9.2 عروض الأسعار
+
+![قائمة طلبات عروض الأسعار](purchases/img/supplier_rfq_list.png)
+![قائمة العروض](purchases/img/supplier_quotations.png)
+![عناصر العرض](purchases/img/supplier_quotations_items.png)
 
 - تسجيل عروض الأسعار المستلمة
 - مقارنة الأسعار والشروط

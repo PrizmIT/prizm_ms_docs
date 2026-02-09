@@ -297,6 +297,7 @@ Maintain a comprehensive database of vendors and suppliers.
 ![Add Supplier Step 1](purchases/img/add_supplier_1.png)
 ![Add Supplier Step 2](purchases/img/add_supplier_2.png)
 ![Adding Supplier Notes](purchases/img/add_supplier_notes.png)
+![Add Note Modal](purchases/img/supplier_note_add.png)
 
 **Batch Import:**
 ![Batch Add Suppliers](purchases/img/supplier_batch_add.png)
@@ -336,11 +337,17 @@ Manage specific contacts for each supplier.
 - Manage supplier relationships
 - Maintain updated contact information
 
+![Supplier Statistics](purchases/img/supplier_statistics.png)
+
 ## 10. Quotations & RFQs
 
 ### Quotations
 
 Quotations are formal price offers from suppliers in response to Requests for Quotation (RFQs).
+
+![RFQ List](purchases/img/supplier_rfq_list.png)
+![Quotations List](purchases/img/supplier_quotations.png)
+![Quotation Items](purchases/img/supplier_quotations_items.png)
 
 ### Process
 
