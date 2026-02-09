@@ -341,13 +341,32 @@ Manage specific contacts for each supplier.
 
 ## 10. Quotations & RFQs
 
-### Quotations
+### 10.1 Overview
 
 Quotations are formal price offers from suppliers in response to Requests for Quotation (RFQs).
 
 ![RFQ List](purchases/img/supplier_rfq_list.png)
-![Quotations List](purchases/img/supplier_quotations.png)
-![Quotation Items](purchases/img/supplier_quotations_items.png)
+![Quotations List](purchases/img/quotation_list.png)
+![Quotations Express View](purchases/img/quotation_list_express_view.png)
+![Quotation Main View](purchases/img/quotation_main_view.png)
+
+### 10.2 Creating Quotations
+
+![Create Quotation 1](purchases/img/create_quotation_1.png)
+![Create Quotation 2](purchases/img/create_quotation_2.png)
+
+### 10.3 Managing Items
+
+Items can be entered manually or converted from RFQs.
+
+![Converted Items](purchases/img/quotation_items_converted_from_rfq_tab.png)
+![Manual Items](purchases/img/quotation_items_entered_manually.png)
+
+### 10.4 Editing & Attachments
+
+![Edit Quotation 1](purchases/img/quotation_edit_1.png)
+![Edit Quotation 2](purchases/img/quotation_edit_2.png)
+![Attachments](purchases/img/quotation_attachments_view.png)
 
 ### Process
 

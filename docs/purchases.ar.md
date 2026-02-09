@@ -305,8 +305,22 @@
 ### 9.2 عروض الأسعار
 
 ![قائمة طلبات عروض الأسعار](purchases/img/supplier_rfq_list.png)
-![قائمة العروض](purchases/img/supplier_quotations.png)
-![عناصر العرض](purchases/img/supplier_quotations_items.png)
+![قائمة العروض](purchases/img/quotation_list.png)
+![عرض سريع للعروض](purchases/img/quotation_list_express_view.png)
+![العرض الرئيسي](purchases/img/quotation_main_view.png)
+
+### 9.3 إنشاء وتعديل العروض
+
+![إنشاء عرض 1](purchases/img/create_quotation_1.png)
+![إنشاء عرض 2](purchases/img/create_quotation_2.png)
+![تعديل عرض 1](purchases/img/quotation_edit_1.png)
+![تعديل عرض 2](purchases/img/quotation_edit_2.png)
+
+### 9.4 إدارة العناصر والمرفقات
+
+![عناصر محولة](purchases/img/quotation_items_converted_from_rfq_tab.png)
+![عناصر يدوية](purchases/img/quotation_items_entered_manually.png)
+![المرفقات](purchases/img/quotation_attachments_view.png)
 
 - تسجيل عروض الأسعار المستلمة
 - مقارنة الأسعار والشروط
