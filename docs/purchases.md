@@ -265,6 +265,10 @@ Draft → Submitted → Approved → Partially Delivered → Completed → Paid
 - Include clear delivery instructions
 - Maintain communication with suppliers
 
+### Bin Records (Deleted POs)
+
+![Deleted Purchase Orders](purchases/img/deleted_pos.png)
+
 ## 9. Suppliers
 
 ### Purpose
