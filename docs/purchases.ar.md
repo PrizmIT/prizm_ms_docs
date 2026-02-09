@@ -261,7 +261,39 @@
 
 ## 9. عروض الأسعار والموردون
 
-### 9.1 إدارة الموردين
+### 9.1 نظرة عامة على الموردين
+
+![قائمة الموردين](purchases/img/suppliers_list.png)
+
+### 9.2 إدارة الموردين
+
+**إضافة مورد جديد:**
+![إضافة مورد 1](purchases/img/add_supplier_1.png)
+![إضافة مورد 2](purchases/img/add_supplier_2.png)
+![ملاحظات المورد](purchases/img/add_supplier_notes.png)
+
+**الإضافة الجماعية:**
+![إضافة موردين بالجملة](purchases/img/supplier_batch_add.png)
+
+### 9.3 مجموعات الموردين
+
+إدارة الشركات الأم ومجموعات الموردين المتنوعة.
+
+![مجموعة الموردين الرئيسية](purchases/img/parent_supplier_for_group.png)
+![التحقق من تكرار مجموعة الموردين](purchases/img/supplier_group_duplication.png)
+
+### 9.4 إدارة جهات الاتصال
+
+إدارة جهات الاتصال الخاصة بكل مورد.
+
+![قائمة جهات الاتصال](purchases/img/supplier_contacts_list.png)
+![جهات اتصال مورد محدد](purchases/img/supplier_contacts_specific_supplier.png)
+
+**إضافة جهة اتصال:**
+![نافذة إضافة جهة اتصال 1](purchases/img/add_supplier_contact_modal_1.png)
+![نافذة إضافة جهة اتصال 2](purchases/img/add_supplier_contact_modal_2.png)
+![إنشاء جهة اتصال 1](purchases/img/supplier_contact_create_1.png)
+![إنشاء جهة اتصال 2](purchases/img/supplier_contact_create_2.png)
 
 - إضافة وتحديث بيانات المورد
 - تصنيف الموردين حسب الفئات

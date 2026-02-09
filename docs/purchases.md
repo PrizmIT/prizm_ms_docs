@@ -283,9 +283,43 @@ Draft → Submitted → Approved → Partially Delivered → Completed → Paid
 
 ## 9. Suppliers
 
+### 9.1 Supplier Overview
+
+![Suppliers List](purchases/img/suppliers_list.png)
+
 ### Purpose
 
 Maintain a comprehensive database of vendors and suppliers.
+
+### 9.2 Adding Suppliers
+
+**Individual Entry:**
+![Add Supplier Step 1](purchases/img/add_supplier_1.png)
+![Add Supplier Step 2](purchases/img/add_supplier_2.png)
+![Adding Supplier Notes](purchases/img/add_supplier_notes.png)
+
+**Batch Import:**
+![Batch Add Suppliers](purchases/img/supplier_batch_add.png)
+
+### 9.3 Supplier Groups
+
+Manage parent companies and diverse supplier groups efficiently.
+
+![Parent Supplier Group](purchases/img/parent_supplier_for_group.png)
+![Supplier Group Duplication Check](purchases/img/supplier_group_duplication.png)
+
+### 9.4 Contact Management
+
+Manage specific contacts for each supplier.
+
+![Supplier Contacts List](purchases/img/supplier_contacts_list.png)
+![Specific Supplier Contacts](purchases/img/supplier_contacts_specific_supplier.png)
+
+**Adding Contacts:**
+![Add Contact Modal 1](purchases/img/add_supplier_contact_modal_1.png)
+![Add Contact Modal 2](purchases/img/add_supplier_contact_modal_2.png)
+![Create Contact 1](purchases/img/supplier_contact_create_1.png)
+![Create Contact 2](purchases/img/supplier_contact_create_2.png)
 
 ### Key Information
 
