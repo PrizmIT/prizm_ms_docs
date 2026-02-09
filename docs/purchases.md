@@ -366,6 +366,8 @@ Delivery Notes provide formal acknowledgment of goods received.
 
 ## 13. Payment Requests
 
+![PO Backlog for Payment Request](purchases/img/po_backlog_to_create_payment_request.png)
+
 ### Purpose
 
 Payment Requests initiate payments to suppliers for goods and services received.
