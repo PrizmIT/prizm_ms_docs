@@ -234,6 +234,11 @@
 ![تعديل أمر الشراء](purchases/img/edit_po_1.png)
 ![تفاصيل أمر الشراء](purchases/img/edit_po_2.png)
 
+### مراجعة مسودة أمر الشراء
+
+![عرض مسودة أمر الشراء](purchases/img/view_po_draft_1.png)
+![تفاصيل المسودة](purchases/img/view_po_draft_2.png)
+
 ### 8.2 الحالات
 
 - مسودة

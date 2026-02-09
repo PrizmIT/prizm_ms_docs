@@ -251,6 +251,11 @@ Purchase Orders are created from items in the backlog.
 ![Edit PO](purchases/img/edit_po_1.png)
 ![Edit PO Details](purchases/img/edit_po_2.png)
 
+### Reviewing Draft PO
+
+![Draft PO View](purchases/img/view_po_draft_1.png)
+![Draft PO Details](purchases/img/view_po_draft_2.png)
+
 ### 8.2 Status Flow
 
 ```
