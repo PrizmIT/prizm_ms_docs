@@ -389,6 +389,8 @@ Items can be entered manually or converted from RFQs.
 
 Received Vouchers (Goods Receipt Notes) record goods and services received against Purchase Orders.
 
+![Add Received Voucher](purchases/img/receive_voutcher_add.png)
+
 ### Key Features
 
 - Partial receipts allowed
@@ -403,11 +405,16 @@ Received Vouchers (Goods Receipt Notes) record goods and services received again
 - For partial deliveries
 - To trigger payment authorization
 
+![View Received Voucher](purchases/img/view_received_voucher (1).png)
+![Received Voucher Details](purchases/img/view_received_voucher (2).png)
+
 ## 12. Delivery Notes
 
 ### Purpose
 
 Delivery Notes provide formal acknowledgment of goods received.
+
+![Delivery Note List](purchases/img/delivery_note_list.png)
 
 ### Key Information
 
@@ -424,13 +431,25 @@ Delivery Notes provide formal acknowledgment of goods received.
 - Dispute resolution
 - Inventory management
 
+### Bin Records (Deleted Delivery Notes)
+
+![Deleted Delivery Notes](purchases/img/delivery_note_deleted.png)
+
 ## 13. Payment Requests
 
+### 13.1 Overview
+
+![Payment Request List](purchases/img/payment_request_list.png)
 ![PO Backlog for Payment Request](purchases/img/po_backlog_to_create_payment_request.png)
 
 ### Purpose
 
 Payment Requests initiate payments to suppliers for goods and services received.
+
+### 13.2 Creating Payment Requests
+
+![Create Payment Request 1](purchases/img/create_payment_requst (1).png)
+![Create Payment Request 2](purchases/img/create_payment_requst (2).png)
 
 ### Features
 
@@ -438,6 +457,11 @@ Payment Requests initiate payments to suppliers for goods and services received.
 - Payment status tracking
 - Integration with accounting
 - Approval workflow
+
+### 13.3 Editing Payment Requests
+
+![Edit Payment Request 1](purchases/img/edit_payment_request (1).png)
+![Edit Payment Request 2](purchases/img/edit_payment_request (2).png)
 
 ### Payment Status
 
@@ -447,12 +471,21 @@ Payment Requests initiate payments to suppliers for goods and services received.
 - Paid
 - Rejected
 
+### 13.4 Approving Payment Requests
+
+![Payment Request Before Approval 1](purchases/img/view_payment_request_before_approval (1).png)
+![Payment Request Before Approval 2](purchases/img/view_payment_request_before_approval (2).png)
+
 ### Best Practices
 
 - Verify receipt of goods before payment
 - Check invoice accuracy
 - Follow approval procedures
 - Maintain proper documentation
+
+### Bin Records (Deleted Payment Requests)
+
+![Deleted Payment Requests](purchases/img/deleted_payment_requet.png)
 
 ## 14. Summary & Reporting
 
