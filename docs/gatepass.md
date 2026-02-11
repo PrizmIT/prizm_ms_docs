@@ -116,6 +116,8 @@ Timeline of recent:
 
 The register lists every gatepass in the system. It functions as the official log book for all authorised movements.
 
+![Gatepass List](gatepass/img/gatepass_list.png)
+
 ### What You See
 
 #### Gatepass Table
@@ -146,6 +148,13 @@ Narrow records by:
 - Cancel
 - Restore archived records
 - Export for reporting or audit
+
+### Deleted & Archived Gatepasses
+
+The system maintains records of deleted or archived gatepasses for audit and compliance purposes.
+
+![Deleted Gatepass](gatepass/img/deleted_getpass.png)
+![Gatepass Deleted View](gatepass/img/gatepass_deleted.png)
 
 ### Who Uses It
 
@@ -215,6 +224,12 @@ Upload:
 - Licenses
 - Other supporting documents
 
+### Creating a Gatepass
+
+![Create Gatepass](gatepass/img/gatepass_create.png)
+![Create Gatepass Request](gatepass/img/gatepass_request_create.png)
+![Gatepass Request List](gatepass/img/gatepass_request_new_gatepass_list.png)
+
 #### Step 8: Save or Submit
 
 - **Save as draft** – Continue editing later
@@ -281,6 +296,8 @@ Pass types may affect:
 
 Gatepasses follow a controlled lifecycle. Each stage determines what actions are possible and who is responsible.
 
+![Gatepass Settings](gatepass/img/gatepass_settings.png)
+
 ### Status Definitions
 
 | Status | Meaning | Actions Allowed |
@@ -317,6 +334,8 @@ Gatepasses follow a controlled lifecycle. Each stage determines what actions are
 ## 10. Gatepass Details View
 
 The details view displays everything about a single gatepass in one place.
+
+![Gatepass Request View](gatepass/img/gatepass_request_view.png)
 
 ### Sections Included
 
@@ -444,6 +463,9 @@ Note:
 
 Whenever vehicles are involved, the gatepass must include comprehensive vehicle and driver details.
 
+![Vehicle List](gatepass/img/gatepass_vehcile_list.png)
+![Create Vehicle](gatepass/img/gatepass_vehicle_create.png)
+
 ### Vehicle Identification
 
 #### Basic Information
@@ -474,6 +496,11 @@ Whenever vehicles are involved, the gatepass must include comprehensive vehicle 
 - Contact number
 - Identification document numbers
 - Driver's license number
+
+#### Editing Vehicles
+
+![Edit Vehicle](gatepass/img/gatepass_vehicle_edit.png)
+![Edit Gatepass Request](gatepass/img/gatepass_request_edit.png)
 
 #### Verification
 
