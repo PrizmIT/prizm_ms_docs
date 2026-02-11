@@ -424,6 +424,11 @@ Delivery Notes provide formal acknowledgment of goods received.
 - Condition of goods
 - Linked Purchase Orders
 
+### Editing Delivery Notes
+
+![Edit Delivery Note 1](purchases/img/delivery_note_edit (1).png)
+![Edit Delivery Note 2](purchases/img/delivery_note_edit (2).png)
+
 ### Importance
 
 - Audit trail documentation
@@ -499,6 +504,8 @@ The Summary page provides aggregated views of procurement data:
 - Filterable by department, project, or supplier
 
 ### Approval Logs
+
+![Purchases Approval Log](purchases/img/purchases_approval_log.png)
 
 Comprehensive audit trail showing:
 
@@ -619,7 +626,89 @@ The system provides granular permission control to ensure proper authorization a
 - Use approval comments effectively
 - Regular review of pending items
 
-## 19. Summary
+## 19. Settings & Configuration
+
+The Prizm Purchase module allows administrators to customize workflows to match organizational processes. This is accessed via the **Settings** menu.
+
+### Workflow & Approval Cycle
+
+The system provides granular control over the approval cycle for every purchase document type (PR, PO, ER, Payment, Voucher, Delivery Note). The workflow is defined by a hierarchy of **Stages** and **Statuses**, where each step defines who is responsible for moving the process forward.
+
+### Configuration Logic
+
+The approval cycle is built on the following rules:
+
+1.  **Stages define Responsibility:** Each Stage is assigned a **Responsible** role/person who oversees that phase of the lifecycle.
+2.  **Statuses define Approvers:** Each Status within a stage is assigned specific **Approvers**.
+3.  **Department-Specific Logic:** Status approvers are tied to **Departments**. This means every department can have its own unique approval settings and authorized personnel for the same status (e.g., "Department Approval" will route to different managers depending on the requester's department).
+
+### Module Workflow Settings
+
+Administrators can configure specific workflows for each module:
+
+- **Purchase Requests (PR):** Manage `PR Stages` and `PR Statuses`.
+- **Purchase Orders (PO):** Manage `PO Stages` and `PO Statuses`.
+- **Received Vouchers:** Configure `Voucher Stages` and `Voucher Statuses`. Use the **Final** flag for payment eligibility and **Optional** flags for inspection steps.
+- **Payment Requests:** Configure `Payment Stages` for authorization levels and `Payment Statuses` for departmental checkpoints (Project, Accounts, Admin), using colors for visibility.
+- **Delivery Notes:** Configure `Delivery Note Stages` to track physical receipt phases. Use `Delivery Note Statuses` to manage the verification workflow (e.g., "DN Approval") ensuring goods are inspected and approved before formal acceptance.
+- **Expense Requests:** Configure `Expense Request Stages` to define approval phases for expense reimbursements and operational expenses. Use `Expense Request Statuses` to set up departmental approval checkpoints (e.g., Admin approval, Budget validation) with assigned approvers and visual color coding for tracking progress.
+
+### Managing Stages and Statuses
+
+For each document type, you can configure:
+
+- **Stages:** Define the broad phases of the document's lifecycle (e.g., Initiation, Review, Approval, Execution).
+    - **Stage Name:** The descriptive name of the workflow phase.
+    - **Level:** Assign a numeric hierarchy level (e.g., 1, 2, 3) to order the stages sequentially.
+    - **Responsible:** Assign the specific user or role responsible for overseeing this stage.
+
+#### Stages Configuration
+
+The following screens show how to configure stages for different document types:
+
+![Purchase Request Stages](purchases/img/purchase_request_stages.png)
+![Purchase Order Stages](purchases/img/purchase_order_stages.png)
+![Payment Request Stages](purchases/img/payment_request_stages.png)
+![Received Voucher Stages](purchases/img/received_voucher_stages.png)
+![Expense Request Stages](purchases/img/expense_request_stages.png)
+- **Statuses:** Define granular states within stages. When configuring statuses, you can define:
+    - **Stage Association:** Link the status to a specific parent stage.
+    - **Approver:** Assign specific approvers. Note that these are linked to departments, allowing for different approvers per department for the same status.
+    - **Status Name:** The display name for the status.
+    - **Color:** Assign distinct colors (Hex codes) for visual differentiation in lists and dashboards.
+    - **Order:** Defines the sequence of the status within its stage.
+    - **Optional:** Toggle ("Yes" / "No") to specify if this status is mandatory or skippable in the workflow.
+    - **Final:** Toggle ("Yes" / "No") to mark if this status represents a terminal state (completion) for that stage.
+    - **Active Status:** Enable or disable the status availability without deleting it.
+
+#### Statuses Configuration
+
+Configure statuses for each document type to define approval checkpoints:
+
+![Purchase Request Statuses](purchases/img/purchase_request_statuses.png)
+![Purchase Order Statuses](purchases/img/purchase_order_statuses.png)
+![Payment Request Statuses](purchases/img/payment_request_statuses.png)
+![Expense Request Statuses](purchases/img/expense_request_statuses.png)
+
+### Options
+
+- **Add New Stage/Status:** Create custom workflow steps.
+- **Edit:** Modify names or sequence levels of existing stages.
+- **Delete:** Remove unused workflow steps (if not in use).
+
+### Issued PO Manager
+
+![Allow Unverified Supplier Setting](purchases/img/allow_unverified_supplier_setting.png)
+
+The **Issued PO Manager** setting controls supplier validation for purchase orders:
+
+- **Allow Unverified Suppliers:** This setting determines whether unverified suppliers can be used in purchase orders.
+    - **Disabled** (Default): Only verified/active suppliers can be selected for POs.
+    - **Enabled:** Allows users to create POs with unverified suppliers, providing flexibility for new or temporary vendors.
+
+This setting is particularly useful for organizations that need to work with new suppliers while their verification process is underway.
+
+## 20. Summary
 
 The Prizm Purchase module provides a comprehensive, controlled, and auditable procurement system. It supports organizations in managing their entire procurement lifecycle from initial request through to payment, ensuring compliance, transparency, and efficiency throughout the process.
 
