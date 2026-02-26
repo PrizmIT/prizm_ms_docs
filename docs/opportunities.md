@@ -63,8 +63,6 @@ Administrators can configure permissions to restrict who may create, approve, or
 
 The dashboard provides a high‑level snapshot of your pipeline.
 
-![Dashboard Overview](./opportunities/img/dashboard_overview.png)
-
 ### Dashboard Components
 
 #### Summary Cards
@@ -86,8 +84,6 @@ Illustrating the distribution of opportunities across stages
 - Expected closing dates
 - Win/loss ratios
 - Average cycle time
-
-![Dashboard KPIs](./opportunities/img/dashboard_kpis.png)
 
 #### Filters
 
@@ -112,7 +108,7 @@ Use the dashboard to:
 
 The pipeline or list view provides a sortable and filterable overview of all opportunities.
 
-![Pipeline Kanban View](./opportunities/img/pipeline_kanban_view.png)
+![Opportunities List View](./opportunities/img/opportunities_list_1.png)
 
 ### Key Features
 
@@ -134,7 +130,7 @@ Displays opportunities in a tabular format with columns:
 - Assigned Owner
 - Estimated Value
 
-![Pipeline List View](./opportunities/img/pipeline_list_view.png)
+![Opportunities List Details](./opportunities/img/opportunities_list_2.png)
 
 #### Search & Filters
 
@@ -165,7 +161,7 @@ Depending on permissions, select multiple opportunities to:
 
 Creating a new opportunity captures essential information about a potential deal.
 
-![Opportunity Creation Form](./opportunities/img/opportunity_creation_form.png)
+![Create New Opportunity](./opportunities/img/create_new_opportunity.png)
 
 ### Creation Steps
 
@@ -199,8 +195,6 @@ Click **Add Opportunity** from the pipeline or list view
 
 - **Summary / Description** – Provide background information, client needs, and objectives
 
-![Opportunity Details Basic Information](./opportunities/img/opportunity_details_basic_info.png)
-
 #### Step 3: Save
 
 - Mandatory fields must be completed before saving
@@ -219,8 +213,6 @@ You can:
 ## 8. Opportunity Stages & Statuses
 
 Opportunities progress through a series of stages, each representing a milestone in the sales cycle.
-
-![Opportunity Stages Timeline](./opportunities/img/stages_status_timeline.png)
 
 ### Typical Stages
 
@@ -268,8 +260,6 @@ At each stage, an opportunity can have one of several statuses:
 - Some statuses are marked as **final**, meaning the opportunity cannot progress further in that stage
 - Others are **optional**, allowing the opportunity to skip them if not needed
 
-![Stage Progression Example](./opportunities/img/stage_progression_example.png)
-
 ### Configuration
 
 Administrators configure:
@@ -280,8 +270,6 @@ Administrators configure:
 ## 9. Opportunity Details View
 
 The detail page provides a comprehensive view of an individual opportunity.
-
-![Opportunity Details View](./opportunities/img/opportunity_details_view.png)
 
 ### General Information
 
@@ -313,8 +301,6 @@ This audit trail helps track how the opportunity has evolved.
 - Emails
 - Tasks
 - Calendar events associated with the opportunity
-
-![Opportunity Tabs Overview](./opportunities/img/opportunity_tabs_overview.png)
 
 #### Products / Services
 
@@ -367,7 +353,7 @@ The detail view provides buttons to:
 
 To manage engagement with partners or clients effectively, the module records all activities related to an opportunity.
 
-![Activities, Tasks & Calendar](./opportunities/img/activities_tasks_calendar.png)
+![Opportunity Tasks](./opportunities/img/opportunity_tasks.png)
 
 ### Activity Types
 
@@ -380,6 +366,8 @@ To manage engagement with partners or clients effectively, the module records al
   - Due date
   - Responsible staff member
   - Reminders
+
+![Activity Log](./opportunities/img/activity_log.png)
 
 #### Notes
 
@@ -394,7 +382,7 @@ To manage engagement with partners or clients effectively, the module records al
 - Replies are threaded
 - Files can be attached
 
-![Notes & Discussions Section](./opportunities/img/notes_discussions_section.png)
+![Notes](./opportunities/img/notes.png)
 
 #### Emails
 
@@ -414,11 +402,15 @@ Keeping activities up to date ensures that:
 - Opportunity progresses smoothly
 - Communication history is preserved
 
+![General Log](./opportunities/img/general_log.png)
+
+![Timesheet](./opportunities/img/timesheet.png)
+
 ## 11. Opportunity Estimates & Costing
 
 During the estimation stage, you can develop cost estimates for the opportunity.
 
-![Estimates & Costing Form](./opportunities/img/estimates_costing_form.png)
+![Opportunity Estimation](./opportunities/img/opportunity_estimation.png)
 
 ### Job Estimation
 
@@ -437,6 +429,8 @@ Each estimate includes:
 - Discount
 - Additional notes
 
+![Technical Analysis](./opportunities/img/technical_analysis.png)
+
 ### Item Specifications
 
 Define technical specifications for each estimated item:
@@ -450,6 +444,8 @@ Define technical specifications for each estimated item:
 - Specify currency for each estimate
 - Convert or update prices as needed
 - Support for multiple currencies
+
+![Estimates Costing Form](./opportunities/img/estimates_costing_form.png)
 
 ### Summary Figures
 
@@ -466,11 +462,13 @@ Estimates help:
 - Required for approval
 - Included in proposals or budgets
 
+![Suppliers](./opportunities/img/suppliers.png)
+
 ## 12. Opportunity Products / Services
 
 Opportunities may include products or services offered to the customer.
 
-![Products & Services List](./opportunities/img/products_services_list.png)
+![Bill of Quantities](./opportunities/img/BOQ.png)
 
 ### Features
 
@@ -493,6 +491,8 @@ Specify:
 
 - Assign colors or indicators to milestones
 - Visualize completion
+
+![Milestones & Tasks](./opportunities/img/milestones_tasks.png)
 
 #### Calculate Values
 
@@ -527,6 +527,8 @@ Files can be:
 
 Store external file links (e.g., from cloud storage or collaboration tools)
 
+![MS Teams Files Integration](./opportunities/img/ms_teams_files.png)
+
 ### Versioning
 
 - Update documents as revisions occur
@@ -544,7 +546,7 @@ Files remain associated with the opportunity throughout its lifecycle and are au
 
 Approvals enforce compliance with business policies and ensure that only qualified opportunities move forward.
 
-![Approval Workflow Status](./opportunities/img/approval_workflow_status.png)
+![Opportunity Overview After Submission for Approval](./opportunities/img/opportunity_overview_after_submission_for_approval.png)
 
 ### Key Aspects
 
@@ -622,8 +624,6 @@ Key information is copied to the new project or budget:
 - Documents
 
 This avoids re‑entering data and ensures continuity
-
-![Conversion to Project Dialog](./opportunities/img/conversion_to_project_dialog.png)
 
 #### Project Creation
 
