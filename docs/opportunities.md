@@ -445,7 +445,7 @@ Define technical specifications for each estimated item:
 - Convert or update prices as needed
 - Support for multiple currencies
 
-![Estimates Costing Form](./opportunities/img/estimates_costing_form.png)
+![RFQ List Of Opportunity](./opportunities/img/rfq_list_of_opportunity.png)
 
 ### Summary Figures
 
@@ -722,6 +722,8 @@ The Opportunities module connects seamlessly with other components of the ERP sy
 - For government or large corporate tenders
 - Opportunities capture tender details and track submission deadlines
 - Enabling alignment with procurement processes
+
+![RFQ List Of Opportunity](./opportunities/img/rfq_list_of_opportunity.png)
 
 ### Resource Management
 
