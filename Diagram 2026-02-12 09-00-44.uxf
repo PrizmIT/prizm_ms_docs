@@ -1,0 +1,76 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>start
+
+Site Engineer: Create Request
+Classify by UNSPSC + Subtype
+
+Gate: Request Intent?
+    [Missing Intent Essentials]
+        Ask only Intent Essentials
+        (Commercial + Minimal Technical)
+    [Complete]
+        Item State = INTENT
+
+AI Technical Completion
+    Retrieve Similar Items + Past Catalog
+    Resolve OEM / Model / MPN Candidates
+    Extract Specs from Datasheets / Quotes
+    Apply Conditional Rules
+        (e.g., Bolt-on -&gt; holes_count)
+
+Confidence High?
+    [Yes]
+        Auto-fill Specs
+        Mark provenance: AI / Datasheet
+    [No]
+        Request Clarifications
+        Only Missing Procurement Keys
+
+Gate: Procurement Ready?
+    [Missing Required / Conditional]
+        Block RFQ / PO
+        Show Missing List + Reason
+        stop
+    [Complete]
+        Procurement: RFQ / PO
+        Select Approved OEM / Model
+
+Project Brand / AVL Constraints?
+    [Violates]
+        Reject Candidate
+        Suggest Approved Equivalents
+        stop
+    [OK]
+        PO Issued
+
+Gate: Delivery / Receiving?
+    [Missing Certificates / QA]
+        Hold GRN / Inspection
+        stop
+    [Complete]
+        Accept &amp; Close Loop
+
+Learning Loop
+    Log Accept / Edit / Reject with evidence
+    Periodic Training + Rule Updates
+
+stop
+</help_text><element><id>UMLUseCase</id><coordinates><x>50</x><y>290</y><w>120</w><h>40</h></coordinates><panel_attributes>Use case 2
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>100</y><w>210</w><h>70</h></coordinates><panel_attributes>_object: Class_
+--
+id: Long="36548"
+[waiting for message]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>340</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Stereotype&gt;&gt;
+Package::FatClass
+{Some Properties}
+--
+-id: Long
+_-ClassAttribute: Long_
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+--
+Responsibilities
+-- Resp1
+*-- Resp2*</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>200</y><w>210</w><h>70</h></coordinates><panel_attributes>_object: Class_
+--
+id: Long="36548"
+[waiting for message]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>410</y><w>210</w><h>190</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element></diagram>
