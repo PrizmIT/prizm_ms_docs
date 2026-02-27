@@ -106,9 +106,13 @@ Use the dashboard to:
 
 ## 6. Opportunities Pipeline / List
 
-The pipeline or list view provides a sortable and filterable overview of all opportunities.
+The pipeline or list view provides a sortable and filterable overview of all opportunities. It allows users to visualize the entire sales cycle and manage multiple deals efficiently.
 
-![Opportunities List View](./opportunities/img/opportunities_list_1.png)
+### Visual Management
+
+Users can switch between a pipeline (Kanban) view for visual tracking and a list view for detailed data management.
+
+![Opportunities Pipeline Overview](./opportunities/img/opportunities_list_1.png)
 
 ### Key Features
 
@@ -130,7 +134,7 @@ Displays opportunities in a tabular format with columns:
 - Assigned Owner
 - Estimated Value
 
-![Opportunities List Details](./opportunities/img/opportunities_list_2.png)
+![Detailed Opportunities List](./opportunities/img/opportunities_list_2.png)
 
 #### Search & Filters
 
@@ -351,9 +355,13 @@ The detail view provides buttons to:
 
 ## 10. Opportunity Activities & Follow‑ups
 
-To manage engagement with partners or clients effectively, the module records all activities related to an opportunity.
+To manage engagement with partners or clients effectively, the module records all activities related to an opportunity. This ensures that every interaction is documented and next steps are clearly defined.
 
-![Opportunity Tasks](./opportunities/img/opportunity_tasks.png)
+### Managing Tasks
+
+Assigning specific tasks helps track the progress of individual items like site visits, proposal preparation, or client follow-ups.
+
+![Opportunity Tasks Management](./opportunities/img/opportunity_tasks.png)
 
 ### Activity Types
 
@@ -367,7 +375,11 @@ To manage engagement with partners or clients effectively, the module records al
   - Responsible staff member
   - Reminders
 
-![Activity Log](./opportunities/img/activity_log.png)
+### Chronological Tracking
+
+The activity log provides a full audit trail of all manual and system-generated actions performed on the opportunity record.
+
+![Detailed Activity Log](./opportunities/img/activity_log.png)
 
 #### Notes
 
@@ -376,13 +388,17 @@ To manage engagement with partners or clients effectively, the module records al
 - Internal comments
 - Only visible to internal staff
 
+### Internal Communication
+
+Use the notes and discussions section to collaborate with other team members without exposing the dialogue to the client.
+
+![Internal Notes & Discussions](./opportunities/img/notes.png)
+
 #### Discussions
 
 - Create discussion threads to collaborate with team members
 - Replies are threaded
 - Files can be attached
-
-![Notes](./opportunities/img/notes.png)
 
 #### Emails
 
@@ -394,6 +410,14 @@ To manage engagement with partners or clients effectively, the module records al
 
 Mark important opportunities as pinned for quick access
 
+### Logging and Accountability
+
+Standard logs and timesheets help maintain accountability by tracking who did what and for how long.
+
+![General System Log](./opportunities/img/general_log.png)
+
+![Staff Timesheet Tracking](./opportunities/img/timesheet.png)
+
 ### Benefits
 
 Keeping activities up to date ensures that:
@@ -402,15 +426,11 @@ Keeping activities up to date ensures that:
 - Opportunity progresses smoothly
 - Communication history is preserved
 
-![General Log](./opportunities/img/general_log.png)
-
-![Timesheet](./opportunities/img/timesheet.png)
-
 ## 11. Opportunity Estimates & Costing
 
-During the estimation stage, you can develop cost estimates for the opportunity.
+During the estimation stage, you can develop detailed cost estimates to determine the financial feasibility and pricing strategy for the opportunity.
 
-![Opportunity Estimation](./opportunities/img/opportunity_estimation.png)
+![Opportunity Estimation Interface](./opportunities/img/opportunity_estimation.png)
 
 ### Job Estimation
 
@@ -429,7 +449,11 @@ Each estimate includes:
 - Discount
 - Additional notes
 
-![Technical Analysis](./opportunities/img/technical_analysis.png)
+### Technical Breakdown
+
+Performing a technical analysis allows for granular mapping of technical specs to costs, ensuring accuracy in high-value bids.
+
+![Technical Analysis and Specs](./opportunities/img/technical_analysis.png)
 
 ### Item Specifications
 
@@ -445,7 +469,11 @@ Define technical specifications for each estimated item:
 - Convert or update prices as needed
 - Support for multiple currencies
 
-![RFQ List Of Opportunity](./opportunities/img/rfq_list_of_opportunity.png)
+### Procurement Integration
+
+The module integrates with procurement modules to track RFQs (Requests for Quotation) triggered by the opportunity requirements.
+
+![RFQ Integration List](./opportunities/img/rfq_list_of_opportunity.png)
 
 ### Summary Figures
 
@@ -462,13 +490,21 @@ Estimates help:
 - Required for approval
 - Included in proposals or budgets
 
-![Suppliers](./opportunities/img/suppliers.png)
+### Supplier Coordination
+
+Tracking invited suppliers ensures that all third-party dependencies are accounted for during the estimation process.
+
+![Linked Suppliers Overview](./opportunities/img/suppliers.png)
 
 ## 12. Opportunity Products / Services
 
-Opportunities may include products or services offered to the customer.
+Opportunities may include products or services offered to the customer. Managing these deliverables effectively is key to a successful proposal.
 
-![Bill of Quantities](./opportunities/img/BOQ.png)
+### Bill of Quantities (BOQ)
+
+The BOQ tab provides a structured list of all items, quantities, and their associated financial impacts.
+
+![Bill of Quantities View](./opportunities/img/BOQ.png)
 
 ### Features
 
@@ -492,7 +528,11 @@ Specify:
 - Assign colors or indicators to milestones
 - Visualize completion
 
-![Milestones & Tasks](./opportunities/img/milestones_tasks.png)
+### Managing Deliverables
+
+Visualizing milestones and associated tasks ensures that all parts of the service delivery are planned early.
+
+![Milestones and Deliverables](./opportunities/img/milestones_tasks.png)
 
 #### Calculate Values
 
@@ -525,9 +565,13 @@ Files can be:
 
 ### External Links
 
-Store external file links (e.g., from cloud storage or collaboration tools)
+Store external file links (e.g., from cloud storage or collaboration tools).
 
-![MS Teams Files Integration](./opportunities/img/ms_teams_files.png)
+### Collaboration Tools Integration
+
+Direct integration with Microsoft Teams allows for seamless file sharing and real-time collaboration on opportunity-related documents.
+
+![MS Teams Collaboration Integration](./opportunities/img/ms_teams_files.png)
 
 ### Versioning
 
@@ -546,7 +590,11 @@ Files remain associated with the opportunity throughout its lifecycle and are au
 
 Approvals enforce compliance with business policies and ensure that only qualified opportunities move forward.
 
-![Opportunity Overview After Submission for Approval](./opportunities/img/opportunity_overview_after_submission_for_approval.png)
+### Workflow Monitoring
+
+The system provides a clear overview of the clinical state of an opportunity once it has been submitted for review.
+
+![Approval Submission Overview](./opportunities/img/opportunity_overview_after_submission_for_approval.png)
 
 ### Key Aspects
 
@@ -723,7 +771,9 @@ The Opportunities module connects seamlessly with other components of the ERP sy
 - Opportunities capture tender details and track submission deadlines
 - Enabling alignment with procurement processes
 
-![RFQ List Of Opportunity](./opportunities/img/rfq_list_of_opportunity.png)
+The RFQ list within the opportunity helps track all formal requests for quotation sent to suppliers specifically for this deal.
+
+![RFQ List Integration within Opportunity](./opportunities/img/rfq_list_of_opportunity.png)
 
 ### Resource Management
 
