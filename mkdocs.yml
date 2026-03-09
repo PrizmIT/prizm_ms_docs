@@ -35,6 +35,7 @@ plugins:
             RFQ: طلب عروض الأسعار
             Gatepass: تصريح المرور
             Technical Analysis: التحليل الفني
+            Prizm Reports: تقارير بريزم
             About: حول
 
 nav:
@@ -48,4 +49,5 @@ nav:
   - RFQ: rfq.md
   - Gatepass: gatepass.md
   - Technical Analysis: technical-analysis.md
+  - Prizm Reports: prizm-reports.md
   - About: about.md
