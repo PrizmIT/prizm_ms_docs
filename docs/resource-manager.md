@@ -793,7 +793,165 @@ Access to the Resource Manager is governed by role‑based permissions.
 - **Monitor stock levels regularly** – Review stock reports to identify overstock or shortage situations
 - **Use kits for common resource sets** – Saves time and ensures completeness when issuing frequently used resource combinations
 
-## 20. Known Limitations / Notes
+## 20. Detailed Sub-Menu Structure
+
+The Resource Manager module in PRIZM provides these sub-sections in the sidebar:
+
+| Sub-menu | Description | Permission Required |
+|----------|-------------|-------------------|
+| **Categories** | Hierarchical material categories | materials |
+| **Materials** | Master material records | materials |
+| **Items** | Detailed item catalog with specifications (AG Grid) | prizm_items |
+| **Client Items** | Separate item catalog for client-specific items | prizm_items |
+| **Kits** | Bundle multiple items into reusable kits | prizm_items |
+| **Product Family** | Group related items into product families | prizm_items |
+| **Classification Review** | Review AI-classified items and approve/reject | classification (classification_review) |
+| **Clone Review** | Review AI-detected duplicate/clone items | classification (classification_review) |
+| **Item Classification Manager** | Hierarchical classification tree editor | classification |
+| **Brands** | Brand/manufacturer management | brands |
+| **Specifications** | Define item specification attributes | material_settings |
+| **Spec Value Sets** | Predefined sets of specification values | material_settings |
+| **Units** | Units of measurement management | material_settings |
+| **Settings** | Module configuration | material_settings |
+
+## 21. AI Classification System
+
+The module includes a sophisticated AI-powered classification engine that automatically categorizes items based on their names and descriptions.
+
+### Classification Status Codes
+
+Each item has a classification status that tracks its lifecycle:
+
+| Code | Status | Description |
+|------|--------|-------------|
+| 0 | **Pending Classification** | Awaiting AI processing |
+| 1 | **AI Classified** | Successfully classified by AI |
+| 2 | **AI Unclassified (Need Review)** | AI uncertain — requires human review |
+| 3 | **Pending Approval** | Classified but awaiting manual approval |
+| 4 | **No Classification Required** | Exempt from classification |
+| 5 | **Added Manually** | Manually classified by user |
+| 6 | **Item Formatting Need Review** | Name/description needs formatting review |
+| 7 | **Cleaned** | Item data cleaned and standardized |
+| 8 | **Processed** | Fully processed through pipeline |
+| 9 | **Duplicated** | Detected as a duplicate of another item |
+| 10 | **Archived** | Inactive/archived item |
+
+### Classification Review
+
+Navigate to **Resource Manager > Classification Review** to process items awaiting review:
+
+1. View items in **AI Unclassified** or **Pending Approval** status
+2. Review the AI-suggested category and metadata
+3. Approve, modify, or reject the classification
+4. Approved items become available for use across the system
+
+### Clone Review
+
+Navigate to **Resource Manager > Clone Review** to handle detected duplicates:
+
+1. AI identifies potential duplicate items based on name, specifications, and metadata similarity
+2. Review each candidate pair
+3. Decide to merge, keep both, or archive the duplicate
+4. Merged items redirect all references (allocations, history) to the primary item
+
+### AI Batch Processing
+
+The system supports batch AI classification and specification extraction:
+
+- **Item Batch** — Process multiple items through AI classification in bulk
+- **Commodity Spec Batch** — Extract and assign specifications using AI
+- **Intelligent Rename** — AI suggests standardized item names
+
+## 22. Product Family
+
+Product Families group related items into logical product lines.
+
+### Features
+
+- Create product family hierarchies
+- Assign items to families
+- View all items within a family
+- Navigate family relationships
+
+## 23. Kits
+
+Kits bundle multiple items into reusable sets for common use cases.
+
+### Features
+
+- Create named kits with multiple items
+- Specify quantities for each item in the kit
+- Select a kit to auto-populate all contained items
+- Useful for frequently issued resource combinations
+
+## 24. Client Items
+
+A separate catalog of items specific to clients (external customers).
+
+### Features
+
+- Maintain client-specific item records
+- Accessible via the **Client Portal** (external-facing)
+- Clients can log in and browse their item catalog
+- Separate from internal material items
+
+## 25. Merge Tools
+
+The module provides dedicated merge handlers for maintaining clean data:
+
+| Merge Tool | Purpose |
+|-----------|---------|
+| **Merge Items** | Consolidate duplicate item records |
+| **Merge Specs** | Combine duplicate specification definitions |
+| **Merge Units** | Unify duplicate unit of measurement records |
+
+Each merge tool shows differences between records, lets you choose which values to keep, and archives the merged duplicates.
+
+## 26. Global Item Search
+
+A **system-wide item search modal** is available on every admin page. It provides instant search across all items, materials, and classifications from any screen without navigating to the Resource Manager module.
+
+## 27. Item Detail Tabs
+
+When viewing an individual item, the following tabs are available:
+
+| Tab | Description |
+|-----|-------------|
+| **Versions** | Item version history showing changes over time |
+| **Item Review** | Review and approval status |
+| **Item Report** | Usage report showing where this item is used across modules |
+| **Activity Log** | Full change history with timestamps and users |
+| **Item Snapshot** | Complete data snapshot (admin only) |
+
+## 28. External Search Integration
+
+The module integrates with external search APIs for enriching item data:
+
+- **Google Custom Search API** — Search for item information, specifications, and images from the web
+- **Brave Search API** — Alternative search provider for item data enrichment
+
+Both are configured in **System Settings > Other**.
+
+## 29. Permissions Reference
+
+The module uses **6 separate permission groups**:
+
+| Permission Group | Controls | Special Permissions |
+|-----------------|----------|-------------------|
+| **materials** | Master material records | view, create, edit, delete |
+| **Categories** | Category management | view, create, edit, delete |
+| **prizm_items** | Items, Client Items, Kits, Product Family | view, create, edit, delete |
+| **brands** | Brand management | view, create, edit, delete |
+| **material_settings** | Specifications, Units, Spec Value Sets, Settings | view, create, edit, delete |
+| **classification** | Classification tree, reviews | view, create, edit, delete, **edit_commodity_specs**, **classification_review** |
+
+!!! note "Special Classification Permissions"
+    The `classification` group has two additional permissions beyond standard CRUD:
+    
+    - **Edit Commodity Specs** — Allows editing specification attributes on classification nodes
+    - **Classification Review** — Grants access to the Classification Review and Clone Review screens
+
+## 30. Known Limitations / Notes
 
 - The module supports both stock‑based and non‑stock resources; for intangible resources (e.g., licences), availability tracking is limited to quantity and expiry dates
 - Deleting resources is restricted; records with allocations or history cannot be deleted; they must be archived instead

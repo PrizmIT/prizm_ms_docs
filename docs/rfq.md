@@ -1,840 +1,396 @@
-# PRIZM RFQ Module
+# RFQ (Request for Quotation)
 
-## 1. Introduction
+The **RFQ** module manages the full procurement quotation lifecycle — from creating requests linked to technical inquiries, through supplier invitation via email, quotation collection, comparison, evaluation, and final award. It integrates deeply with the Microsoft Graph API for email communication and includes AI-powered features for automated quotation processing.
 
-The **RFQ (Requests for Quotation)** module in PRIZM ENERGY ERP manages the full procurement quotation lifecycle, from internal request creation through supplier invitation, quotation collection, evaluation, approval, and final award. It ensures a transparent, auditable, and structured approach to supplier selection and cost control.
+---
 
-RFQs act as the formal bridge between internal demand (projects, budgets, operational needs) and external suppliers.
+## Accessing the Module
 
-### Key Capabilities
+Navigate to **RFQ** from the left sidebar. The module contains the following sub-sections:
 
-- Complete RFQ lifecycle management
-- Supplier invitation and response tracking
-- Quote evaluation and comparison
-- Approval workflow integration
-- Automated conversion to Purchase Orders
-- Comprehensive reporting and analytics
-- Document management and audit trails
+| Sub-menu | Description |
+|----------|-------------|
+| **Dashboard** | Statistics, user performance, and supplier analytics |
+| **RFQ** | Main RFQ list — create, edit, send, and track RFQs |
+| **RFQ Items** | Items linked to RFQs from technical inquiries |
+| **Items** | Master item catalog and comparison sheet items |
+| **RFQ Emails** | Supplier reply emails fetched via Microsoft Graph API |
+| **AI Quotation Backlog** | AI-processed quotation extraction queue |
+| **Procurement Mails** | General procurement inbox (non-RFQ emails) |
+| **Webmail** | Web-based email viewer for procurement mailbox |
+| **KPI Report** | Employee RFQ performance dashboards |
+| **Comparison Sheet** | Side-by-side supplier quotation comparison |
+| **Reports** | RFQ reports with reply/action tracking |
+| **Settings** | Admin-only RFQ configuration |
 
-## 2. Module Overview
+---
 
-The PRIZM RFQ module provides comprehensive tools for:
+## Dashboard
 
-- Creating and managing RFQs
-- Inviting suppliers and tracking responses
-- Comparing and evaluating quotations
-- Managing approval workflows
-- Converting RFQs to Purchase Orders or Contracts
-- Generating procurement reports
-- Maintaining compliance and audit trails
+The RFQ Dashboard provides a real-time overview of procurement activity with multiple analytical views.
 
-## 3. Navigation Structure
+### Statistics Overview
 
-The PRIZM RFQ module is organized as follows:
+- **Pending RFQs** — Count of RFQs awaiting action
+- **Accepted RFQs** — Count of accepted/active RFQs
+- **Quotations** — Total quotations received
+- **Supplier Latency** — Average response time from suppliers
+- **Monthly Trends** — Charts showing RFQs created, replies received, quotations, and actions per month
 
-```
-PRIZM RFQ
-├─ RFQ Dashboard
-├─ RFQ List / Pipeline
-├─ RFQ Creation
-├─ RFQ Stages & Statuses
-├─ RFQ Details View
-├─ Supplier Invitations & Responses
-├─ Quote Evaluation & Comparison
-├─ RFQ Items (Products / Services)
-├─ Documents & Attachments
-├─ RFQ Approval Workflow
-├─ RFQ Conversion (to Purchase Order / Contract)
-├─ RFQ Reports & Analysis
-└─ Integration with Other Modules
-```
+### User Performance
 
-## 4. Navigation to RFQ
+View performance metrics per procurement user:
 
-### How to Access
+- RFQs created (total and monthly)
+- Supplier replies received
+- Quotations processed
+- Actions taken
+- Replies needing action
+- Active RFQ statistics
 
-Access the RFQ module from the Admin sidebar:
+### Supplier Analytics
 
-1. Log in to the PRIZM ENERGY Admin Portal
-2. Navigate to **Procurement → RFQ**
-3. The RFQ workspace opens where users can:
-   - View dashboards
-   - Manage RFQs
-   - Initiate new quotation requests
+View per-supplier performance:
 
-### User Permissions
+- RFQs sent to supplier
+- Accepted/pending RFQ breakdown
+- Total replies and quotations
+- Purchase orders generated
+- Response latency tracking
+- Monthly activity trends
 
-Access is controlled based on user roles and permissions configured by administrators.
+### Period Filtering
 
-## 5. RFQ Dashboard
+Filter all dashboard data by:
 
-The RFQ Dashboard provides a real-time overview of procurement activity.
+- Today, This Week, Last Week, This Month, Last Month
+- Custom date range
 
-### Dashboard Components
+---
 
-#### Status Summary
+## RFQ List
 
-RFQs grouped by status:
-- **Draft** – Being prepared
-- **Pending** – Awaiting internal action or approval
-- **Active** – Sent to suppliers, awaiting responses
-- **Expired** – Response deadline passed
-- **Closed** – Supplier awarded
-- **Archived** – Stored for reference
+The main RFQ view displays all requests in an interactive AG Grid table.
 
-#### Visual Indicators
+### Key Columns
 
-- Summary counters for each status
-- Color-coded status badges
-- Progress indicators
+- **RFQ Code** — Unique reference number (e.g., RFQ-24000067)
+- **Email Subject** — Subject line used for supplier communication
+- **Status** — Current lifecycle status (Draft, Pending, Active/Accepted, Closed, Archived)
+- **Related Project** — Linked project or budget source
+- **Owner** — Assigned procurement officer
+- **Supplier Response Status** — Replies received / suppliers invited
+- **Creation Date** and **Due Date**
 
-#### Filters
+### Actions
 
-- Time-based filters (date ranges, due dates)
-- Supplier-based filters
-- Project-based filters
-- Owner/assigned user filters
-- Priority filters
+- **Create RFQ** — Initiate a new quotation request
+- **View/Edit** — Open RFQ details
+- **Delete** — Soft-delete with activity logging
+- **Send to Suppliers** — Dispatch via email
+- **Fetch Emails** — Pull latest supplier replies from Microsoft Graph API
 
-### Why It Matters
+### Filtering
 
-Procurement managers can immediately:
-- Identify bottlenecks
-- Monitor overdue RFQs
-- Track workload distribution
-- Prioritize urgent requests
-- Review pipeline health
+Filter by status, supplier, project, assigned user, and date ranges.
 
-## 6. RFQ List / Pipeline
+---
 
-The RFQ List displays all RFQs in a searchable, filterable table.
+## Creating an RFQ
 
-### Key Information
+### Step 1: Select Items
 
-Each RFQ entry shows:
-- **RFQ Reference** – Unique identifier
-- **Related Project or Request** – Source of the RFQ
-- **Assigned Owner** – Responsible procurement officer
-- **Supplier Response Status** – Number of responses received
-- **Current Lifecycle Status** – Draft, Active, Closed, etc.
-- **Creation Date** – When the RFQ was initiated
-- **Due Date** – Response deadline
-- **Estimated Value** – Total quote value
+Items come from **Technical Inquiries**. Select one or more inquiry items to include in the RFQ.
 
-### Common Actions
+### Step 2: Select Suppliers
 
-- **Open RFQ details** – View full RFQ information
-- **Edit draft RFQs** – Modify RFQs before sending
-- **Send RFQs to suppliers** – Initiate quotation process
-- **Archive or close completed RFQs** – Finalize and store
+Choose suppliers from the approved supplier list. Each supplier's contacts are loaded automatically.
 
-### Table Features
+### Step 3: Configure RFQ Details
 
-- Column sorting
-- Pagination
-- Advanced filtering
-- Bulk actions
-- Export to Excel/PDF
+- **Subject** — Clear description of what is being quoted
+- **Related Project** — Link to a project
+- **Owner** — Assign responsible procurement officer
+- **Due Date** — Supplier response deadline
+- **RFQ Type** — Supplier (materials) or Service
 
-## 7. RFQ Creation
+### Step 4: Email Settings
 
-Creating an RFQ initiates the formal quotation process.
+- **Email Subject** — Subject line for the invitation email
+- **Sender** — Select sending entity (Prizm Energy or Al Manshour Contracting)
+- **Email Template** — Predefined or custom email body
 
-### Creation Flow
+### Step 5: Terms and Notes
 
-#### Step 1: Initiate RFQ
+- **Public Remarks** — Visible to suppliers in the invitation
+- **Internal Notes** — For the procurement team only
+- **Terms and Conditions** — Commercial terms
 
-Click **Create RFQ** from the dashboard or list view
+### Step 6: Save or Send
 
-#### Step 2: Enter RFQ Details
+- **Save as Draft** — Continue editing later
+- **Send** — Dispatch to all selected suppliers via Microsoft Graph API
 
-- **Subject** – Clear description of what is being quoted
-- **Related Project** – Link to project or budget
-- **Owner** – Assign responsible procurement officer
-- **Priority** – Low, Medium, High, Urgent
-- **Due Date** – Supplier response deadline
-- **Currency** – Quote currency
+!!! info "RFQ Code"
+    Each RFQ is assigned a unique code (e.g., RFQ-24000067) which is included in all email subjects. The system uses this code to automatically match supplier replies to the correct RFQ.
 
-#### Step 3: Define Email Settings
+---
 
-- **Email Subject** – Subject line for supplier invitation
-- **Sender** – Email sender (typically procurement team)
-- **Email Template** – Use predefined templates or customize
+## RFQ Stages & Statuses
 
-#### Step 4: Add RFQ Items
+| Status | Description |
+|--------|-------------|
+| **Draft** | Being prepared; fully editable; not visible to suppliers |
+| **Pending** | Awaiting internal approval or additional information |
+| **Accepted/Active** | Sent to suppliers; awaiting responses; core fields locked |
+| **Expired** | Response deadline passed; can be extended or closed |
+| **Closed** | Supplier awarded; converted to PO or contract |
+| **Archived** | Stored for reference; read-only |
 
-For each item, specify:
-- Item name/description
-- Quantity
-- Unit of measure
-- Specifications
-- Technical requirements
-- Reference documents
+!!! warning "Field Locking"
+    Once an RFQ is sent (Active status), core fields are locked to ensure fair comparison across all suppliers. Only the status and internal notes can be modified.
 
-#### Step 5: Select Suppliers
+---
 
-- Choose from approved supplier list
-- Add new suppliers if needed
-- Specify per-supplier instructions
-- Set individual response deadlines (if different)
+## Supplier Invitations & Email Integration
 
-#### Step 6: Add Remarks and Notes
+### Sending Invitations
 
-- **Public Remarks** – Visible to suppliers
-- **Internal Notes** – For internal team only
-- **Terms and Conditions** – Commercial terms
-- **Special Instructions** – Delivery, warranty, etc.
+Invitations are sent via **Microsoft Graph API** using the configured procurement email accounts:
 
-#### Step 7: Save or Send
+- **Prizm Energy** — procurement@prizm-energy.com
+- **Al Manshour Contracting** — procurement@almanshour.com
 
-- **Save as Draft** – Continue editing later
-- **Send** – Immediately send to suppliers
+Each invitation includes the RFQ code in the subject line, item details, specifications, response deadline, and submission instructions.
 
-**Note:** Draft RFQs remain fully editable until sent.
+### Automatic Reply Fetching
 
-## 8. RFQ Stages & Statuses
+The system runs a **cron job** that:
 
-RFQs move through controlled stages to ensure proper workflow.
+1. Connects to Microsoft Graph API
+2. Fetches new emails from the procurement mailbox
+3. Matches replies to RFQs by the **RFQ code in the subject line**
+4. Filters out internal emails (@prizm-energy.com, @almanshour.com)
+5. Excludes bounce-back notifications (Undeliverable, Delivery Failed, etc.)
+6. Stores valid supplier replies with attachments
 
-### Stage Definitions
+### Reply Tracking
 
-#### Draft
+For each supplier, the system tracks:
 
-- Being prepared
-- Fully editable
-- Not visible to suppliers
-- Can be deleted
+- Invitation sent timestamp
+- Replies received (count and content)
+- Attachments uploaded
+- Response latency
+- Actions taken on replies
 
-#### Pending
+---
 
-- Awaiting internal action or approval
-- Limited editing
-- Requires approval to proceed
+## RFQ Items
 
-#### Active
+RFQ Items are sourced from **Technical Inquiries** and define what is being quoted.
 
-- Sent to suppliers
-- Awaiting responses
-- Core fields locked
-- Cannot be deleted
+### Item Fields
 
-#### Expired
+- **Item ID** and **Item Name** — Unique identifier and short name
+- **Item Long Name** — Full descriptive name
+- **Technical Inquiry Reference** — Source inquiry
+- **Quantity** and **Unit of Measure**
+- **Specifications** and **Requirements**
 
-- Response deadline passed
-- Can still receive late responses
-- May be extended or closed
+### Item Status Tracking
 
-#### Closed
+Items have their own status workflow, tracking progression through the RFQ process with summary statistics.
 
-- Supplier awarded
-- RFQ finalized
-- Converted to PO or Contract
+---
 
-#### Archived
+## Comparison Sheet
 
-- Stored for reference
-- Read-only
-- Cannot be modified
+The Comparison Sheet provides a structured side-by-side comparison of supplier quotations.
 
-### Status Transitions
+### Features
 
-Once an RFQ is **Active**, core fields become locked to maintain integrity and ensure fair comparison across suppliers.
+- View all supplier quotes for the same item in one table
+- Compare prices, delivery terms, and conditions
+- Highlight lowest price or best value
+- Add internal evaluation notes
+- Track item-level details across multiple RFQs
 
-### Status Visibility
+### Access
 
-Users can filter and view RFQs by status to manage their workflow effectively.
+Navigate to **RFQ > Comparison Sheet** or search for specific items via global search.
 
-## 9. RFQ Details View
+---
 
-The RFQ Details page is the central workspace for managing an individual RFQ.
+## AI Quotation Backlog
 
-### Page Components
+The **AI Quotation Backlog** automates quotation extraction from supplier reply emails.
 
-#### RFQ Summary
+### How It Works
 
-- Reference number
-- Subject/description
-- Related project
-- Owner
-- Current status
-- Priority level
-- Creation and due dates
+1. Supplier replies are fetched and stored
+2. AI processes the email content and attachments
+3. Quotation data (prices, quantities, terms) is extracted
+4. Extracted data is queued for human review
+5. Approved data updates the comparison matrix
 
-#### Item List
+### Backlog Management
 
-Complete list of items being quoted with:
-- Item descriptions
-- Quantities
-- Units
-- Specifications
-- Target prices (if applicable)
+- View pending and processed quotations
+- Track extraction status and counts
+- Separate views for RFQ emails and procurement mails
 
-#### Supplier Invitations
+---
 
-List of invited suppliers with:
-- Supplier name and contact
-- Invitation status (sent, opened, responded)
-- Response received indicator
-- Quote submission date
+## Procurement Mails
 
-#### Response Indicators
+General procurement emails that are **not** tied to a specific RFQ.
 
-Visual indicators showing:
-- Number of suppliers invited
-- Number of responses received
-- Number pending
-- Overdue responses
+### Features
 
-#### Internal Notes and Remarks
+- Fetched from Microsoft Graph API
+- Filtered to exclude internal emails and bounce-backs
+- Linked to supplier contacts when possible
+- Searchable by subject, supplier name, or contact name
+- Status tracking (pending/processed)
+- Mail count statistics
 
-- Team discussions
-- Evaluation notes
-- Decision rationale
-- Change history
+---
 
-#### Attachments and Documents
+## Webmail
 
-- Technical specifications
-- Drawings
-- Sample documents
-- Supplier quotations
+A web-based email viewer embedded within the RFQ module, providing direct access to the procurement mailbox without leaving the system.
 
-#### Approval History
+---
 
-- Approval requests
-- Approver actions
-- Comments and feedback
-- Timestamps
+## KPI Report
 
-### Action Buttons
+Employee performance dashboards for the procurement team.
 
-Depending on status and permissions:
-- Edit RFQ
-- Send to Suppliers
-- Extend Deadline
-- Evaluate Quotes
-- Request Approval
-- Award Supplier
-- Convert to PO
-- Archive
+### Metrics Tracked
 
-## 10. Supplier Invitations & Responses
+- **RFQs Created** — Per user and period
+- **Replies Received** — Supplier response tracking
+- **Quotations Processed** — Converted quotations
+- **Actions Taken** — User activity on replies
+- **Response Latency** — Average time to handle replies
 
-Suppliers are invited directly from the RFQ to ensure proper communication and tracking.
+### Views
 
-### Invitation Process
+- **Department KPI** — Overview of all procurement users
+- **User KPI** — Individual detailed dashboard
+- **Procurement KPI** — Procurement-specific metrics
+- **Employee KPI** — Per-employee with manager context
 
-#### Sending Invitations
+---
 
-1. Select suppliers from the RFQ
-2. System generates personalized email
-3. Email includes:
-   - RFQ reference
-   - Item details
-   - Specifications
-   - Response deadline
-   - Submission instructions
-   - Contact information
+## Reports
 
-#### Email Delivery
+### Reply & Action Reports
 
-- Invitations are emailed automatically
-- Delivery status is tracked
-- Failed deliveries are flagged
-- Reminders can be sent
+- RFQ replies received vs. actions taken
+- Per-user and per-period breakdown
+- Conflict detection for RFQ emails vs. procurement mails
+- Export capabilities
 
-### Response Tracking
+### Period Filtering
 
-#### Supplier Behavior
+Same period options as dashboard (Today, This Week, Last Week, This Month, Last Month, Custom).
 
-- **Invitations sent** – Tracked with timestamp
-- **Email opened** – Read receipt captured (if supported)
-- **Response submitted** – Quote received indicator
-- **Attachments uploaded** – Files captured and stored
-- **Response status visible** – Per supplier status
+---
 
-#### System Features
+## RFQ Engine (v2)
 
-- Automatic response logging
-- Email threading
-- Document attachment capture
-- Response validation
+The **RFQ Engine** is an AI-driven pipeline that automates the RFQ process with a "System acts, human reviews" approach.
 
-### Benefits
+### Pipeline Stages
 
-This ensures:
-- No quotation is lost or overlooked
-- Complete audit trail
-- Fair and transparent process
-- Easy follow-up on pending responses
+| Stage | Description |
+|-------|-------------|
+| **Intake** | System detects flagged items, proposes RFQ grouping |
+| **Compose** | AI drafts RFQ content (title, description, terms, notes) |
+| **Match** | System recommends suitable suppliers |
+| **Approve** | Human final review before sending |
+| **Sent** | System dispatches emails via Microsoft Graph API |
+| **Tracking** | System monitors for supplier replies |
+| **Received** | Replies classified and quotations extracted |
+| **Compared** | Comparison matrix auto-generated |
+| **Awarded** | Winner selected by human review |
+| **Closed** | RFQ lifecycle complete |
 
-## 11. Quote Evaluation & Comparison
+### Automated Cron Tasks
 
-The module supports structured quote comparison to make informed procurement decisions.
+The RFQ Engine runs three automated background tasks:
 
-### Evaluation Features
+1. **Auto-Intake** — Detects new flagged items and proposes RFQ groupings
+2. **Auto-Track** — Fetches supplier replies from Microsoft Graph API
+3. **Auto-Remind** — Sends reminders for approaching or past-due deadlines
 
-#### Side-by-Side Comparison
+### Integration
 
-Compare suppliers across:
-- Price per item
-- Total quote value
-- Delivery terms
-- Payment terms
-- Warranty
-- Lead time
-- Quality certifications
+The RFQ Engine adds a tab to the **Project view**, allowing you to see all RFQ Engine requests related to a project.
 
-#### Price Analysis
+---
 
-- Lowest price highlighting
-- Price variance calculation
-- Historical price comparison
-- Budget vs. quote analysis
+## Integration with Other Modules
 
-#### Commercial Review
+| Module | Integration |
+|--------|-------------|
+| **Technical Inquiries** | Auto-create RFQ when TI status changes; items sourced from TIs |
+| **Projects** | RFQ tab in project view; link RFQs to projects |
+| **Purchases** | Convert awarded RFQs to Purchase Orders |
+| **Suppliers** | Supplier contacts, quotation tracking, latency analytics |
+| **Advance Leads** | Supplier and lead data integration |
+| **Microsoft Graph** | Email send/receive for invitations and reply fetching |
 
-Evaluate non-price factors:
-- Supplier reputation
-- Past performance
-- Compliance with specifications
-- Terms and conditions
-- Risk assessment
+---
 
-#### Internal Evaluation Notes
+## Permissions
 
-- Team comments
-- Scoring or ranking
-- Recommendation rationale
-- Risk considerations
+### RFQ Permissions
 
-#### Preferred Supplier Selection
+| Module | Permissions |
+|--------|------------|
+| **RFQ** | View (Global), View Own, Action, Change Status, Change Activation, Create, Edit, Convert, Delete |
+| **RFQ Items** | View (Global), View Own, Edit, Delete |
+| **RFQ Emails** | View (Global), View Own, Edit, Delete |
+| **RFQ Reports** | View (Global), View Own, Edit, Delete |
+| **KPIs** | View (Global), View Own, Edit, Delete |
+| **Comparison Sheet** | View (Global) |
+| **RFQ Engine (v2)** | View, Create, Edit, Delete |
 
-- Mark preferred supplier
-- Document selection criteria
-- Record decision justification
+!!! tip "Admin Access"
+    The **Settings** sub-menu is only visible to administrators. This includes RFQ configuration, email templates, and keyword management.
 
-### Approval Process
+---
 
-Approved evaluations move the RFQ to award stage, triggering conversion to Purchase Order or Contract.
+## Global Search
 
-## 12. RFQ Items (Products / Services)
+The RFQ module is fully integrated with the system-wide global search. You can search across:
 
-RFQ Items define what is being quoted and ensure consistency across suppliers.
+- **RFQs** — By RFQ code or email subject
+- **RFQ Items** — By item name or long name
+- **RFQ Emails** — By subject, contact name, or RFQ code
+- **Procurement Mails** — By subject or supplier/contact name
+- **Comparison Sheet** — By item name or long name
 
-### Item Management
+---
 
-#### Item Fields
+## Best Practices
 
-- Item code or SKU
-- Description
-- Technical specifications
-- Quantity
-- Unit of measure
-- Target price (optional)
-- Notes
+- **Define items clearly** in Technical Inquiries before creating RFQs — detailed specifications reduce supplier clarification requests
+- **Invite 3-5 suppliers** for competitive pricing
+- **Monitor the AI Quotation Backlog** regularly to review and approve extracted quotation data
+- **Use the Comparison Sheet** before making award decisions — it provides a structured view of all quotes
+- **Check KPI Reports** weekly to track team productivity and identify bottlenecks
+- **Review Procurement Mails** for supplier communications that may not be tied to a specific RFQ
 
-#### Editing Rules
+---
 
-- **Draft and Pending** – Fully editable
-- **Active** – Locked once sent to suppliers
-- **Closed** – Read-only
+## Known Limitations
 
-#### Sharing
-
-- Items are shared across all supplier quotations
-- Ensures apples-to-apples comparison
-- Maintains fair evaluation process
-
-### Item Specifications
-
-Attach detailed specifications:
-- Technical drawings
-- Material standards
-- Performance requirements
-- Quality certifications
-- Compliance requirements
-
-### Why Clear Definitions Matter
-
-Clear item definitions ensure:
-- Fair comparison across suppliers
-- Accurate pricing
-- Reduced clarification requests
-- Faster evaluation
-- Better compliance
-
-## 13. Documents & Attachments
-
-RFQs support comprehensive document management throughout the lifecycle.
-
-### Common Documents
-
-#### Request Phase
-
-- **Technical specifications** – Detailed requirements
-- **Scope of work** – Project scope documents
-- **Drawings and designs** – Technical drawings
-- **Sample documents** – Reference materials
-
-#### Response Phase
-
-- **Supplier quotations** – Quote documents
-- **Technical proposals** – Supplier proposals
-- **Certifications** – Quality/compliance certificates
-- **Brochures** – Product information
-
-#### Evaluation Phase
-
-- **Evaluation notes** – Internal assessments
-- **Comparison spreadsheets** – Analysis documents
-- **Recommendation reports** – Decision documentation
-
-### Document Management
-
-- Upload and download
-- Version control
-- Access permissions (internal only or shared with suppliers)
-- Document tagging
-- Search functionality
-
-### Audit Trail
-
-All documents remain linked to the RFQ for:
-- Compliance verification
-- Historical reference
-- Audit purposes
-- Knowledge management
-
-## 14. RFQ Approval Workflow
-
-Approval may be required before sending RFQs or awarding suppliers to ensure proper governance.
-
-### Workflow Stages
-
-#### Pre-Send Approval
-
-- Review RFQ content
-- Verify item specifications
-- Confirm supplier list
-- Validate budget availability
-
-#### Pre-Award Approval
-
-- Review evaluation results
-- Verify selected supplier
-- Confirm pricing
-- Check compliance
-
-### Approval Process
-
-#### Step 1: Submit for Approval
-
-User submits RFQ or evaluation for approval
-
-#### Step 2: Approver Review
-
-Approver reviews:
-- RFQ details
-- Item list
-- Selected suppliers
-- Evaluation results (for award approval)
-- Budget impact
-
-#### Step 3: Approver Action
-
-- **Approve** – RFQ proceeds to next stage
-- **Reject** – RFQ returns with comments
-- **Request Changes** – Modifications required
-
-#### Step 4: Follow-up
-
-- Approved RFQs proceed automatically
-- Rejected RFQs require updates and resubmission
-
-### Audit Trail
-
-System records:
-- Who approved or rejected
-- Timestamps
-- Comments and feedback
-- Version history
-
-### Field Locking
-
-During approval:
-- Critical fields are locked
-- Prevents unauthorized changes
-- Maintains integrity
-
-## 15. RFQ Conversion (to Purchase Order / Contract)
-
-Awarded RFQs convert into downstream procurement documents.
-
-### Conversion Process
-
-#### Step 1: Award Supplier
-
-1. Select winning supplier from evaluation
-2. Confirm quoted prices and terms
-3. Document selection rationale
-4. Mark RFQ as awarded
-
-#### Step 2: Finalization
-
-- **Selected supplier finalized** – Locked in system
-- **Prices and quantities carried forward** – Auto-populated
-- **Terms captured** – Delivery, payment, warranty
-
-#### Step 3: Document Generation
-
-Generate:
-- **Purchase Order** – For goods procurement
-- **Contract** – For services or long-term agreements
-
-#### Step 4: Data Transfer
-
-Information transferred includes:
-- Supplier details
-- Item descriptions
-- Quantities
-- Agreed prices
-- Delivery terms
-- Payment terms
-- Special instructions
-
-### Benefits
-
-- Eliminates duplicate data entry
-- Ensures accuracy
-- Maintains consistency
-- Speeds up procurement
-- Preserves audit trail
-
-### Post-Conversion
-
-- RFQ marked as Closed
-- Link to PO/Contract maintained
-- Original RFQ archived for reference
-
-## 16. RFQ Reports & Analysis
-
-Reporting provides procurement insight for management and continuous improvement.
-
-### Available Reports
-
-#### RFQs by Status
-
-- Count and value by status
-- Status distribution over time
-- Aging analysis
-
-#### Supplier Participation
-
-- Response rates by supplier
-- Average quote values
-- Win/loss ratios
-- Performance ratings
-
-#### Award Analysis
-
-- Award distribution by supplier
-- Price competitiveness
-- Negotiation effectiveness
-- Cost savings achieved
-
-#### Cycle Time Analysis
-
-- Average time to quote
-- Approval cycle times
-- Response times
-- Overall RFQ duration
-
-#### Budget Compliance
-
-- RFQ value vs. budget
-- Variance analysis
-- Spending patterns
-
-### Report Customization
-
-- Filter by date range, project, supplier, owner
-- Export to Excel, PDF
-- Schedule automated reports
-- Create custom dashboards
-
-### Usage
-
-Reports are used for:
-- Management reviews
-- Performance audits
-- Process improvement
-- Supplier evaluation
-- Budget planning
-
-## 17. Integration with Other Modules
-
-RFQ integrates seamlessly with other PRIZM modules for end-to-end procurement continuity.
-
-### Suppliers Module
-
-- Access approved supplier list
-- Create new suppliers during RFQ
-- Update supplier contact information
-- Track supplier performance
-
-### Projects and Budgets
-
-- Link RFQs to projects
-- Check budget availability
-- Track project spending
-- Allocate costs correctly
-
-### Purchase Orders
-
-- Convert awarded RFQs to POs
-- Auto-populate PO fields
-- Maintain RFQ reference
-- Track PO status
-
-### Contracts
-
-- Generate contracts from RFQs
-- Capture service terms
-- Manage contract lifecycle
-- Link to RFQ history
-
-### Finance and Approvals
-
-- Budget verification
-- Approval routing
-- Financial reporting
-- Audit trail maintenance
-
-### Benefits
-
-Integration ensures:
-- Consistent data across modules
-- Reduced manual entry
-- Improved accuracy
-- Better visibility
-- Streamlined workflows
-
-## 18. Permissions & Roles
-
-Role-based access controls RFQ actions to ensure proper governance.
-
-### Typical Roles
-
-#### Procurement Officer
-
-- Create RFQs
-- Add items
-- Invite suppliers
-- Track responses
-- Conduct initial evaluation
-
-#### Procurement Manager
-
-- Review and approve RFQs
-- Final supplier selection
-- Award decisions
-- Budget oversight
-
-#### Finance Manager
-
-- Budget verification
-- Cost approval
-- Financial evaluation
-- Spend control
-
-#### Administrator
-
-- Configure RFQ settings
-- Manage approval workflows
-- Set up templates
-- User permission management
-
-#### Viewer / Auditor
-
-- Read-only access
-- Report generation
-- Compliance review
-- Audit activities
-
-### Permission Levels
-
-Permissions determine who can:
-- Create RFQs
-- Edit RFQs
-- Send to suppliers
-- Evaluate quotes
-- Approve RFQs
-- Award suppliers
-- Convert to PO
-- Archive RFQs
-
-## 19. Common Procurement Scenarios
-
-### Scenario 1: Project Material Sourcing
-
-1. Project manager submits material request
-2. Procurement creates RFQ with technical specs
-3. Invites 3-5 approved suppliers
-4. Evaluates quotes on price and delivery
-5. Awards to best-value supplier
-6. Converts to Purchase Order
-
-### Scenario 2: Service Provider Selection
-
-1. Department requests consulting services
-2. RFQ created with scope of work
-3. Suppliers submit proposals and pricing
-4. Evaluation includes experience and methodology
-5. Negotiation with top 2 candidates
-6. Award and contract generation
-
-### Scenario 3: Emergency Procurement
-
-1. Urgent requirement identified
-2. Quick RFQ with short deadline
-3. Limited supplier pool (qualified vendors only)
-4. Fast-track approval
-5. Immediate award
-6. Expedited PO issuance
-
-### Scenario 4: Budget-Controlled Purchasing
-
-1. Budget allocation approved
-2. RFQ created within budget limits
-3. Quote evaluation against budget
-4. Finance approval required if over threshold
-5. Award to cost-effective supplier
-6. Budget tracking updated
-
-## 20. Best Practices & Tips
-
-- **Define items clearly** – Detailed specifications reduce ambiguity and ensure accurate quotes
-- **Invite multiple suppliers** – Typically 3-5 suppliers for competitive pricing
-- **Attach full specifications** – Complete documentation up front reduces back-and-forth
-- **Monitor response deadlines** – Send reminders to suppliers as deadline approaches
-- **Maintain audit completeness** – Document all decisions and communications
-- **Use templates** – Standardize RFQ format for consistency
-- **Set realistic deadlines** – Allow sufficient time for quality responses
-- **Follow up promptly** – Quick responses maintain supplier relationships
-- **Document evaluation criteria** – Transparent criteria ensure fair process
-- **Keep suppliers informed** – Notify all participants of award decisions
-- **Review and improve** – Analyze RFQ metrics to optimize process
-- **Train users** – Ensure team understands RFQ procedures
-
-## 21. Known Limitations / Notes
-
-- **RFQs cannot be edited after sending** – Once sent to suppliers, core fields are locked to ensure fairness and consistency
-- **Awarded RFQs cannot be deleted** – Maintains audit trail and historical record; use archive instead
-- **Expired RFQs require manual closure** – System does not auto-close expired RFQs; procurement officer must review and close
-- **Approval behavior depends on configuration** – Workflow varies based on organizational settings; consult administrator
-- **Supplier email delivery** – System tracks sending but cannot guarantee receipt; confirm critical RFQs via phone
-- **Concurrent editing** – Multiple users editing same RFQ may cause conflicts; coordination recommended
-- **Document size limits** – Large file attachments may have size restrictions; contact administrator for limits
-- **Browser compatibility** – Optimized for modern browsers; older browsers may have limited functionality
-- **Data export limitations** – Some complex reports may require custom configuration
+- RFQs cannot be edited after sending to suppliers — core fields are locked to ensure fairness
+- Awarded RFQs cannot be deleted — use archive instead
+- Email reply matching depends on the RFQ code being present in the email subject line
+- Microsoft Graph API credentials must be configured and valid for email features to work
+- The AI Quotation Backlog requires human review before extracted data is applied

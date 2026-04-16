@@ -167,6 +167,17 @@ Creating a new opportunity captures essential information about a potential deal
 
 ![Create New Opportunity](./opportunities/img/create_new_opportunity.png)
 
+**Field Guide:**
+
+1. **Opportunity Name** - Name or title of the opportunity
+2. **Opportunity Status** - Current pipeline stage (required)
+3. **Estimated Price** - Expected contract value
+4. **Project Type / Project Funded** - Category and funding source
+5. **Responsible Employee** - Opportunity owner
+6. **Related To** - Linked project or entity
+7. **Staff Member / World's Domain** - Team assignment and domain
+8. **Note** - Additional notes or description
+
 ### Creation Steps
 
 #### Step 1: Start Creation
@@ -867,7 +878,124 @@ These scenarios illustrate how the module supports diverse sales activities.
 - **Track Win/Loss Reasons** – Document why opportunities are won or lost to improve future performance
 - **Collaborate with Team Members** – Use discussions and task assignments to keep everyone aligned
 
-## 21. Known Limitations / Notes
+## 21. Actual Navigation Menu
+
+The Opportunities module sidebar contains:
+
+| Sub-menu | Description | Access |
+|----------|-------------|--------|
+| **Dashboard** | Pipeline overview, stage task counts, KPIs | All with view permissions |
+| **Opportunities** | Main list with Kanban/table toggle, AG Grid | All with view permissions |
+| **Emails** | Microsoft Graph API email integration | Admin only |
+| **Settings** | Stages, statuses, approval workflow configuration | Admin only |
+
+## 22. Opportunity Detail Tabs
+
+When viewing an individual opportunity, the following tabs are available:
+
+| Tab | Description |
+|-----|-------------|
+| **Overview** | High-level summary with stage progress indicators |
+| **Details** | Core opportunity fields (dates, client, type, value) |
+| **BOQ** | Bill of Quantities for the opportunity |
+| **Estimation** | Cost estimation and pricing breakdown |
+| **Technical Inquiry** | Linked technical inquiries |
+| **RFQ** | Requests for Quotation linked to this opportunity |
+| **Suppliers** | Supplier management for the opportunity |
+| **Milestones** | Milestone tracking with Kanban view |
+| **Tasks** | Tasks assigned within the opportunity |
+| **Timesheets** | Time tracking entries |
+| **Files** | Document and attachment management |
+| **Notes** | Internal notes |
+| **Discussions** | Threaded discussion board |
+| **Emails** | Email history (Microsoft Graph integration) |
+| **Summary Review** | Comprehensive opportunity summary for review |
+| **Activity Log** | Full audit trail of all actions |
+| **Budget** | Budget tab linked to the opportunity |
+
+## 23. Kanban Board
+
+The Opportunities list can switch between **Table view** (AG Grid) and **Kanban board** view.
+
+### Kanban Features
+
+- Columns represent opportunity stages
+- Cards show key opportunity details
+- Drag-and-drop to change stages (where permitted)
+- Visual progress through the pipeline
+- **Milestones Kanban** — A separate Kanban for milestone-level tracking
+
+## 24. Task-Opportunity Status Sync
+
+When a **task linked to an opportunity** is marked as completed, the system **automatically updates** the opportunity's stage status:
+
+- If the stage has a "Completed" status → automatically set
+- For stage 8 specifically → sets to "Replied" status if available
+- Activity is logged with links to both the task and opportunity
+
+This ensures opportunity progress is tracked without manual status updates.
+
+## 25. Email Integration
+
+The module integrates with **Microsoft Graph API** for email management:
+
+- Fetch emails from Microsoft 365 mailboxes
+- Store and view emails within the opportunity
+- Link email conversations to opportunities
+- Email history accessible via the Emails tab
+
+!!! note "Admin Configuration"
+    Email integration requires Microsoft Graph API credentials configured by the system administrator. The Emails sub-menu is only visible to administrators.
+
+## 26. Advanced Filters
+
+The Opportunities list supports a **dynamic filter system**:
+
+- Build custom filter queries with multiple conditions
+- Save filters for reuse
+- Share filters with team members
+- Set default filters that load automatically
+- Filter by country, client, stage, status, and more
+
+## 27. Permissions Reference
+
+The module uses a **single permission group** with **15 granular capabilities**:
+
+| Permission | Description |
+|------------|-------------|
+| **View Own** | View opportunities you created or are assigned to |
+| **View (Global)** | View all opportunities in the system |
+| **Action** | Perform general actions on opportunities |
+| **Change Status** | Move opportunities between statuses |
+| **Create** | Create new opportunities |
+| **Create Opportunity Milestones** | Create milestones within opportunities |
+| **Edit** | Modify opportunity details |
+| **Change Stage Staff** | Reassign staff responsible at different stages |
+| **Show Finance** | View financial data (estimates, pricing, costs) |
+| **Convert** | Convert opportunities to projects or budgets |
+| **Delete** | Delete opportunities |
+| **Supply** | Supply-side access (material/equipment related views) |
+| **Service** | Service-side access (service-related views) |
+| **View Own Country** | View opportunities in your assigned country only |
+| **View Global Country** | View opportunities across all countries |
+
+!!! tip "Country-Based Access"
+    The `view_own_country` and `view_global_country` permissions enable multi-country organizations to restrict opportunity visibility based on geographic regions.
+
+## 28. Entity Settings
+
+Administrators can configure **entity settings** in **System Settings > Other > Entity Settings**. These define organizational entities (companies, branches) that opportunities can be associated with.
+
+## 29. Global Search
+
+Opportunities are included in the system-wide global search. Search by:
+
+- **Opportunity Code** (e.g., OPP-2024-0001)
+- **Opportunity Name**
+
+Results link directly to the opportunity detail view.
+
+## 30. Known Limitations / Notes
 
 - **Deletion Restrictions** – Once an opportunity is converted to a project or budget, it cannot be deleted and certain fields become locked to preserve the audit trail
 - **Stage Sequence** – Stages progress in a predetermined order; skipping stages or revisiting previous ones may require administrator intervention

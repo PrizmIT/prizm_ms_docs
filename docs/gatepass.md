@@ -227,7 +227,34 @@ Upload:
 ### Creating a Gatepass
 
 ![Create Gatepass](gatepass/img/gatepass_create.png)
+
+**Field Guide (Gatepass):**
+
+1. **Type** - Gatepass type selection (required)
+2. **RFX/PO Number** - Related RFX or PO reference (required)
+3. **Reference Number** - External reference number (required)
+4. **Work Location** - Site or work location (required)
+5. **Stations** - Station assignment (required)
+6. **Substations** - Substation details (required)
+7. **Duration** - Duration type selection (required)
+8. **Duration From** - Start date (required)
+9. **Duration To** - End date (required)
+10. **Work Details** - Description of work to be performed (required)
+11. **Representative Employee** - Responsible employee (required)
+12. **People Involved** - Workers assigned to gatepass (required)
+13. **Vehicles** - Vehicle assignment (optional)
+
 ![Create Gatepass Request](gatepass/img/gatepass_request_create.png)
+
+**Field Guide (Gatepass Request):**
+
+1. **Request Classification** - Classification type (required)
+2. **Type** - Request type selection (required)
+3. **Duration** - Duration category (required)
+4. **Duration From** - Start date (required)
+5. **Duration To** - End date (required)
+6. **People Involved** - Workers assigned (required)
+7. **Vehicles** - Vehicle assignment (optional)
 ![Gatepass Request List](gatepass/img/gatepass_request_new_gatepass_list.png)
 
 #### Step 8: Save or Submit
@@ -465,6 +492,19 @@ Whenever vehicles are involved, the gatepass must include comprehensive vehicle 
 
 ![Vehicle List](gatepass/img/gatepass_vehcile_list.png)
 ![Create Vehicle](gatepass/img/gatepass_vehicle_create.png)
+
+**Field Guide:**
+
+1. **Plate Code** - Vehicle plate number (required)
+2. **Vehicle Color** - Color with hex code (required)
+3. **Register Number** - Registration number (required)
+4. **Vehicle Type** - Type of vehicle (required)
+5. **Emirate** - Emirate of registration (required)
+6. **Remarks** - Additional notes
+7. **Insurance Expiration** - Insurance expiry date (required)
+8. **Driver** - Assigned driver (required)
+9. **Expiration Date** - Vehicle license expiry (required)
+10. **Vehicle License** - Upload license file (required)
 
 ### Vehicle Identification
 
@@ -938,7 +978,100 @@ To get the most out of the Gatepass module:
 - **Review before submission** – Double-check all details before submitting
 - **Track returns** – For returnable items, set reminders for return dates
 
-## 21. Known Limitations / Notes
+## 21. Request Manager
+
+The **Request Manager** is a separate workflow from the main gatepass list. It allows staff to submit gatepass requests that go through a review process before being converted into actual gatepasses.
+
+### Request vs. Gatepass
+
+| Feature | Request | Gatepass |
+|---------|---------|----------|
+| **Purpose** | Submit a need for site access | The actual issued pass |
+| **Created by** | Any staff member | Converted from approved request |
+| **Approval** | Review by responsibles | Full gatepass workflow |
+| **Status** | Auto-updated based on dates | Full lifecycle tracking |
+
+### Creating a Request
+
+1. Navigate to **Gate Pass > Request Manager**
+2. Click to create a new request
+3. Fill in:
+    - **Request Classification** — Type of access needed
+    - **Related To** — Project or Opportunity
+    - **Duration** — Long Term, Short Term, or One Day
+    - **Duration From/To** — Date range
+    - **Work Location, Station, Substation** — Where the work will happen
+    - **Work Details** — Description of work
+    - **People Involved** — Select required staff
+    - **Vehicles** — Select required vehicles (optional)
+4. Submit the request
+
+### Converting to Gatepass
+
+Once a request is reviewed and approved, it can be **converted into a full gatepass** using the **Convert** action. This automatically creates a gatepass record populated with all the request details, staff, and vehicles.
+
+!!! info "Request Status"
+    Request statuses are automatically updated based on dates. Expired requests cannot be converted.
+
+## 22. Automated Document Generation
+
+The Gatepass module includes powerful **automated document generation** using PDF and Excel handlers.
+
+### Generated Documents
+
+When you click **Process Documents** on a gatepass, the system automatically:
+
+1. **Fills PDF templates** with gatepass data:
+    - **Undertaking Letter** — Populates From/To dates
+    - **Contractor Entry Permit Application** — Fills company name, mobile, dates, duration, persons count, vehicles count, registration numbers, station, location, work details, PO number, representative name, and duration type checkboxes (Long Term / Short Term / One Day)
+    - Inserts **digital stamp/signature** image
+
+2. **Edits Excel templates**:
+    - **List of Person and Vehicles** — Populates with staff and vehicle data
+    - **PTW (Permit to Work) Template** — Fills with work permit details
+
+3. **Merges all PDFs** into a single `final_document.pdf`
+
+4. **Collects staff documents** — Automatically aggregates for each person on the gatepass:
+    - Latest **passport** (from subscription records)
+    - Latest **visa**
+    - Latest **Emirates ID**
+    - **Profile image**
+    - Any **other documents**
+
+5. **Collects vehicle documents** — Gathers vehicle license files
+
+6. **Creates team PDF** — Combines all staff and vehicle documents into a single `team.pdf`
+
+### Output Files
+
+All generated files are stored in `uploads/gatepass_docs/{gatepass_id}/`:
+
+| File | Description |
+|------|-------------|
+| `final_document.pdf` | Merged PDF of all filled templates |
+| `List_of_Person_and_Vehicles_modified.xlsx` | Staff and vehicle list |
+| `ptw_template_modified.xlsx` | Permit to Work |
+| `team.pdf` | Combined staff and vehicle documents |
+
+!!! tip "Document Preparation"
+    Use "Process Documents" to generate all required paperwork before submitting to site authorities. The system automatically pulls the latest valid documents for each staff member.
+
+## 23. Permissions Reference
+
+The module uses **4 separate permission groups**:
+
+| Permission Group | Controls |
+|-----------------|----------|
+| **gatepass** | Main gatepass records (view, create, edit, delete) |
+| **gatepass_vehicles** | Vehicle management (view, create, edit, delete) |
+| **gatepass_RequestManager** | Request Manager access (view, create, edit, delete) |
+| **gatepass_settings** | Settings and configuration (view, create, edit, delete) |
+
+!!! note "Menu Visibility"
+    Each sub-menu item is only visible if the user has the corresponding permission. The main Gate Pass menu appears if the user has permission for either gatepass or gatepass_vehicles.
+
+## 24. Known Limitations / Notes
 
 While comprehensive, the Gatepass module has a few operational constraints:
 

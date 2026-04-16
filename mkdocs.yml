@@ -26,6 +26,7 @@ plugins:
             direction: rtl
           nav_translations:
             Home: الرئيسية
+            Business Partners: شركاء الأعمال
             Purchases: المشتريات
             Tenders: المناقصات
             Budget: الميزانية
@@ -40,6 +41,7 @@ plugins:
 
 nav:
   - Home: index.md
+  - Business Partners: business-partners.md
   - Purchases: purchases.md
   - Tenders: tenders.md
   - Budget: budget.md

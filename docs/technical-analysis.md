@@ -65,6 +65,17 @@ This screen acts as the central control point for managing the full Technical An
 
 ![Technical Analysis Create Form](./technical-analysis/img/technical_analysis_create_form.png)
 
+**Field Guide:**
+
+1. **Analysis ID** - Auto-generated identifier
+2. **Project Type** - Type of project
+3. **Project Funded** - Funding source
+4. **Staff Member** - Assigned staff member
+5. **Related To** - Linked opportunity or project
+6. **World's Domain / Opportunity** - Domain and opportunity link
+7. **Note** - Additional notes
+8. **Description** - Detailed description of the analysis
+
 Creating a Technical Analysis initiates a formal technical evaluation process.
 
 During creation, users typically define:
@@ -269,13 +280,158 @@ Typical use cases include:
 
 ---
 
-## Known Limitations / Notes
+## Actual Navigation Menu
 
-- Approved records cannot be edited
-- Deletion is restricted after submission
-- Historical records are preserved for audit purposes
-- Some workflows depend on organizational role configuration
+The Technical Analysis module sidebar contains:
+
+| Sub-menu | Description | Access |
+|----------|-------------|--------|
+| **Dashboard** | Overview with statistics | Admin only |
+| **Technical Analysis** | Main list with table view | All with view permission |
+| **BOQ Management** | Bill of Quantities management (AG Grid) | TI view or BOQ view permission |
+| **Settings** | Stages, statuses, approval configuration | Admin only |
 
 ---
 
-End of Document
+## BOQ Management
+
+The **BOQ (Bill of Quantities) Management** sub-module provides a dedicated workspace for creating and managing BOQs linked to opportunities, projects, or technical inquiries.
+
+### BOQ Features
+
+- **Auto-generated BOQ codes** based on relation type (project, opportunity, TI)
+- **Version tracking** — Each BOQ has a version number for revision control
+- **Line item management** — Add, edit, and delete BOQ items with automatic total calculation
+- **Multi-currency support** — Select currency for each BOQ
+- **Excel import/export** — Import items from Excel or export for sharing
+- **AG Grid table** — Interactive table for BOQ listing
+- **Relation linking** — Each BOQ is linked to a project, opportunity, or TI via `rel_type` and `rel_id`
+
+### Creating a BOQ
+
+1. Navigate to **Technical Analysis > BOQ Management**
+2. Click **Create BOQ** or access from within an opportunity/project
+3. Fill in:
+    - **Title** — Descriptive name for the BOQ
+    - **Currency** — Select the currency
+    - **Related To** — Project, Opportunity, or Technical Inquiry
+    - **Notes** — Additional remarks
+4. Add line items with quantities and amounts
+5. Save — the total value is auto-calculated
+
+### BOQ Versioning
+
+BOQs support version tracking, allowing you to:
+
+- Create revised versions of existing BOQs
+- Track changes across versions
+- Compare different versions
+
+---
+
+## Technical Inquiry Detail Tabs
+
+When viewing an individual Technical Inquiry, the following tabs are available:
+
+| Tab | Description |
+|-----|-------------|
+| **Overview** | Summary with circle progress indicators |
+| **Details** | Core fields and line items with specifications |
+| **RFQ** | Linked Requests for Quotation |
+| **Tasks** | Tasks assigned within the TI |
+| **Timesheets** | Time tracking entries |
+| **Files** | Document and attachment management |
+| **Notes** | Internal notes |
+| **Discussions** | Threaded discussion board |
+| **Edit** | Edit form for the TI |
+
+---
+
+## Smart Wizard
+
+Technical Inquiry creation uses a **multi-step Smart Wizard** interface:
+
+1. **Step 1**: General details (title, description, dates)
+2. **Step 2**: Select items from budget catalog (with specifications and units)
+3. **Step 3**: Resource allocation wizard
+4. **Step 4**: Review and submit
+
+---
+
+## Kanban Board
+
+The Technical Analysis list supports a **Kanban board view** for visual stage-based tracking, similar to the Opportunities module.
+
+---
+
+## Import Capabilities
+
+- **Import Technical Inquiries** — Bulk import from external sources
+- **Import Budget Items** — Import items from budget module data
+
+---
+
+## Permissions Reference
+
+The module uses **2 permission groups**:
+
+### Technical Inquiries
+
+| Permission | Description |
+|------------|-------------|
+| **View (Global)** | View all technical inquiries |
+| **View Own** | View only your own TIs |
+| **Create** | Create new technical inquiries |
+| **Edit** | Modify existing TIs |
+| **Delete** | Delete TIs |
+| **Upload** | Upload files and attachments |
+
+### BOQ
+
+| Permission | Description |
+|------------|-------------|
+| **View BOQ** | View bills of quantities |
+| **Create BOQ** | Create new BOQs |
+| **Edit BOQ** | Modify existing BOQs |
+| **Delete BOQ** | Delete BOQs |
+| **Upload BOQ** | Upload BOQ-related files |
+
+---
+
+## Integration with Other Modules
+
+| Module | Integration |
+|--------|-------------|
+| **RFQ** | TI status change can auto-create an RFQ |
+| **Budget** | Items, specifications, and units sourced from budget catalog |
+| **Materials** | API integration for material data |
+| **Tenders** | Import data from tenders into TIs and BOQs |
+| **Projects** | "Technical Analysis" tab added to project view |
+| **Opportunities** | TIs linked to opportunities via relation system |
+| **Tasks** | TI is a relation type — tasks can be linked to TIs |
+
+---
+
+## Global Search
+
+The module provides global search across two entity types:
+
+- **Technical Analysis** — Search by title, inquiry code, or description
+- **BOQs** — Search by BOQ code, title, or notes (displays version number)
+
+---
+
+## Project Integration
+
+The module adds a **Technical Analysis** tab to the project view, allowing project managers to view and manage all TIs related to their project directly from the project page.
+
+---
+
+## Known Limitations / Notes
+
+- Approved records cannot be edited without special permissions
+- Deletion is restricted after submission
+- Historical records are preserved for audit purposes
+- Some workflows depend on organizational role configuration
+- BOQ version changes create new records; previous versions are retained
+- Auto-RFQ creation from TI status changes depends on the RFQ module being active

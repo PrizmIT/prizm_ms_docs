@@ -99,6 +99,17 @@ The Purchase Request screen provides a comprehensive overview with:
 
 ![Create Purchase Request](purchases/img/create_prs.png)
 
+**Field Guide:**
+
+1. **Title** - Name/subject of the purchase request (required)
+2. **Department** - Requesting department (required)
+3. **Request Type** - Material or Service (required)
+4. **Currency** - Transaction currency (required)
+5. **Cost Centers** - Budget allocation category (required)
+6. **Quotation** - Link to existing quotation
+7. **Related To** - Link to project or entity
+8. **Items Table** - Line items with specifications and pricing
+
 **Required Information:**
 
 - Purchase Request Code (auto-generated or manual)
@@ -190,6 +201,16 @@ Expense Requests are used for:
 
 ![Create Expense Request](purchases/img/create_expense_request.png)
 
+**Field Guide:**
+
+1. **Title** - Expense description (required)
+2. **Department** - Requesting department (required)
+3. **Currency** - Transaction currency (required)
+4. **Discount Type** - Discount calculation method
+5. **Cost Centers** - Budget allocation category (required)
+6. **Related To** - Link to project or entity
+7. **Items Table** - Expense line items with pricing
+
 ### Budget Validation
 
 The system prevents submission if expenses exceed available funds, ensuring financial control and compliance with budget limits.
@@ -233,6 +254,18 @@ The Purchase Items Backlog acts as a staging area between approved Purchase Requ
 ### 8.1 Creating Purchase Orders
 
 ![Create Purchase Order](purchases/img/create_po.png)
+
+**Field Guide:**
+
+1. **Title** - PO description (required)
+2. **Currency** - Transaction currency (required)
+3. **Supplier** - Vendor selection (required)
+4. **Delivery Date** - Expected delivery date
+5. **Department** - Requesting department (required)
+6. **Delivery Location** - Goods delivery address
+7. **Request Type** - Material or Service (required)
+8. **Related To** - Link to project or entity
+9. **Items Table** - Line items from purchase request
 
 Purchase Orders are created from items in the backlog.
 
@@ -295,7 +328,26 @@ Maintain a comprehensive database of vendors and suppliers.
 
 **Individual Entry:**
 ![Add Supplier Step 1](purchases/img/add_supplier_1.png)
+
+**Field Guide (Step 1):**
+
+1. **Company** - Supplier company name (required)
+2. **Vat Number** - Tax registration number
+3. **Phone** - Contact phone number
+4. **Supply Domain** - Business domain (required)
+5. **Supplier Speciality** - Area of expertise
+6. **Supplier Category** - Supplier classification
+7. **Currency** - Default transaction currency
+
 ![Add Supplier Step 2](purchases/img/add_supplier_2.png)
+
+**Field Guide (Step 2):**
+
+1. **Address** - Street address
+2. **City** - City name
+3. **State** - State or province
+4. **Zip Code** - Postal code
+5. **Country** - Country selection
 ![Adding Supplier Notes](purchases/img/add_supplier_notes.png)
 ![Add Note Modal](purchases/img/supplier_note_add.png)
 
@@ -318,6 +370,16 @@ Manage specific contacts for each supplier.
 
 **Adding Contacts:**
 ![Add Contact Modal 1](purchases/img/add_supplier_contact_modal_1.png)
+
+**Field Guide:**
+
+1. **Firstname** - Contact first name (required)
+2. **Lastname** - Contact last name (required)
+3. **Position** - Job title or role
+4. **Email** - Contact email address (required)
+5. **Phone Number** - Contact phone
+6. **Primary Contact** - Mark as primary contact for supplier
+
 ![Add Contact Modal 2](purchases/img/add_supplier_contact_modal_2.png)
 ![Create Contact 1](purchases/img/supplier_contact_create_1.png)
 ![Create Contact 2](purchases/img/supplier_contact_create_2.png)
@@ -353,7 +415,28 @@ Quotations are formal price offers from suppliers in response to Requests for Qu
 ### 10.2 Creating Quotations
 
 ![Create Quotation 1](purchases/img/create_quotation_1.png)
+
+**Field Guide (Part 1):**
+
+1. **Supplier** - Vendor selection
+2. **Currency** - Transaction currency (required)
+3. **Reference #** - External reference number
+4. **Discount Type** - Discount calculation method
+5. **Quotation Number** - Auto-generated quotation code (required)
+6. **Supplier Reference** - Vendor's reference number
+7. **Date** - Quotation date (required)
+8. **Expiry Date** - Quotation validity period
+9. **Related To** - Link to project or entity
+
 ![Create Quotation 2](purchases/img/create_quotation_2.png)
+
+**Field Guide (Part 2):**
+
+1. **Items Table** - Line items with description, specs, quantity, rate, tax
+2. **Discount** - Discount amount or percentage
+3. **Adjustment** - Price adjustment value
+4. **Quotation Note** - Additional notes for supplier
+5. **Terms & Conditions** - Legal terms and conditions
 
 ### 10.3 Managing Items
 
@@ -390,6 +473,17 @@ Items can be entered manually or converted from RFQs.
 Received Vouchers (Goods Receipt Notes) record goods and services received against Purchase Orders.
 
 ![Add Received Voucher](purchases/img/receive_voutcher_add.png)
+
+**Field Guide:**
+
+1. **Voucher Date** - Date of the voucher
+2. **Received Date** - Actual goods receipt date
+3. **Project** - Related project
+4. **Purchase Order** - Linked purchase order
+5. **Supplier** - Vendor name
+6. **Department** - Receiving department
+7. **Cost Centers** - Budget allocation category
+8. **Items Table** - Received items with quantities
 
 ### Key Features
 
@@ -454,7 +548,24 @@ Payment Requests initiate payments to suppliers for goods and services received.
 ### 13.2 Creating Payment Requests
 
 ![Create Payment Request 1](purchases/img/create_payment_requst (1).png)
+
+**Field Guide (Part 1):**
+
+1. **Payment Method** - Payment type selection (required)
+2. **Supplier** - Vendor name (required)
+3. **Currency** - Transaction currency (required)
+4. **Purchase Order** - Linked purchase order
+5. **Department** - Requesting department (required)
+6. **Project** - Related project
+7. **Cost Centers** - Budget allocation category
+
 ![Create Payment Request 2](purchases/img/create_payment_requst (2).png)
+
+**Field Guide (Part 2):**
+
+1. **Items Table** - Payment line items from PO
+2. **Adjustment** - Price adjustment value
+3. **Paid Amount** - Amount to be paid
 
 ### Features
 
@@ -708,7 +819,112 @@ The **Issued PO Manager** setting controls supplier validation for purchase orde
 
 This setting is particularly useful for organizations that need to work with new suppliers while their verification process is underway.
 
-## 20. Summary
+## 20. Grid View
+
+The **Grid** provides a unified overview of all procurement documents in a single screen. It displays key metrics and quick-access links to Purchase Requests, Purchase Orders, Expense Requests, Received Vouchers, Payment Requests, and Delivery Notes — giving procurement managers instant visibility across the entire purchase lifecycle.
+
+## 21. AI Quotation OCR
+
+The Quotation module includes AI-powered OCR (Optical Character Recognition) capabilities to automatically extract data from scanned or uploaded supplier quotations.
+
+### Supported OCR Engines
+
+| Engine | Default | Description |
+|--------|---------|-------------|
+| **OpenAI** | Auto | Cloud-based AI extraction |
+| **Google Gemini** | Auto | Cloud-based AI extraction |
+| **Tesseract** | Auto | Open-source local OCR |
+| **Ollama** | Disabled | Local AI model (gemma3:12b) |
+
+### AI Configuration Options
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| **AI Injection Enabled** | On | Enable/disable AI extraction on quotations |
+| **Single Call Mode** | Off | Use one AI call vs. multiple for extraction |
+| **Confidence Threshold** | 0.7 | Minimum confidence to accept extracted data |
+| **Auto-Create Supplier** | Off | Automatically create supplier records from quotation data |
+| **OCR Page Segmentation** | Mode 4 | Tesseract page analysis mode |
+
+!!! info "AI Extraction"
+    When enabled, the AI processes uploaded quotation documents (PDF, images) and automatically extracts supplier details, item names, quantities, prices, and terms. Extracted data is queued for human review before being applied.
+
+## 22. Supplier Portal
+
+The **Supplier Portal** provides external access for suppliers to interact with the procurement system.
+
+### Features
+
+- Suppliers can log in via authenticated access
+- View RFQs and quotation requests sent to them
+- Submit quotations and upload documents
+- Track order status and delivery schedules
+- Update contact information
+
+### Access
+
+Supplier authentication is managed separately from staff authentication, ensuring secure isolated access for external vendors.
+
+## 23. Backlog System
+
+The module uses a **Backlog** pattern to provide staging areas between procurement stages:
+
+| Backlog | Purpose |
+|---------|---------|
+| **Purchase Items Backlog** | Approved PR items waiting to be grouped into Purchase Orders |
+| **Purchase Order Backlog** | Approved POs ready for downstream processing (vouchers, payments) |
+| **Received Vouchers Backlog** | PO items ready for goods receipt recording |
+| **Delivery Notes Backlog** | Items ready for delivery note creation |
+
+!!! tip "Backlog Workflow"
+    Backlogs prevent items from falling through the cracks. Procurement staff should regularly review backlogs to ensure timely processing of approved requests.
+
+## 24. Permissions Reference
+
+The module uses **11 separate permission groups** for granular access control:
+
+| Permission Group | Controls Access To |
+|-----------------|-------------------|
+| **przpurchase** | Purchase Requests |
+| **prz_expense_request** | Expense Requests |
+| **przorder** | Purchase Orders |
+| **przquotation** | Quotations |
+| **przsuppliers** | Suppliers |
+| **prz_received_vouchers** | Received Vouchers |
+| **payment_request** | Payment Requests |
+| **delivery_notes** | Delivery Notes |
+| **przsummary** | Summary Reports |
+| **prz_approvals_logs** | Approval Logs |
+| **przsettings** | Module Settings |
+
+Each group supports: **View Own**, **View (Global)**, **Create**, **Edit**, **Delete**.
+
+## 25. Global Search
+
+The Purchases module is fully integrated with the system-wide global search. You can search across all procurement document types:
+
+| Document Type | Search By | Prefix |
+|--------------|-----------|--------|
+| **Purchase Request** | Sequence number, title | PR- |
+| **Purchase Order** | Sequence number, title | PO- |
+| **Expense Request** | Sequence number, title | ER- |
+| **Suppliers** | Company name | — |
+| **Quotations** | Quotation code, prefix | — |
+| **Received Vouchers** | Voucher number | MR- |
+| **Payment Request** | Sequence number | MT- |
+| **Delivery Notes** | Sequence number | DN- |
+
+## 26. Project Integration
+
+The Purchases module adds tabs to the **Project view**:
+
+- **Purchase Request** tab — View all PRs linked to the project
+- **Purchase Order** tab — View all POs linked to the project
+- **Suppliers** tab — View suppliers associated with the project
+
+This provides project managers with direct visibility into procurement activity for their projects.
+
+## 27. Summary
 
 The Prizm Purchase module provides a comprehensive, controlled, and auditable procurement system. It supports organizations in managing their entire procurement lifecycle from initial request through to payment, ensuring compliance, transparency, and efficiency throughout the process.
 

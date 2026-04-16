@@ -674,7 +674,74 @@ The budget creator then resubmits or accepts the partial terms.
 - **Document changes** – Use notes and remarks to document why changes were made
 - **Track advance cash promptly** – Close advance cash requests quickly by tracking expenses and attaching receipts
 
-## 18. Known Limitations / Notes
+## 18. Permissions Reference
+
+The module uses **3 separate permission groups** for granular access control:
+
+### Budget Permissions (prizmbudget)
+
+| Permission | Description |
+|------------|-------------|
+| **View Own** | View budgets you created |
+| **View (Global)** | View all budgets across the system |
+| **Create** | Create new budgets, items, and categories |
+| **Edit** | Modify existing budgets and items |
+| **Delete** | Soft-delete budgets and items |
+| **Restore** | Restore deleted budgets |
+| **Revise Item Detail** | Modify approved item details (quantities, prices) |
+| **Revoke Item** | Revoke budget items and return funds |
+| **Revoke Unused Item** | Revoke only unused portions of budget items |
+
+### Deployment Plan Permissions
+
+| Permission | Description |
+|------------|-------------|
+| **View Own** | View deployment plans you created |
+| **View (Global)** | View all deployment plans |
+| **Create** | Create new deployment plans |
+| **Edit** | Modify existing deployment plans |
+| **Delete** | Delete deployment plans |
+
+### Deploy Manpower Beyond Budget
+
+A special permission group that allows deploying manpower resources even when they exceed the approved budget — typically granted only to senior managers or directors.
+
+## 19. Deployment Dashboard Statistics
+
+The Budget Dashboard includes real-time **deployment statistics** showing workforce allocation:
+
+| Metric | Description |
+|--------|-------------|
+| **Total** | Total deployment entries for the period |
+| **Deployed** | Staff assigned to a project |
+| **Idle** | Staff not assigned to any project |
+| **On Leave** | Staff currently on leave |
+
+Each metric includes a **percentage** (e.g., "45 Deployed (67.2%) | 15 Idle (22.4%) | 7 Leave (10.4%)").
+
+### Period Filtering
+
+- **Day** — Today's deployments
+- **Week** — Current week
+- **Month** — Current month
+- **Year** — Current year
+- **Custom** — Specify from/to dates
+
+## 20. Budget from Estimation
+
+When viewing a **Project**, the Budget module adds two tabs:
+
+- **Budget** tab — View and manage budgets linked to the project
+- **Create Budget from Estimation** tab — Automatically generate a budget from the project's estimation data, pre-populating items, quantities, and prices from the estimation module
+
+!!! tip "Estimation Integration"
+    Use "Create Budget from Estimation" to save time when the project already has a detailed estimation. The system carries over item details, specifications, and pricing directly into the budget.
+
+## 21. QuickBooks Integration
+
+The Budget module integrates with **QuickBooks** for financial data export. Budget data, expense categories, and cost centre allocations can be synchronized with your QuickBooks accounting system for consolidated financial reporting.
+
+## 22. Known Limitations / Notes
 
 - **Single project association** – Each budget is linked to one project or department. If a budget needs to cover multiple projects, create separate budgets or additional budgets for each project
 - **Editing after approval** – Once a budget or resource request is fully approved, it becomes read‑only. To adjust amounts, create an additional budget or raise a partial request
