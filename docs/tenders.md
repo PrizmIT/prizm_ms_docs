@@ -130,6 +130,21 @@ Used to manually register a new tender.
 
 ![Add Tender Form](./tenders/img/add_tender_form.png)
 
+**Field Guide:**
+
+1. **Tender Number** - Unique tender identifier
+2. **Tender Description** - Detailed tender description
+3. **Status** - Active or inactive status
+4. **Source** - Tender source platform (e.g., Etimad, eSupply)
+5. **Client** - Issuing organization
+6. **Floating Date** - Tender publication date
+7. **Closing Date** - Submission deadline
+8. **Fees** - Tender participation fees
+9. **Purchase Link** - External tender URL
+10. **Tender Type** - Tender classification
+11. **Offer Title** - Bid/offer title in offers table
+12. **Tenderer Name** - Bidding company name in offers table
+
 #### Basic Information
 
 - **Tender Title** (required)
@@ -227,6 +242,15 @@ Used when a decision is made to pursue a tender.
 ### Fields
 
 ![Convert To Opportunity Form](./tenders/img/convert_to_opportunity_form.png)
+
+**Field Guide:**
+
+1. **Opportunity Name** - Name for the new opportunity
+2. **Client** - Customer or organization name
+3. **Estimated Value** - Expected contract revenue
+4. **Probability** - Win likelihood percentage
+5. **Expected Close Date** - Target closing date
+6. **Assigned To** - Responsible team member
 
 - **Opportunity Code**
 - **Responsible Employee**
@@ -436,15 +460,117 @@ Assigning tenders to the right personnel ensures accountability.
 
 ![Top Mismatches Bids per Source](./tenders/img/sources_mismatches_bids.png)
 
-## 15. Best Practices & Tips
+## 15. Automated Tender Scraping
+
+The Tenders module includes a powerful **automated scraping engine** that fetches tender data from multiple external sources without manual intervention.
+
+### Cron Jobs
+
+Seven automated cron jobs run on configurable intervals:
+
+| Cron Job | Source | Description |
+|----------|--------|-------------|
+| **DEWA Status** | DEWA | Scrapes the DEWA tender documents page for new and updated tenders |
+| **DEWA Tenders** | DEWA | Scrapes DEWA tender opening results (bidders, prices, awards) |
+| **7x Oracle** | 7x | Fetches tenders from the 7x Oracle procurement system |
+| **Etimad Documents** | Etimad | Fetches tender documents from Saudi Etimad platform |
+| **Etimad Notifications** | Etimad | Fetches notification alerts from Etimad (piggybacks on document fetch) |
+| **Etimad Details** | Etimad | Scrapes detailed information for each Etimad tender |
+| **DEWA Info Mailbox** | Outlook | Fetches tenders forwarded to the DEWA info mailbox via Outlook API |
+
+### Scraper Monitor
+
+Navigate to **Tenders > Scraper Monitor** to oversee all scraping operations:
+
+- View status of each cron job (Success, Failed, Running)
+- See last run time and last result message
+- **Configurable intervals** — Change scraping frequency (5min to 24h) directly in the grid
+- **Manual run** — Trigger any cron job on-demand
+- **Cron logs** — View full execution history for troubleshooting
+- **Activity logs** — Track scraping activity per source
+
+### AI-Assisted Scraping
+
+The scraper includes:
+
+- **AI Captcha solving** — Automatically solves captchas encountered during scraping
+- **PDF parsing** — Extracts data from tender PDF documents
+- **OCR** — Reads scanned tender documents using Tesseract OCR
+- **Arabic text processing** — Stemming and analysis for Arabic tender content
+- **Browser automation** — Selenium WebDriver for dynamic page scraping
+
+## 16. Etimad Notifications
+
+The module provides **real-time Etimad tender notifications** directly in the admin header navbar.
+
+### Notification Features
+
+- **Bell icon** in the top navigation bar with unread count badge
+- **Auto-polling** every 60 seconds for new notifications
+- **Dropdown panel** showing the last 20 notifications (displayed in RTL Arabic)
+- **Mark as read** — Individual or bulk "Mark all read"
+- **Smart linking** — System matches notifications to tenders by tender ID, tender ID string, or tender number, with fallback to the Etimad URL
+
+### Notification Matching Logic
+
+1. Direct `tender_id` match (set during cron insert)
+2. Match by `tenderIdString` extracted from notification link
+3. Match by `tender_number` (Etimad internal reference)
+4. Fallback: Direct link to Etimad website
+
+!!! note "Permission Required"
+    Etimad notifications are visible to administrators by default. Non-admin users require the `etimad_notifications` view permission.
+
+## 17. Permission-Layered Document Access
+
+Tender documents are organized into **permission-controlled folders** integrated with SharePoint:
+
+| Folder | Permission Required | Description |
+|--------|-------------------|-------------|
+| **01 - Customer Documents** | `tenders` | Client-facing tender documents |
+| **02 - Internal Technical** | `tenders_technical` | Internal technical analysis and specifications |
+| **03 - Internal Commercial** | `tenders_commercial` | Pricing, costing, and commercial documents |
+| **05 - Dispatch** | `tenders_commercial` | Submission and dispatch records |
+
+This layered approach ensures that sensitive commercial and technical information is only accessible to authorized staff, while customer documents remain available to the broader tender team.
+
+## 18. Portal Credentials
+
+The module adds a **Portal Credentials** tab to customer profiles (admin only), allowing storage of login credentials for external tender portals associated with each client.
+
+## 19. Permissions Reference
+
+The module uses **5 permission groups**:
+
+| Permission Group | Capabilities | Description |
+|-----------------|-------------|-------------|
+| **tenders** | view_own, view (global), create, edit, delete | Main tender access |
+| **tenders_technical** | view (global) | Access to Internal Technical documents |
+| **tenders_commercial** | view (global) | Access to Internal Commercial + Dispatch documents |
+| **etimad_notifications** | view | Receive Etimad notification alerts in navbar |
+| **etimad_own_credentials** | view (Own Credentials) | Use personal Etimad credentials for manual operations |
+
+## 20. Global Search
+
+Tenders are included in the system-wide global search. Search by:
+
+- **Tender Number** — Unique tender identifier
+- **Tender Description** — Description of the tender scope
+
+Results are grouped by tender number and link directly to the tender detail view.
+
+## 21. Best Practices & Tips
 
 ![Top Tenderers Performance](./tenders/img/top_tenderers_awarded_etimad_value_list.png)
 
-- Always verify closing dates
+- Always verify closing dates before submission
 - Convert to opportunity only when approved
-- Keep attachments updated
+- Keep attachments updated in the correct document layer
 - Use sources consistently for accurate analytics
 - Review activity logs for audit and accountability
 - Maintain consistent naming conventions
 - Update tender status regularly
+- Monitor the **Scraper Monitor** for failed cron jobs
+- Check **Etimad Notifications** regularly for updates from Saudi tenders
 - Archive completed tenders appropriately
+- Ensure portal credentials are up to date for automated scraping
