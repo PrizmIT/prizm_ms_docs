@@ -14,7 +14,132 @@ This module is integrated with:
 - Approval workflows
 - Payment tracking
 
-## 2. Module Overview
+## 2. Expense Paths Overview
+
+The Prizm Purchase module handles three distinct expense paths, each with its own workflow, forms, and approval process. Understanding which path applies to your situation is essential for correct processing.
+
+### Path 1: Non-PO Expense (Expense Request)
+
+Expenses **not linked to a Purchase Order**, such as telecommunications, government fees, utility bills, and similar operational costs. These are processed directly through an Expense Request.
+
+![Non-PO Expense Process Flowchart](purchases/img/expense_path_image1.jpeg)
+
+**Workflow:**
+
+1. Employee or department incurs an expense
+2. Submit an Expense Request with receipts and supporting documents
+3. Finance reviews the documents for validity
+4. If documents are valid → sent to Manager for approval; if not → returned to employee for correction
+5. Manager approves or rejects the expense
+6. Approved expenses proceed to reimbursement or payment processing
+
+---
+
+### Path 2: Advance Cash
+
+Cash advances given to employees **before expenses are incurred**. The employee spends the cash and later submits a clearance to reconcile and settle the advance.
+
+![Advance Cash Process Flowchart](purchases/img/expense_path_image3.png)
+
+**Workflow:**
+
+1. Employee submits a Cash Advance Request
+2. Finance reviews the advance request for validity
+3. If valid → sent to Manager for approval; if not → returned for correction
+4. Manager approves or rejects the advance
+5. Cash advance is issued to the employee
+6. Employee spends cash for project expenses
+7. Employee submits an Expense Request with receipts to clear the advance
+8. Finance reviews receipts for validity
+9. System calculates actual expense vs. advance amount:
+    - **Expense < Advance** → Remaining balance is recorded (employee returns the difference)
+    - **Expense > Advance** → Finance reimburses the additional amount to the employee
+10. Expense request is closed
+
+---
+
+#### Advance Cash Request Form
+
+![Request Advance Cash Form](purchases/img/expense_path_image4.png)
+
+| # | Field Name | Required | Description |
+|---|-----------|----------|-------------|
+| 1 | **Advance Cash Code** | No | Auto-generated identifier (e.g., TAC-14). Read-only, sequential. Primary reference for tracking the advance cash request. |
+| 2 | **Title** | Yes | Descriptive title for the advance request (e.g., "Project Site Visit – Abu Dhabi", "Office Supplies Petty Cash"). |
+| 3 | **Request Type** | Yes | Type of advance, such as "Budget Based" which ties the advance to an approved budget allocation. Determines validation rules and approval workflow. |
+| 4 | **Requested Amount** | Yes | The monetary amount needed (in AED). Must not exceed available budget allocation or configured petty cash limit. |
+| 5 | **Department** | Yes | The department raising the request. Determines approval workflow, budget limits, and petty cash policies. |
+| 6 | **Budget** | Yes | The specific budget line from which the advance will be drawn. Cross-references with Total and Remaining Petty Cash. |
+| 7 | **Total Petty Cash: AED** | No | Read-only. Shows the total petty cash allocation for the selected department and budget. |
+| 8 | **Remaining Petty Cash: AED** | No | Read-only. Shows the remaining unspent balance. If the requested amount exceeds this, submission is blocked. |
+| 9 | **Note** | No | Additional context, justification, or instructions for approvers and the finance team. |
+| 10 | **Submit Button** | — | Finalizes the request and sends it into the approval workflow. Status changes from Draft to Submitted. |
+
+!!! info "Advance Cash Details"
+    For comprehensive advance cash management documentation including tracking, clearance, and custody reports, see the [Budget module](budget.md#12-advance-cash-management).
+
+---
+
+### Path 3: PO Expense (Purchase Order)
+
+Expenses processed through **Purchase Orders (PO)**, mainly used for supplier payments. This is the standard procurement path for goods and services.
+
+![PO Expense Process Flowchart](purchases/img/expense_path_image5.jpeg)
+
+**Workflow:**
+
+1. Department identifies a purchase need
+2. Create a Purchase Requisition (PR)
+3. Manager approves the PR (rejected PRs are returned)
+4. Procurement reviews and creates a Purchase Order (PO)
+5. PO is sent to the vendor
+6. Vendor delivers goods or services
+7. Vendor submits an invoice
+8. Finance verifies the PO against the invoice
+9. If documents are valid → payment is approved; if not → returned for correction
+10. Payment is processed to the vendor
+
+#### Purchase Request Form Fields
+
+![Create New Purchase Request Form](purchases/img/expense_path_image6.png)
+
+| # | Field Name | Required | Description |
+|---|-----------|----------|-------------|
+| 1 | **Purchase Request Code** | No | Auto-generated with "PR-" prefix (e.g., PR-26040001). Read-only. Primary reference for tracking across all procurement stages. |
+| 2 | **Title** | Yes | Descriptive title for the purchase request (e.g., "Electrical Cable for Substation Project", "Office Furniture – New Branch"). |
+| 3 | **Department** | Yes | The department raising the request. Determines approval workflow, approvers, and budget allocations. |
+| 4 | **Request Type** | Yes | Nature of purchase: "Material" for physical goods or "Service" for labor, consulting, or contractor services. |
+| 5 | **Currency** | Yes | Transaction currency (e.g., EUR, AED, USD, GBP). Used for all pricing calculations in the items table. |
+| 6 | **Cost Centers** | Yes | The cost center to charge this purchase to (e.g., CSC-001 – Operations). Essential for accurate budget monitoring. |
+| 7 | **Quotation** | No | Links to an existing supplier quotation. When linked, the system can auto-populate item pricing from the quotation. |
+| 8 | **Related To** | No | Context type: "Project" or "Opportunity". Determines cost tracking target. |
+| 9 | **Project** | No | The specific project for this purchase (activated when Related To = "Project"). Enables project cost tracking. |
+| 10 | **Resource Request** | No | Links to a resource request from the Budget Module (e.g., RR-MAT-241219220). |
+| 11 | **Note** | No | Additional context, delivery instructions, preferred supplier references, or technical specifications. |
+| 12 | **Items Table** | Yes | Line items: PR Code, Item Name, Long Name, Specifications, Budgeted Price, Purchase Price, Available Qty, Purchase Qty, Total (auto-calculated). Gear icon for column customization. |
+
+#### Purchase Order Form Fields
+
+![New Purchase Order Form](purchases/img/expense_path_image7.png)
+
+| # | Field Name | Required | Description |
+|---|-----------|----------|-------------|
+| 1 | **Purchase Order Code** | No | Auto-generated with "PO-" prefix (e.g., PO-26040012). Read-only. Primary reference for supplier communication and invoice matching. |
+| 2 | **Title** | Yes | Descriptive title (e.g., "Transformer Components – P1085"). Appears on the official PO document sent to the supplier. |
+| 3 | **Currency** | Yes | Currency for payment to the supplier (e.g., AED, USD, EUR, GBP). |
+| 4 | **Discount Type** | No | "No discount", "Percentage", or "Fixed amount". Applied to the total order amount before tax. |
+| 5 | **Supplier** | Yes | The vendor to receive the PO. Only verified suppliers appear by default (unless "Allow Unverified Suppliers" is enabled in Settings). |
+| 6 | **Delivery Date** | No | Expected delivery date. Communicated to the supplier and used to track delivery performance and flag overdue orders. |
+| 7 | **Department** | Yes | The department that owns the PO. Determines approval workflow and spending limits. |
+| 8 | **Delivery Location** | No | Physical delivery address (e.g., main warehouse, project site, branch office). |
+| 9 | **Request Type** | Yes | "Material" for physical goods or "Service" for labor/consulting/contractor services. |
+| 10 | **Related To** | No | Links the PO to a Project for financial tracking and profitability analysis. |
+| 11 | **Note** | No | Delivery instructions, packaging requirements, payment terms, or contract references. May appear on the official PO document. |
+| 12 | **Items Table** | Yes | Items from approved Purchase Requests: PR Code (traceability), Item Details, Available Qty, Qty, Rate, Tax, Amount (auto-calculated). |
+
+---
+
+## 3. Module Overview
 
 The Prizm Purchase module provides comprehensive tools for:
 
@@ -181,11 +306,11 @@ The **Bin Records** area stores purchase requests that have been deleted from th
 
 ### Purpose
 
-Expense Requests are used for:
+Expense Requests are used for Non-PO expenses — costs not linked to a Purchase Order:
 
 ![Expense Request Overview](purchases/img/expense_request_overview.png)
 
-- Operational expenses
+- Operational expenses (telecommunications, government fees, utilities)
 - Employee reimbursements
 - Advance cash reconciliation
 
@@ -196,6 +321,7 @@ Expense Requests are used for:
 - Status tracking
 - Budget validation
 - Link to advance cash records
+- Related Type linking (Staff or Opportunity)
 
 ### Creating an Expense Request
 
@@ -210,6 +336,27 @@ Expense Requests are used for:
 5. **Cost Centers** - Budget allocation category (required)
 6. **Related To** - Link to project or entity
 7. **Items Table** - Expense line items with pricing
+
+### Detailed Expense Request Field Descriptions
+
+The form screenshot below shows the Create New Expense Request with all available fields. The Related Type dropdown provides options such as Staff and Opportunity.
+
+![Create New Expense Request Form](purchases/img/expense_path_image2.png)
+
+| # | Field Name | Required | Description |
+|---|-----------|----------|-------------|
+| 1 | **Expense Request Code** | No | Auto-generated identifier with "ER-" prefix (e.g., ER-26040001). Read-only. Serves as the primary reference for tracking, searching, and auditing the expense request throughout its lifecycle. |
+| 2 | **Title** | Yes | A descriptive title summarizing the purpose of the expense (e.g., "Project Site Travel – Abu Dhabi", "Office Supplies – March 2026"). Improves searchability in reports and dashboards. |
+| 3 | **Department** | Yes | The department raising the request. Mandatory because the approval workflow is department-specific — different departments have different approvers. |
+| 4 | **Currency** | Yes | The currency in which the expense was incurred (e.g., AED, USD, EUR, GBP). Determines currency for all line-item pricing, tax calculations, and totals. |
+| 5 | **Discount Type** | No | Whether a discount applies: "No discount", "Percentage", or "Fixed amount". When selected, an additional field appears for the discount value. Applied to the total expense amount. |
+| 6 | **Cost Centers** | Yes | The cost center to charge this expense to. Ensures proper allocation in the accounting system for budget monitoring and financial reporting. |
+| 7 | **Related Request** | No | Links to a related request context. Options include "General" (standard operational expenses) or other categories linking to specific projects or initiatives. |
+| 8 | **Advance Cash** | No | Links the expense to an existing advance cash record for reconciliation. The system calculates whether the advance was fully utilized, under-spent, or exceeded, and adjusts settlement accordingly. |
+| 9 | **Related Type** | No | Specifies the related entity type: "Staff" (employee expenses like reimbursements, travel) or "Opportunity" (expenses tied to business development). |
+| 10 | **Note** | No | Free-text area for additional context, justification, or special instructions. Detailed notes improve approval speed and provide a clear audit trail. |
+| 11 | **Search Item** | No | Search the budget catalog by item name, code, or commodity description. Selected items are auto-added to the items table with pre-configured details. |
+| 12 | **Items Table** | Yes | Line-item details: # (row number), Item (name/description), Expense Price (unit cost), Expense Qty (quantity), Tax (e.g., VAT 5%), Debit Note Total (auto-calculated). The gear icon allows column customization. |
 
 ### Budget Validation
 
