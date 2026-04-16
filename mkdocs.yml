@@ -37,6 +37,7 @@ plugins:
             Gatepass: تصريح المرور
             Technical Analysis: التحليل الفني
             Prizm Reports: تقارير بريزم
+            Report Designer: مصمم التقارير
             About: حول
 
 nav:
@@ -52,4 +53,5 @@ nav:
   - Gatepass: gatepass.md
   - Technical Analysis: technical-analysis.md
   - Prizm Reports: prizm-reports.md
+  - Report Designer: report-designer.md
   - About: about.md
