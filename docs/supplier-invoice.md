@@ -188,8 +188,6 @@ Creating a supplier invoice records a vendor's billing document in the system. I
 
 ### Related Resource Items
 
-![Supplier Invoice - Resource Items Section](supplier_invoice/img/resource_items.png)
-
 The Related Resource Items section links the invoice to items from the Resource Manager. This enables material tracking and mapping between supplier catalogue items and internal resource items.
 
 **How to add items:**
@@ -226,8 +224,6 @@ When you select a **Purchase Order Reference** and tick **Pull items from the se
 ---
 
 ## 7. Supplier Invoice Statuses & Workflow
-
-![Supplier Invoice - Status Workflow](supplier_invoice/img/status_workflow.png)
 
 The Supplier Invoice module tracks two distinct status dimensions: the **Approval Status** and the **Payment Status**.
 
@@ -418,8 +414,6 @@ Three-way matching is a core accounts payable control that ensures the amounts b
 ---
 
 ## 11. Approval Workflow
-
-![Supplier Invoice - Approval Workflow](supplier_invoice/img/approval_workflow.png)
 
 The Supplier Invoice module supports a configurable approval workflow. This ensures that invoices are reviewed and authorised before payment is processed.
 
