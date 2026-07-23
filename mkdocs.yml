@@ -44,9 +44,7 @@ plugins:
 nav:
   - Home: index.md
   - Business Partners: business-partners.md
-  - Purchases:
-    - Purchases: purchases.md
-    - Supplier Invoice: supplier-invoice.md
+  - Purchases: purchases.md
   - Tenders: tenders.md
   - Budget: budget.md
   - QuickBooks: quickbooks.md

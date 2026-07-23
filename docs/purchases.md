@@ -1071,7 +1071,27 @@ The Purchases module adds tabs to the **Project view**:
 
 This provides project managers with direct visibility into procurement activity for their projects.
 
-## 27. Summary
+## 27. Supplier Invoices
+
+The Supplier Invoice module manages the recording, approval, and payment tracking of invoices received from suppliers. It links directly to purchase orders, suppliers, projects, and the Resource Manager for complete traceability.
+
+For full documentation, see the **[Supplier Invoice User Guide](supplier-invoice.md)**.
+
+### Key Features
+
+- Record invoices manually or from purchase orders (with auto-populated line items)
+- Link invoice items to the Resource Manager with mapping status tracking
+- Configurable multi-stage approval workflow
+- Payment status tracking (Unpaid → Paid) with Undo Paid capability
+- File attachments and complete activity log for audit
+
+### How to Access
+
+Navigate to **Prizm Purchase → Supplier Invoices** in the sidebar menu.
+
+---
+
+## 28. Summary
 
 The Prizm Purchase module provides a comprehensive, controlled, and auditable procurement system. It supports organizations in managing their entire procurement lifecycle from initial request through to payment, ensuring compliance, transparency, and efficiency throughout the process.
 
