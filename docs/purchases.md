@@ -1073,21 +1073,206 @@ This provides project managers with direct visibility into procurement activity 
 
 ## 27. Supplier Invoices
 
-The Supplier Invoice module manages the recording, approval, and payment tracking of invoices received from suppliers. It links directly to purchase orders, suppliers, projects, and the Resource Manager for complete traceability.
-
-For full documentation, see the **[Supplier Invoice User Guide](supplier-invoice.md)**.
-
-### Key Features
-
-- Record invoices manually or from purchase orders (with auto-populated line items)
-- Link invoice items to the Resource Manager with mapping status tracking
-- Configurable multi-stage approval workflow
-- Payment status tracking (Unpaid → Paid) with Undo Paid capability
-- File attachments and complete activity log for audit
+Supplier Invoices manage the recording, approval, and payment tracking of invoices received from suppliers within the Prizm Purchase module. They link directly to purchase orders, suppliers, projects, and the Resource Manager for complete traceability.
 
 ### How to Access
 
 Navigate to **Prizm Purchase → Supplier Invoices** in the sidebar menu.
+
+### Supplier Invoice List (AG Grid)
+
+![Supplier Invoice - AG Grid List View](supplier_invoice/img/ag_grid_list.png)
+
+The Supplier Invoice list displays all invoices in an AG Grid with server-side data loading, column-level filters, and sortable columns.
+
+#### Grid Columns
+
+| # | Column | Description |
+|---|--------|-------------|
+| 1 | **Actions** | Quick-action links: **View**, **Edit**, and **Delete**. |
+| 2 | **#** | System-generated invoice code (e.g., SI-26070001). Clickable link to the detail page. |
+| 3 | **Supplier** | The supplier who issued the invoice. |
+| 4 | **Supplier Invoice** | The supplier's own invoice number. |
+| 5 | **Invoice Date** | The date the invoice was issued. |
+| 6 | **Due Date** | The payment due date. |
+| 7 | **Related PO** | The linked purchase order, if applicable. |
+| 8 | **Project** | The associated project, if applicable. |
+| 9 | **Grand Total** | The final invoice amount including VAT. |
+| 10 | **Status** | Approval status (e.g., Approved). Colour-coded badge. |
+| 11 | **Payment Status** | Payment state (e.g., Paid). Colour-coded badge. |
+
+#### Filters
+
+**Top-Level Dropdown Filters:**
+
+- **Supplier** — filter by supplier
+- **Project** — filter by project
+- **Related PO** — filter by purchase order
+- **Status** — filter by approval status
+
+**Column-Level Filters:** Each column header includes a filter icon for text, date, or set-based filtering.
+
+#### Grid Controls
+
+- **Theme** — switch visual themes or toggle dark mode
+- **Page Size** — rows per page (default: 50)
+- **Search** — global text search
+- **Reset Columns** — restore default column layout
+
+### Supplier Invoice Creation
+
+![Supplier Invoice - Creation Form](supplier_invoice/img/creation_form.png)
+
+To create a supplier invoice:
+
+1. Navigate to **Prizm Purchase → Supplier Invoices**
+2. Click **+ New Supplier Invoice**
+3. Complete the form fields
+4. Add resource items (line items)
+5. Click **Save**
+
+#### Form Fields
+
+| # | Field Name | Required | Description |
+|---|-----------|----------|-------------|
+| 1 | **Purchase Order Reference** | No | Select a PO to link. |
+| 2 | **Pull items from the selected PO as candidate lines** | No | Checkbox — auto-loads PO line items into the invoice. |
+| 3 | **Supplier** | Yes | The supplier who issued the invoice. Red asterisk. |
+| 4 | **Supplier Invoice Number** | Yes | The supplier's own invoice number. Red asterisk. |
+| 5 | **Invoice Date** | No | Date the invoice was issued. Date picker. |
+| 6 | **Due Date** | No | Payment due date. Date picker. |
+| 7 | **Currency** | No | Billing currency for this invoice. |
+| 8 | **Project** | No | Link to a project for cost tracking. |
+| 9 | **Department** | Yes | The responsible department. Required. |
+| 10 | **Cost Center** | No | Cost centre allocation. |
+| 11 | **Subtotal** | No | Total before tax. |
+| 12 | **VAT Amount** | No | Total VAT amount. |
+| 13 | **Grand Total** | No | Final amount including VAT. |
+| 14 | **Notes** | No | General notes visible to staff. |
+| 15 | **Internal Remarks** | No | Internal-only remarks, not shared with supplier. |
+| 16 | **Attach a file** | No | Upload supporting documents. |
+
+#### Related Resource Items
+
+The Related Resource Items section links the invoice to items from the Resource Manager:
+
+| # | Column | Description |
+|---|--------|-------------|
+| 1 | **Supplier Item Code** | Supplier's catalogue code. |
+| 2 | **Supplier Description** | Supplier's item description. |
+| 3 | **Resource Item** | Linked PRIZM Resource Manager item. Clickable. |
+| 4 | **Unit** | Unit of measure. |
+| 5 | **Qty** | Quantity invoiced. |
+| 6 | **Unit Price** | Per-unit cost. |
+| 7 | **Total** | Qty × Unit Price (auto-calculated). |
+| 8 | **Mapping Status** | **Mapped** (green) or **Unmapped** — whether the item is linked to the internal catalogue. |
+
+!!! info "Resource Item Mapping"
+    Mapping supplier items to internal resource items ensures consistency across procurement, inventory, and project cost tracking.
+
+#### Creating from a Purchase Order
+
+When you select a PO and tick the checkbox:
+
+1. PO line items are loaded into the Related Resource Items section
+2. Supplier details may be pre-populated
+3. You can adjust quantities and prices to match the actual invoice
+4. Additional items can be added manually
+
+!!! warning "Important"
+    Verify auto-populated line items match the supplier's actual invoice before saving.
+
+### Supplier Invoice Statuses
+
+The module tracks two status dimensions:
+
+**Approval Status:**
+
+| Status | Description |
+|--------|-------------|
+| **Pending** | Awaiting approval. |
+| **Approved** | Approved by all required approvers. |
+| **Rejected** | Rejected by an approver. |
+
+**Payment Status:**
+
+| Status | Colour | Description |
+|--------|--------|-------------|
+| **Unpaid** | — | No payments recorded. |
+| **Paid** | Green | Fully settled. |
+
+**Typical Lifecycle:**
+
+```
+Invoice Created (Pending) → Approved → Payment Processed → Paid
+```
+
+**Undo Paid:** Authorised users can click **Undo Paid** on the detail page to reverse the payment status.
+
+### Supplier Invoice Detail View
+
+![Supplier Invoice - Detail View](supplier_invoice/img/detail_view.png)
+
+The detail page shows:
+
+- **Header:** Invoice code, approval status badge, payment status badge, Undo Paid button
+- **Summary fields:** Supplier, Supplier Invoice Number, Invoice Date, Due Date, Related PO, Project, Cost Center, Currency
+- **Financial summary:** Subtotal, VAT, Grand Total, Payment Status
+- **Related Resource Items table** with mapping status
+- **Approver And Stages Info:** Approval stage, approver name, decision, and timestamp
+
+#### Tabs
+
+- **Info** — full invoice summary, line items, totals, and approval history
+- **Attachment** — upload and manage supporting documents
+- **Activity Log** — chronological record of all actions (creation, edits, approvals, payments)
+
+### Supplier Invoice Approval
+
+The module supports multi-stage approval:
+
+1. Invoice is created and enters **Pending** status
+2. Designated approvers are notified
+3. Each approver reviews and **Approves** or **Rejects**
+4. Once all approvals are obtained, status changes to **Approved**
+5. Approved invoices proceed to payment
+
+When rejected:
+
+- Rejection reason is recorded
+- Invoice can be edited and re-submitted
+- Original rejection remains in the audit trail
+
+### Three-Way Matching
+
+Three-way matching ensures invoice amounts match what was ordered and received:
+
+| Document | What It Confirms |
+|----------|-----------------|
+| **Purchase Order** | Items, quantities, and agreed prices ordered |
+| **Received Voucher** | Items and quantities actually delivered |
+| **Supplier Invoice** | Items, quantities, and prices billed |
+
+!!! warning "Best Practice"
+    Never approve an invoice without confirming it matches both the PO and the received voucher.
+
+### Common Scenarios
+
+**Recording an invoice from a PO:**
+
+1. Click **+ New Supplier Invoice** → select the PO → tick the checkbox → verify items → save
+
+**Creating a manual invoice (no PO):**
+
+1. Click **+ New Supplier Invoice** → select supplier → enter details and items manually → save
+
+**Approving an invoice:**
+
+1. Open the invoice → review Info and Attachment tabs → click Approve or Reject in the Approver section
+
+**Handling a discrepancy:**
+
+1. Compare invoice items against the PO and received vouchers → add internal remarks → reject with reason → contact supplier
 
 ---
 
