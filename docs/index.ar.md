@@ -12,6 +12,7 @@
 - [طلبات التسعير (RFQ)](rfq.md)
 - [تصاريح الدخول](gatepass.md)
 - [التحليل الفني](technical-analysis.md)
+- [هيكل تجزئة العمل (WBS)](wbs.md)
 - [تقارير بريزم](prizm-reports.md)
 - [مصمم التقارير](report-designer.md)
 - [حول النظام](about.md)

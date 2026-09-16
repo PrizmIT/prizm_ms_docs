@@ -12,6 +12,7 @@ Welcome to the Prizm Management System documentation. Use the navigation to acce
 - [RFQ](rfq.md)
 - [Gatepass](gatepass.md)
 - [Technical Analysis](technical-analysis.md)
+- [WBS](wbs.md)
 - [Prizm Reports](prizm-reports.md)
 - [Report Designer](report-designer.md)
 - [About](about.md)
