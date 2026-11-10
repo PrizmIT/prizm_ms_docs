@@ -29,6 +29,7 @@ plugins:
             Business Partners: شركاء الأعمال
             Purchases: المشتريات
             Tenders: المناقصات
+            Tender to Bid: من العطاء إلى العرض
             Budget: الميزانية
             QuickBooks: تكامل QuickBooks
             Resource Manager: مدير الموارد
@@ -46,6 +47,7 @@ nav:
   - Business Partners: business-partners.md
   - Purchases: purchases.md
   - Tenders: tenders.md
+  - Tender to Bid: tender-to-bid.md
   - Budget: budget.md
   - QuickBooks: quickbooks.md
   - Resource Manager: resource-manager.md

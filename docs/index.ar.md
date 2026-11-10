@@ -5,6 +5,7 @@
 - [شركاء الأعمال](business-partners.md)
 - [المشتريات](purchases.md)
 - [المناقصات](tenders.md)
+- [من العطاء إلى العرض](tender-to-bid.md)
 - [الميزانية](budget.md)
 - [تكامل QuickBooks](quickbooks.md)
 - [إدارة الموارد](resource-manager.md)
