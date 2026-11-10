@@ -5,6 +5,7 @@ Welcome to the Prizm Management System documentation. Use the navigation to acce
 - [Business Partners](business-partners.md)
 - [Purchases](purchases.md)
 - [Tenders](tenders.md)
+- [Tender to Bid](tender-to-bid.md)
 - [Budget](budget.md)
 - [QuickBooks](quickbooks.md)
 - [Resource Manager](resource-manager.md)
