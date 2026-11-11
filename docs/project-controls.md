@@ -88,9 +88,43 @@ The goal of the investigation is to make purchase order **PEG-PO-26110011** (PR-
 - **Where:** Project Controls → Approval review → **Submit for review**.
 - **Result:** status **Submitted for review**. The financial check is ready with no blockers. The concrete line's specification check and three funding items (a pairing of AED 92,334, a deficit of AED 32,634, and an overdraw of AED 5,640) are tracked separately and handled later in Step 6.
 
-> **Do not approve purchase order PEG-PO-26110011 yet.** It still needs the financial approval of Step 6.
+#### 2.11 Cost approval for draft #796 approved and applied
 
-### 3. Next, not yet confirmed
+- **Problem:** **Submit cost approval** failed with a general error (EXEC_TRANSACTION). The Approvals module refused to route it through the Budget policy.
+- **Fix:** Project Controls approvals now have their own document type, **Project Controls** (pull requests #3419 and #3420: prz_approvals 1.21.1, prizmbudget 1.48.1, prizm_project 1.106.0). A failed save now shows its reason in a red alert and is written to the Activity Log.
+- **Setup on production:** in Approvals → Settings: stage **Project Controls**, status **Project Controls Approval**, and policy **Project Controls Approval — Project** (Context Type Project, approver Role Project Senior Manager, required).
+- **Decision:** request **#3** was routed to the Project Senior Manager, Mostafa Mohammed. He approved via **Microsoft Teams**, and Mustafa Zaroug recorded the decision on his behalf. The step reads "Decided by Mustafa Zaroug on behalf of Mostafa Mohammed", and the Activity Log holds the entry.
+- **Result:** draft #796 is **APPROVED** and its cost baseline is applied.
+- **Note:** an opportunity's WBS or CBS has no project, so it does not use this policy. It needs its own Project Controls policy with a Department or General context.
 
-- **Step 6:** send the cost approval to the original budget approvers, then reconcile funding.
-- **Step 7:** approve PEG-PO-26110011 and run the release checks.
+#### 2.12 Funding reconciled again on the new baseline
+
+- **Where:** Project Controls → Approval → **Funding trail**.
+- **Why:** the funding reconciliation approved on 3 November (version 2) became **Stale** when the new cost baseline was approved, and purchase orders were held (PURCHASE_SOURCE_SPENDING_HELD).
+- **How:** the suggested worksheet matched version 2 exactly, so it was submitted unchanged (**Submit worksheet**, version 3) and approved (**Approve submitted worksheet**, version 4). No new value was assumed.
+- **Values:** releases AED 59,700; new budget-funding authority AED 32,634; draw correction −AED 5,640 on line #7768. Not bank cash.
+- **Result:** the spending gate is ready with no blockers.
+
+#### 2.13 Purchase order PEG-PO-26110011 approved
+
+- **Where:** Prizm Purchase → the purchase order → **Approver And Stages Info**.
+- **Result:** Mostafa Mohammed's step "Projects - UAE Suppl" approved at 16:02, recorded by Mustafa Zaroug on his behalf ("Delegated Action By"). AED 8,232 to Gulf Ready Mix Fujairah: water AED 240 and C40 concrete AED 7,600, plus VAT.
+
+### 3. When a PO is held after a new cost approval
+
+This will happen again. A funding reconciliation is tied to the cost baseline it was approved on, so **every** new cost approval makes it Stale and holds every purchase order of the project with the message "PO approval is on hold…" (PURCHASE_SOURCE_SPENDING_HELD). Nothing is saved; the PO waits at its step.
+
+To release it (administrator with Project Controls budget review permission):
+
+1. Open the project → **Project Controls → Approval → Funding trail**. It shows **Stale**.
+2. Compare the suggested worksheet with the last approved version. When nothing changed, it repeats the approved plan.
+3. Tick the confirmation, write a reason → **Submit worksheet**.
+4. Write the approval reason → **Approve submitted worksheet**.
+5. Go back to the purchase order → **Approved**.
+
+If the worksheet shows a real change (a new release, a different amount, a new overdraw), do not approve it as a repeat: the project owner decides first.
+
+### 4. Next, not yet confirmed
+
+- Review the specification hold on concrete source #7775.
+- Operational activation (spending authority) remains separate and is not yet granted.
