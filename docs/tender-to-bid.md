@@ -23,8 +23,8 @@ This guide is for:
 | Part | What it delivers | Status |
 |---|---|---|
 | **Step 0 — Control fixes** | Final human sign-offs can't be switched to Auto, and a hold is released only by a real approval in the current run. | ✅ Closed on 10 November 2026 |
-| PH0 — Diagnose & freeze | Shows where bids actually wait and on whom, with a frozen specification. | In progress |
-| PH1 — Right approver, right wait | Each decision goes to the right person, with a clear waiting time. | Planned |
+| **PH0 — Diagnose & freeze** | Shows where bids actually wait and on whom, with a frozen specification. | ✅ Closed on 11 November 2026 |
+| PH1 — Right approver, right wait | Each decision goes to the right person, with a clear waiting time. | In progress |
 | P00–P06 | The bid stages themselves, from foundation to submission. | Planned |
 
 ## 3. Where to find it
@@ -118,7 +118,59 @@ There are two kinds of decisions:
 
 **Who can answer:** the person the decision is assigned to, and any administrator.
 
-## 5. Frequently asked questions
+## 5. PH0 — Where bids wait (what changed for you)
+
+PH0 measured where bids wait and on whom, before any new feature is built. It was finished on
+11 November 2026.
+
+### 5.1 The "Where bids wait" screen
+
+Open **Opportunities → Where bids wait** in the left menu. The screen is read-only and is shown
+to administrators and to staff with the TenderOps *view audit* permission.
+
+It lists every **wait** since the date you choose (the default is the last 180 days):
+
+- a **decision** waiting for, or answered by, a person;
+- a **run that failed** without raising a decision;
+- a **stage review** that nobody has approved or rejected yet.
+
+Each wait shows its **blocker class**, its **owner**, who answered it and how many days it
+waited.
+
+| Class | Meaning |
+|---|---|
+| **H** | A person has to act: a hold, AI output waiting for review, a stage review, or a missing sign-off. |
+| **E** | Evidence: a red-flag blocker. |
+| **W** | A worker or software fault. |
+| **C** | A configuration or connection problem, for example with the AI provider. |
+
+At the top, four cards summarise the period:
+
+- **Waits**, and how many are still open.
+- **Median wait**, in days.
+- **Technical faults sent to a business owner:** W and C waits that waited on a person instead
+  of IT. PH1 is about bringing this number down.
+- **Answered by someone else:** decisions answered by someone other than their owner, usually
+  an administrator.
+
+Below the cards, two small tables group the waits **by class** and **by owner**, and the large
+table lists every wait. Select an opportunity to open it.
+
+A failed run stops at once, so its waiting time is unknown: it is listed, but left out of the
+medians.
+
+### 5.2 A dismissed tender can't be converted
+
+A tender **dismissed** in triage can no longer be converted to an opportunity or marked as
+converted. Reopen it in triage first. The dismissal and its reason stay on record.
+
+### 5.3 The lowest quote is chosen among eligible quotes
+
+In a quotation comparison, the **lowest** quote and the price score now come only from quotes
+that can be selected. A cheaper quote that is expired or doesn't comply no longer lowers the
+score of the compliant quotes, and the compliant leader can be selected automatically.
+
+## 6. Frequently asked questions
 
 **I approved this hold yesterday. Why is it asking again?**
 Either the opportunity was run again (each run needs its own approval), or your approval was
@@ -129,3 +181,11 @@ No. The five final sign-offs stay on Hold under every preset. This is intentiona
 
 **What happens if I choose "Keep on hold"?**
 The run stays paused. Nothing moves until someone releases the hold.
+
+**I can't see "Where bids wait" in the menu.**
+It is shown to administrators and to staff with the TenderOps *view audit* permission. Ask an
+administrator for access.
+
+**Why does a failed run show "unknown" days?**
+A failed run stops at once, and nothing records when the bid moved again, so its waiting time
+can't be measured. It is counted, but left out of the medians.
