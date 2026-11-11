@@ -13,8 +13,8 @@ The goal of the investigation is to make purchase order **PEG-PO-26110011** (PR-
 | Step | Name | Status |
 |---|---|---|
 | 1–4 | Identify the PO → PR → RR → budget chain, history, hashes and the cause of the stale scope | Done (diagnosis) |
-| 5 | Review the governing scope and correct the Cost Plan / WBS planning | **In progress** |
-| 6 | Financial approval through the original approvers + funding reconciliation | Not started |
+| 5 | Review the governing scope and correct the Cost Plan / WBS planning | Done |
+| 6 | Financial approval through the original approvers + funding reconciliation | **In progress** |
 | 7 | PO approval and release checks | Not started |
 
 ### 2. Confirmed steps — 11 November 2026
@@ -67,10 +67,30 @@ The goal of the investigation is to make purchase order **PEG-PO-26110011** (PR-
 4. **Budget Items:** select the items, then **Add selected items**.
 5. Enter the required quantities → **Save draft** → **Submit for approval** on the next screen.
 
+#### 2.7 Native WBS draft compiled
+
+- **Where:** Project Controls → WBS & Progress → **Native WBS budget**.
+- **Result:** a new draft built from Cost Plan revision 49, covering all 224 source lines (213 of them fully mapped). No "unallocated scope" problem. Draft only; nothing approved.
+
+#### 2.8 Two lines with unit N/A recorded as money-only
+
+- **Where:** Project Controls → Cost Plan.
+- **Why:** two lines in **Initial project budget** — **Accommodation, Engineers, Monthly** (AED 1,320) and **Trailer Rental 30–35 Tonne** (AED 4,500) — have unit N/A, which blocks approval.
+- **How:** recorded as whole-line money amounts, the same way this project already records **Worker Accommodation** and **Bus Rental**. They stay mapped to their work packages.
+- **Result:** Cost Plan **revisions 50 and 51**. Nothing approved; their budget capacity stays held.
+
+#### 2.9 Native WBS draft rebuilt
+
+- **Result:** a new draft built from Cost Plan revision 51. The unit N/A problem is gone.
+
+#### 2.10 Cost review submitted
+
+- **Where:** Project Controls → Approval review → **Submit for review**.
+- **Result:** status **Submitted for review**. The financial check is ready with no blockers. The concrete line's specification check and three funding items (a pairing of AED 92,334, a deficit of AED 32,634, and an overdraw of AED 5,640) are tracked separately and handled later in Step 6.
+
 > **Do not approve purchase order PEG-PO-26110011 yet.** It still needs the financial approval of Step 6.
 
 ### 3. Next, not yet confirmed
 
-- **Step 5.8:** compile a new Native WBS draft from Cost Plan revision 49. The check shows no SCOPE_UNALLOCATED is expected.
-- **Step 6:** send the cost approval to the original approvers, then reconcile funding.
+- **Step 6:** send the cost approval to the original budget approvers, then reconcile funding.
 - **Step 7:** approve PEG-PO-26110011 and run the release checks.
