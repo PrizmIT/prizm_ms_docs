@@ -38,8 +38,10 @@ plugins:
             Gatepass: تصريح المرور
             Technical Analysis: التحليل الفني
             WBS: هيكل تجزئة العمل
+            Project Controls: ضوابط المشروع
             Prizm Reports: تقارير بريزم
             Report Designer: مصمم التقارير
+            Tasks: المهام
             About: حول
 
 nav:
@@ -56,6 +58,8 @@ nav:
   - Gatepass: gatepass.md
   - Technical Analysis: technical-analysis.md
   - WBS: wbs.md
+  - Project Controls: project-controls.md
   - Prizm Reports: prizm-reports.md
   - Report Designer: report-designer.md
+  - Tasks: tasks.md
   - About: about.md
