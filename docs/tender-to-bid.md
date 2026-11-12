@@ -216,6 +216,19 @@ display.
   off. It is on by default.
 - Sending events to n8n, for example Teams cards, is optional and is set in the same section.
 
+### 6.4 One tender, one opportunity
+
+A tender can be converted from the tender screen, through the API or from the eSupply extension.
+If two of them convert the same tender at the same moment, for example two people, or a double
+click, you still get **one** opportunity:
+
+- The first conversion runs. The second one waits for it.
+- The second one then shows *"Tender already exists in opportunities"*. Open the tender to reach
+  the opportunity.
+- If the first conversion takes longer than 30 seconds, the second one stops without creating
+  anything and shows *"This tender is being converted by another request. Wait a moment and try
+  again."* Try again after a moment.
+
 ## 7. Frequently asked questions
 
 **I approved this hold yesterday. Why is it asking again?**
@@ -239,6 +252,10 @@ you are told so you know the bid is waiting. Follow up with the authority named 
 **The decision is answered. Why don't I see the alert any more?**
 Once a decision is answered, its alerts are marked read automatically. The answer stays on the
 **Decisions** tab.
+
+**I pressed Convert and got "This tender is being converted by another request".**
+Someone else, or the API, is converting the same tender right now. Wait a moment and try again;
+you will reach the same opportunity.
 
 **Why does a failed run show "unknown" days?**
 A failed run stops at once, and nothing records when the bid moved again, so its waiting time
