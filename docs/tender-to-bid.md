@@ -25,7 +25,8 @@ This guide is for:
 | **Step 0 — Control fixes** | Final human sign-offs can't be switched to Auto, and a hold is released only by a real approval in the current run. | ✅ Closed on 10 November 2026 |
 | **PH0 — Diagnose & freeze** | Shows where bids actually wait and on whom, with a frozen specification. | ✅ Closed on 11 November 2026 |
 | PH1 — Right approver, right wait | Each decision goes to the right person, with a clear waiting time. | In progress |
-| P00–P06 | The bid stages themselves, from foundation to submission. | Planned |
+| **P00 — Automation** | The run starts on its own, every TenderOps setting is on one tab, and decisions alert people inside the ERP. | In progress — first parts live |
+| P01–P06 | The bid stages themselves, from foundation to submission. | Planned |
 
 ## 3. Where to find it
 
@@ -170,7 +171,52 @@ In a quotation comparison, the **lowest** quote and the price score now come onl
 that can be selected. A cheaper quote that is expired or doesn't comply no longer lowers the
 score of the compliant quotes, and the compliant leader can be selected automatically.
 
-## 6. Frequently asked questions
+## 6. P00 — Automation (what changed for you)
+
+P00 makes the bid move on its own and stop only where a person has to decide. Its first parts
+were released on 11 and 12 November 2026.
+
+### 6.1 The run starts on its own
+
+When a tender is converted and pursued, the Opportunity Run starts by itself as soon as its
+checks pass. You no longer need to press **Run Opportunity**. The final sign-offs still wait for
+a person. If the run can't start within 24 hours, the problem goes to IT or to the opportunity
+owner.
+
+### 6.2 Decision alerts inside the ERP
+
+When the virtual team needs a decision, you are told inside the ERP. You don't need Teams.
+
+| Who | Where the alert appears |
+|---|---|
+| The opportunity's **responsible person** (its owner, if the responsible person is inactive) | The **Opportunities** bell (megaphone icon) in the top bar |
+| The decision's **named authority**, the person who may answer it | The **Opportunities** bell |
+| **Administrators** | The **Tender Alerts** bell (gavel icon), marked *TenderOps · decision requested* |
+
+The alert reads, for example, *"Decision needed — OPP-262863 · Opportunity name: Source lane:
+switch to Storage Box? Due 19 Nov 2026 00:00."* It comes from **Prizm automation**.
+
+1. Select the alert. It opens the opportunity's **Decisions** tab with the decision waiting.
+2. Answer it as described in 4.5 and select **Submit decisions**.
+3. The alert is marked read for everyone who received it, so the bell shows only what is still
+   waiting.
+
+If the responsible person is also the named authority, they get one alert, not two. The
+responsible person is told even when only the authority or an administrator may answer, so the
+person running the bid knows it is waiting.
+
+### 6.3 TenderOps settings (administrators)
+
+Administrators, and staff with the TenderOps *manage settings* permission, find every TenderOps
+setting in **Opportunities → Settings → TenderOps**. The settings are in seven sections:
+automation, approvals and gates, pricing and suppliers, AI review, integrations, people, and
+display.
+
+- **Decision alerts inside the ERP**, in the Automation section, switches the alerts in 6.2 on or
+  off. It is on by default.
+- Sending events to n8n, for example Teams cards, is optional and is set in the same section.
+
+## 7. Frequently asked questions
 
 **I approved this hold yesterday. Why is it asking again?**
 Either the opportunity was run again (each run needs its own approval), or your approval was
@@ -185,6 +231,14 @@ The run stays paused. Nothing moves until someone releases the hold.
 **I can't see "Where bids wait" in the menu.**
 It is shown to administrators and to staff with the TenderOps *view audit* permission. Ask an
 administrator for access.
+
+**I received a decision alert but can't answer the decision.**
+Only the decision's named authority and administrators can answer. As the responsible person,
+you are told so you know the bid is waiting. Follow up with the authority named on the decision.
+
+**The decision is answered. Why don't I see the alert any more?**
+Once a decision is answered, its alerts are marked read automatically. The answer stays on the
+**Decisions** tab.
 
 **Why does a failed run show "unknown" days?**
 A failed run stops at once, and nothing records when the bid moved again, so its waiting time
