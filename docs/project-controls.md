@@ -14,8 +14,8 @@ The goal of the investigation is to make purchase order **PEG-PO-26110011** (PR-
 |---|---|---|
 | 1–4 | Identify the PO → PR → RR → budget chain, history, hashes and the cause of the stale scope | Done (diagnosis) |
 | 5 | Review the governing scope and correct the Cost Plan / WBS planning | Done |
-| 6 | Financial approval through the original approvers + funding reconciliation | **In progress** |
-| 7 | PO approval and release checks | Not started |
+| 6 | Financial approval through the original approvers + funding reconciliation | Done |
+| 7 | PO approval and release checks | **In progress** |
 
 ### 2. Confirmed steps — 11 November 2026
 
@@ -110,7 +110,54 @@ The goal of the investigation is to make purchase order **PEG-PO-26110011** (PR-
 - **Where:** Prizm Purchase → the purchase order → **Approver And Stages Info**.
 - **Result:** Mostafa Mohammed's step "Projects - UAE Suppl" approved at 16:02, recorded by Mustafa Zaroug on his behalf ("Delegated Action By"). AED 8,232 to Gulf Ready Mix Fujairah: water AED 240 and C40 concrete AED 7,600, plus VAT.
 
-### 3. When a PO is held after a new cost approval
+### 3. Confirmed steps — 12 November 2026
+
+#### 3.1 Helper #7956 withdrawn from its monetary-only hold
+
+- **Where:** Project Controls → Cost Plan → source allowance for **Helper #7956** (budget #734, 400 M.DAY × AED 150).
+- **Why:** this line had been held as monetary-only since 25 October 2026 ("helper M.DAY vs existing MH capacity reconciliation"), so it did not appear as requestable in a Manpower resource request.
+- **Decision:** the project owner, Mustafa Zaroug, decided to release it → **Withdraw**.
+- **Result:** Cost Plan **revision 52**. Withdrawing alone leaves the line unallocated (SCOPE_UNALLOCATED) and still blocks spending until it is mapped again (see 3.2).
+
+#### 3.2 Helper #7956 mapped as a day-rate service line (revision 53)
+
+- **Where:** Project Controls → Cost Plan.
+- **How:** mapped to the project pool as a day-rate line — resource family **SERVICE**, CBS **"S"**, Project Pool, full 400 quantity — the same pattern already used for **Labour Accommodation #7768** (days). It could not become a Manpower pool line, because a Manpower pool line must be in MANHOUR, and Helper is recorded in M.DAY.
+- **Result:** Cost Plan **revision 53**.
+
+#### 3.3 Native WBS draft recompiled (draft #797, revision 30)
+
+- **Where:** Project Controls → WBS & Progress → **Native WBS budget**.
+- **Result:** draft **#797, revision 30**. Cost review submitted.
+
+#### 3.4 Cost approval applied — new baseline
+
+- **Where:** Project Controls → Approval review.
+- **Decision:** request **#4** (policy #2, Project Controls) was approved by the project owner, Mustafa Zaroug, on behalf of Eng. Mostafa Mohammed. The record notes an **owner decision**, not an approval given through Microsoft Teams.
+- **Result:** status **APPLIED**. Draft #797 is now the approved cost baseline.
+
+#### 3.5 Funding reconciled again on the new baseline
+
+- **Where:** Project Controls → Approval → **Funding trail**.
+- **Why:** the new cost baseline made the funding reconciliation stale and held purchase orders (PURCHASE_SOURCE_SPENDING_HELD).
+- **How:** re-recorded unchanged from the approved plan: **Submit worksheet** (version 5), **Approve submitted worksheet** (version 6).
+- **Result:** the spending gate is ready with no blockers; purchase orders are not held.
+
+#### 3.6 Helper now shows as requestable (checked, not saved)
+
+- **Where:** **New → Manpower resource request** → Budget **"P1155 - Budget for Shaft 1 & 2"** → Budget Items.
+- **Result:** Budget Items now shows **Helper · M.DAY · 400**. Opening **Add selected items** shows unit price AED 150, total 400, and 394 available (6 already held by an earlier request). This was checked only; nothing was saved.
+
+#### 3.7 Eng. Mostafa and Eng. Osama informed
+
+- Eng. Mostafa Mohammed and Eng. Osama were told about this on Microsoft Teams.
+- **Still open:** whether the 400 helper-days are additional to the helper hours already recorded under requests #11336 and #11347, or the same people — Eng. Osama is to confirm. The conversion between M.DAY and MANHOUR (8 hours per day) is not implemented in the system. Until this is confirmed, request helpers from one line only.
+
+#### 3.8 Lesson: a Cost Plan change after approval needs a full cycle
+
+A Cost Plan change made after a cost approval does not take effect by itself. Before purchase orders can be released again, repeat in order: recompile the Native WBS draft → submit it for review → get cost approval → re-record funding (submit, then approve).
+
+### 4. When a PO is held after a new cost approval
 
 This will happen again. A funding reconciliation is tied to the cost baseline it was approved on, so **every** new cost approval makes it Stale and holds every purchase order of the project with the message "PO approval is on hold…" (PURCHASE_SOURCE_SPENDING_HELD). Nothing is saved; the PO waits at its step.
 
@@ -124,7 +171,8 @@ To release it (administrator with Project Controls budget review permission):
 
 If the worksheet shows a real change (a new release, a different amount, a new overdraw), do not approve it as a repeat: the project owner decides first.
 
-### 4. Next, not yet confirmed
+### 5. Next, not yet confirmed
 
 - Review the specification hold on concrete source #7775.
 - Operational activation (spending authority) remains separate and is not yet granted.
+- Confirm with Eng. Osama whether Helper #7956's 400 days are additional to requests #11336/#11347 or the same people; implement the M.DAY ↔ MANHOUR conversion.
