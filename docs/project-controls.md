@@ -177,13 +177,20 @@ A Cost Plan change made after a cost approval does not take effect by itself. Be
 - **Follow-up (prizmbudget 1.50.1, pull requests #3516 and #3517):** the approval screen's on-behalf label now shows the approver's name, for example **"On behalf of Mostafa Mohammed"** (1.50.0 showed only "On behalf of"). Verified on amendment #2, whose status now reads **"Approved and applied to the budget line"**.
 - **Eng. Mostafa informed:** told on Microsoft Teams (1:1 chat) that Equal Angle #14054 is now AED 500 (was 400), quantity 50, approved on his behalf. New resource requests pick up AED 500; a resource request opened before the change should be closed and a new one opened. Open approvals now show at the top of the budget and resource request pages.
 
-### 5. When a PO is held after a new cost approval
+### 5. When a PO approval is held — first see which case
 
-This will happen again. A funding reconciliation is tied to the cost baseline it was approved on, so **every** new cost approval makes it Stale and holds every purchase order of the project with the message "PO approval is on hold…" (PURCHASE_SOURCE_SPENDING_HELD). Nothing is saved; the PO waits at its step.
+Pressing **Approved** on a purchase order can be held for different reasons. Before Purchase 4.23.2 they all showed the same message "PO approval is on hold…", so look at the **code** under the message (or in the error details). From Purchase 4.23.2 the box at the top of the PO names the case and has one button that opens the page where you fix it. Nothing is saved while it is held; the PO waits at its step.
 
-To release it (administrator with Project Controls budget review permission):
+| Code | Case | Go to |
+|---|---|---|
+| `PURCHASE_SOURCE_SPENDING_HELD` | **A. Project Controls funding approval** — a new cost approval made the funding reconciliation Stale. | Project Controls funding trail (steps A below) |
+| `PURCHASE_SOURCE_CHANGED` | **B. The PR or RR behind the PO changed** — a line was revoked, rejected, deleted or edited, or the PR is not fully approved. Not a funding problem. | The linked PR (steps B below) |
 
-1. Open the project → **Project Controls → Approval → Funding trail**. It shows **Stale**.
+#### Case A — funding reconciliation (PURCHASE_SOURCE_SPENDING_HELD)
+
+This will happen again after **every** new cost approval. Administrator with Project Controls budget review permission:
+
+1. Press **Open the Project Controls funding trail** in the box, or open the project → **Project Controls → Approval → Funding trail**. It shows **Stale**.
 2. Compare the suggested worksheet with the last approved version. When nothing changed, it repeats the approved plan.
 3. Tick the confirmation, write a reason → **Submit worksheet**.
 4. Write the approval reason → **Approve submitted worksheet**.
@@ -191,8 +198,129 @@ To release it (administrator with Project Controls budget review permission):
 
 If the worksheet shows a real change (a new release, a different amount, a new overdraw), do not approve it as a repeat: the project owner decides first.
 
+#### Case B — the PR or RR changed (PURCHASE_SOURCE_CHANGED)
+
+1. Press **Open the linked PR** in the box, or open the PR shown on the PO under **Purchase Request**.
+2. Check the PR's status is **Approved** and every approval step is approved. If a step is still open, finish it, then approve the PO again.
+3. Open each RR listed under **Resource Request** on the PR. For each line the PR uses, check its status is **Approved**.
+4. If a line the PR uses was revoked, rejected or changed, the PR cannot feed this PO: prepare a new PR from the current RR and make the PO from it.
+5. Lines of the same RR that the PR does **not** use do not matter from Purchase 4.23.2 on. Before 4.23.2 they held the PO by mistake (see PO-26110015 below): after 4.23.2 is deployed, just press **Approved** again.
+
 ### 6. Next, not yet confirmed
+
+- **PO PEG-PO-26110015 (from PR-26110012), 13 November 2026:** held with `PURCHASE_SOURCE_CHANGED`, not a funding hold. The PR is approved. It takes the Anchor Bolt from RR-MAT-26111216, whose Equal Angle (AED 400) and Steel Insert Plate lines were revoked and requested again in RR-MAT-26111317 (Equal Angle at AED 500). The PO check looked at every line of the RR, so the revoked lines held it. Fixed in Purchase 4.23.2, deployed 13 November. The PO was then approved after the cost baseline and funding were renewed (see section 8).
 
 - Review the specification hold on concrete source #7775.
 - Operational activation (spending authority) remains separate and is not yet granted.
 - Confirm with Eng. Osama whether Helper #7956's 400 days are additional to requests #11336/#11347 or the same people; implement the M.DAY ↔ MANHOUR conversion.
+
+### 7. Illustrated walkthrough: a PO held by a revoked RR line (staging test, 13 November 2026)
+
+> **Documented retroactively.** The P1155 Cost Control steps (Governing Scope, Cost Plan, native budget, cost approval and funding) were done on production on 11–13 November without screenshots. The images below come from a test project on staging (P2026, id 158) that repeats the same path, so each step has a picture. The numbers are test numbers, not P1155.
+
+**1. Budget with approved Resource Manager items.** Budget #673, two approved items: Anchor Bolt M16 (10 × AED 100) and Anchor Bolt M12 (10 × AED 50), submitted and approved.
+
+![Approved test budget](./project-controls/img/po-hold-01-budget-approved.jpg)
+
+**2. RR 1 with one line revoked.** RR-MAT-261113599 requested M16 ×5 and M12 ×5, all three approvers approved, then the M12 line was revoked. It shows **Revoked**, the same as RR-MAT-26111216 on P1155.
+
+![RR 1 with the M12 line revoked](./project-controls/img/po-hold-02-rr1-line-revoked.jpg)
+
+**3. RR 2 requests the revoked item again.** RR-MAT-261113600, M12 ×5, approved. This matches RR-MAT-26111317 on P1155.
+
+![RR 2 re-requesting M12](./project-controls/img/po-hold-03-rr2-rerequested.jpg)
+
+**4. Cost Control: WBS.** Project Controls → WBS & Progress: one root and one work package. A Cost Plan line can only map to a work package with no children.
+
+![Test WBS](./project-controls/img/po-hold-04-wbs.jpg)
+
+**5. Cost Control: cost-code list.** Project Controls → Cost plan → Cost-code dictionary: code **M-MAT** (Materials), review decision **Approved**, preview, tick the confirmation, **Save reviewed dictionary locally**. Version 1 is approved.
+
+![Approved cost-code list](./project-controls/img/po-hold-05-cost-codes.jpg)
+
+**6. Initialize Project Controls.** With the project's seed file in place, an administrator presses **Initialize** (Projects 1.145.7 and later). The project gets its first Project Controls version.
+
+![Project Controls initialized](./project-controls/img/po-hold-06-controls-initialized.jpg)
+
+**7. Cost Plan.** Both budget lines are mapped to work package P2026.01 with code M-MAT, then **Save**.
+
+![Cost Plan mapped](./project-controls/img/po-hold-07-cost-plan.jpg)
+
+**8. Compile the native budget.** Press **Compile native draft**. The draft shows one cost account with both lines.
+
+![Native budget compiled](./project-controls/img/po-hold-08-native-budget.jpg)
+
+**9. Approval review.** It showed `PROJECT_COMPANY_SOURCE_INVALID`: the project had no company. Set the project's company (PRIZM ENERGY, the same as its budget) in the project edit form, then **Submit for review**.
+
+![Approval review](./project-controls/img/po-hold-09-approval-review.jpg)
+
+![Review submitted](./project-controls/img/po-hold-10-review-submitted.jpg)
+
+**10. Cost approval.** Press **Submit cost approval**, open the request, write the reason and press **Approve**. The status becomes **Financially applied**. The spending gate is then ready. No funding reconciliation was needed, because the project had no earlier funding records.
+
+![Cost approval submitted](./project-controls/img/po-hold-11-cost-approval-submitted.jpg)
+
+![Cost approval applied](./project-controls/img/po-hold-12-cost-approved.jpg)
+
+**11. PR and PO.** Make a new **prepared** PR from RR 3 (M16) and RR 4 (M12), where RR 3's M12 line is revoked, approve it, make the PO and press **Approved**. Result on 13 November 2026: PO m-PO-26110005 was **approved with no hold**. That confirms Purchase 4.23.2. A PR saved before Project Controls was on stays held as "legacy", which is correct. Make a new one from the RR instead.
+
+**Staging setup found on the way (13 November 2026):**
+- Project Controls was switched off on ms_dev. Three lines were added to its private `app-config.php`: mode `staging` and its own data folder, separate from MS.
+- The Manpower module was deactivated on ms_dev, so Projects migration 102 failed (`prz_manpower_plan_line` missing). Manpower was activated, then Setup → Modules → **Upgrade Database** for Prizm Projects passed.
+- The Project Controls setup step still reported `PROJECT_MIGRATION_CURSOR_PENDING`, because it read the module's installed version, which the migration queue never updates. Fixed in Projects 1.145.5 (merged and deployed; plus 1.145.6 and 1.145.7 found on the same path).
+
+### 8. Step by step: a PO won't approve after a budget price changed (with pictures)
+
+**When you need this:** the box at the top of the PO says **Project Controls approval needed** (`PURCHASE_SOURCE_SPENDING_HELD`). That happens after any change to an approved budget line, such as a price change through an amendment. Real example, 13 November 2026: the Steel Insert Plate price went from 1,550 to 1,553, and PO-26110015 and PO-26110016 were held. Each red number in the pictures is the box to press, in order. A green **OK** shows the result you should see.
+
+**Who:** an administrator with Project Controls rights. Open the project, then **Project Controls → Finance → Budget & deployment**.
+
+**Part A: Cost Plan and native budget**
+
+1. Press **Draft WBS cost plan** (1). You change nothing. Then press **Compile native draft** (2).
+
+   ![Cost Plan](./project-controls/img/p1155-po-hold/01-cost-plan.jpg)
+2. The new draft opens under **Latest proposal**. Press **Approval review** (3).
+
+   ![Native budget compiled](./project-controls/img/p1155-po-hold/02-native-compiled.jpg)
+3. Read the holds. "Spending only" rows are normal and are handled in Part C. Press **Submit for review** (5).
+
+   ![Approval review](./project-controls/img/p1155-po-hold/03-approval-review.jpg)
+4. The button changes to **Review submitted**. Press **Submit cost approval** (6).
+
+   ![Review submitted](./project-controls/img/p1155-po-hold/04-review-submitted.jpg)
+
+**Part B: Cost approval**
+
+5. A new button appears: **#… Central approvals … Pending approval** (7). Press it.
+
+   ![Cost approval submitted](./project-controls/img/p1155-po-hold/05-cost-approval-submitted.jpg)
+6. Write the reason in **Decision reason** (8): what changed and who decided. Press **Approve** (9). If you are not the approver, the system records "on behalf of".
+
+   ![Decision reason and Approve](./project-controls/img/p1155-po-hold/06-cost-approval-reason.jpg)
+7. The status becomes **Financially applied**.
+
+   ![Cost approval applied](./project-controls/img/p1155-po-hold/07-cost-approval-applied.jpg)
+
+**Part C: Funding reconciliation**
+
+8. Back on the project, press **Funding trail**. The window says **Source changed — review a new worksheet** (10).
+
+   ![Funding trail stale](./project-controls/img/p1155-po-hold/08-funding-trail-stale.jpg)
+9. Scroll to the bottom. Write the reason (11), tick the confirmation (12) and press **Submit worksheet** (13). Only do this if the amounts are the same as last time: the same releases, **AED 32,634** of new authority and **−5,640** on #7768. If anything differs, stop: the project owner decides first.
+
+   ![Submit worksheet](./project-controls/img/p1155-po-hold/09-funding-submit.jpg)
+10. Write the approval reason (14), tick the confirmation (15) and press **Approve submitted worksheet** (16).
+
+    ![Approve worksheet](./project-controls/img/p1155-po-hold/10-funding-approve.jpg)
+11. The window shows **Funding reconciliation approved**.
+
+    ![Funding approved](./project-controls/img/p1155-po-hold/11-funding-approved.jpg)
+
+**Part D: The PO**
+
+12. Open the PO and press **Approved**. The PO shows **Approved** (17).
+
+    ![PO approved](./project-controls/img/p1155-po-hold/12-po-approved.jpg)
+
+**Done on 13 November 2026 (confirmed on MS):** Cost Plan revision 55 → native draft #799 revision 32 → cost approval #6 financially applied (on behalf of Eng. Mostafa, owner decision) → funding version 9 submitted, version 10 approved, unchanged → PO-26110015 (1466) and PO-26110016 (1467) approved at 17:09 as a delegated action for Eng. Mostafa. Purchase 4.23.2 also removed the old `PURCHASE_SOURCE_CHANGED` hold on PO-26110015.
