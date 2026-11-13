@@ -174,6 +174,8 @@ A Cost Plan change made after a cost approval does not take effect by itself. Be
 - **Where to see it:** the approval screen lists each decision (approver, done by, date, note) and shows **"On behalf of \<approver\>"** when someone else acted. Budget and resource request pages show an **"Approvals still open"** box at the top with a link to each approval screen.
 - **Reconciling the Cost Plan after the price change:** Cost Plan **revision 54** → Native WBS draft **#798, revision 31** compiled and submitted → cost approval **request #5** approved (an owner decision on behalf of Mostafa Mohammed, not through Teams) → funding re-recorded **version 7 SUBMITTED / version 8 APPROVED** with the same plan (a fresh AED 32,634). Until this chain finishes, material resource requests for the project are held for source review.
 - **Result:** a new resource request shows **Equal Angle at AED 500**, with **50** available.
+- **Follow-up (prizmbudget 1.50.1, pull requests #3516 and #3517):** the approval screen's on-behalf label now shows the approver's name, for example **"On behalf of Mostafa Mohammed"** (1.50.0 showed only "On behalf of"). Verified on amendment #2, whose status now reads **"Approved and applied to the budget line"**.
+- **Eng. Mostafa informed:** told on Microsoft Teams (1:1 chat) that Equal Angle #14054 is now AED 500 (was 400), quantity 50, approved on his behalf. New resource requests pick up AED 500; a resource request opened before the change should be closed and a new one opened. Open approvals now show at the top of the budget and resource request pages.
 
 ### 5. When a PO is held after a new cost approval
 
