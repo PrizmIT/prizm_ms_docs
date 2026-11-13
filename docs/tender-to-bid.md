@@ -229,6 +229,55 @@ click, you still get **one** opportunity:
   anything and shows *"This tender is being converted by another request. Wait a moment and try
   again."* Try again after a moment.
 
+### 6.5 The conversion receipt
+
+After a tender is converted, several steps finish the work around the new opportunity. Each
+conversion now leaves a **Conversion receipt** that shows whether they all finished. Open the
+converted tender: the receipt is on its **Main** tab.
+
+The receipt shows:
+
+- who converted the tender, when, and how: *Converted on the Tenders screen*, *Converted through
+  the Tenders API* or *Converted from the eSupply extension*;
+- a mark for each step: ✓ done, ⚠ needs a look, ✗ failed;
+- the conversion's **Warnings**, for example when the SharePoint record folder could not be
+  prepared.
+
+| Step | What it does |
+|---|---|
+| SharePoint access for the opportunity team | Gives the opportunity team access to the bid folder. |
+| Bid decision recorded on the opportunity | Records that converting the tender was the decision to bid. |
+| Triage record marked converted | Moves the tender to *Converted* in tender triage. |
+| eSupply details capture | Collects the full tender details from eSupply (eSupply tenders only). |
+| TenderOps conversion event and preparation | Prepares the opportunity for the virtual tendering team. |
+
+At the top, the receipt says **every step finished** or **needs attention**. A receipt that needs
+attention also raises one **Tender Alert** (gavel icon) titled *"Conversion of tender … to …
+needs attention"*. Select it to open the tender.
+
+If a step did not finish, tell an administrator. They can run the steps again; this never
+creates a second opportunity. The receipt then shows the new result and how many times the steps
+were run again.
+
+Tenders converted before 13 November 2026 have no receipt.
+
+### 6.6 Tenders the ERP marks as converted for you
+
+Every hour the ERP checks the tenders you marked **Pursue** in triage. When it finds the
+opportunity a tender became, it moves the tender to **Converted** by itself. Since 13 November
+2026 it does this only when it is sure:
+
+- it uses only opportunities that are not deleted;
+- it never takes an opportunity that already belongs to another tender;
+- **exactly one** opportunity must match the tender's number.
+
+When more than one opportunity matches, the tender stays in **Pursue** and you get one **Tender
+Alert**: *"Tender … matches more than one opportunity"*, with the candidate opportunities.
+Open them, decide which one is the tender's bid, and link it by hand. The alert is not repeated
+for the same tender.
+
+Every tender the ERP marks as converted is written to the activity log.
+
 ## 7. Frequently asked questions
 
 **I approved this hold yesterday. Why is it asking again?**
@@ -256,6 +305,14 @@ Once a decision is answered, its alerts are marked read automatically. The answe
 **I pressed Convert and got "This tender is being converted by another request".**
 Someone else, or the API, is converting the same tender right now. Wait a moment and try again;
 you will reach the same opportunity.
+
+**The receipt says "needs attention". What do I do?**
+Look at the step marked ⚠ or ✗ and at the warnings. If a step did not finish, tell an
+administrator; they can run the steps again without creating a second opportunity.
+
+**Why didn't my pursued tender move to Converted by itself?**
+Either no opportunity carries its number yet, or more than one does. In the second case you have a
+Tender Alert listing them; link the right one by hand.
 
 **Why does a failed run show "unknown" days?**
 A failed run stops at once, and nothing records when the bid moved again, so its waiting time
