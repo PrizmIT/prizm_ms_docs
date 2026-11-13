@@ -167,6 +167,14 @@ A Cost Plan change made after a cost approval does not take effect by itself. Be
 - **How it behaves:** changing the date keeps you inside the project. Saving and submitting a return work the same as before.
 - **Release:** prizm_reports 2.25.1 (pull requests #3500 and #3501, fix #3506 and #3507).
 
+#### 4.2 Budget line price change approved (Equal Angle #14054, 400 → 500)
+
+- **What happened:** editing a Cost-Plan-mapped budget line creates a **budget line change** (a native amendment) that needs approval. Amendment #2 — raising the unit price of Equal Angle #14054 from AED 400 to AED 500 — was approved by Mustafa Zaroug on behalf of Mostafa Mohammed (13 Nov, 09:57, note "update price").
+- **How approval takes effect:** since prizmbudget 1.50.0, the final approval writes the new quantity and price straight to the budget line. An **Apply to budget line** button on the approval screen covers changes that were approved earlier. A price change is refused while a resource request still holds quantity at the old price.
+- **Where to see it:** the approval screen lists each decision (approver, done by, date, note) and shows **"On behalf of \<approver\>"** when someone else acted. Budget and resource request pages show an **"Approvals still open"** box at the top with a link to each approval screen.
+- **Reconciling the Cost Plan after the price change:** Cost Plan **revision 54** → Native WBS draft **#798, revision 31** compiled and submitted → cost approval **request #5** approved (an owner decision on behalf of Mostafa Mohammed, not through Teams) → funding re-recorded **version 7 SUBMITTED / version 8 APPROVED** with the same plan (a fresh AED 32,634). Until this chain finishes, material resource requests for the project are held for source review.
+- **Result:** a new resource request shows **Equal Angle at AED 500**, with **50** available.
+
 ### 5. When a PO is held after a new cost approval
 
 This will happen again. A funding reconciliation is tied to the cost baseline it was approved on, so **every** new cost approval makes it Stale and holds every purchase order of the project with the message "PO approval is on hold…" (PURCHASE_SOURCE_SPENDING_HELD). Nothing is saved; the PO waits at its step.
