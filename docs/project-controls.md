@@ -157,7 +157,17 @@ The goal of the investigation is to make purchase order **PEG-PO-26110011** (PR-
 
 A Cost Plan change made after a cost approval does not take effect by itself. Before purchase orders can be released again, repeat in order: recompile the Native WBS draft → submit it for review → get cost approval → re-record funding (submit, then approve).
 
-### 4. When a PO is held after a new cost approval
+### 4. Confirmed steps — 13 November 2026
+
+#### 4.1 "Report project work" (Daily return) moved inside the project
+
+- **Where:** Project Controls → Work → **Daily return**, next to **Daily plan** and **Daily reports**.
+- **URL:** `/MS/admin/projects/view/151?group=wbs_progress&controls_view=daily_return&execution_date=YYYY-MM-DD`.
+- **Old link:** `/MS/admin/prizm_reports/daily_execution/workday/151` now forwards to the new page with the same date, work package and activity.
+- **How it behaves:** changing the date keeps you inside the project. Saving and submitting a return work the same as before.
+- **Release:** prizm_reports 2.25.1 (pull requests #3500 and #3501, fix #3506 and #3507).
+
+### 5. When a PO is held after a new cost approval
 
 This will happen again. A funding reconciliation is tied to the cost baseline it was approved on, so **every** new cost approval makes it Stale and holds every purchase order of the project with the message "PO approval is on hold…" (PURCHASE_SOURCE_SPENDING_HELD). Nothing is saved; the PO waits at its step.
 
@@ -171,7 +181,7 @@ To release it (administrator with Project Controls budget review permission):
 
 If the worksheet shows a real change (a new release, a different amount, a new overdraw), do not approve it as a repeat: the project owner decides first.
 
-### 5. Next, not yet confirmed
+### 6. Next, not yet confirmed
 
 - Review the specification hold on concrete source #7775.
 - Operational activation (spending authority) remains separate and is not yet granted.
