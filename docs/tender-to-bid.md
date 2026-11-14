@@ -278,7 +278,53 @@ for the same tender.
 
 Every tender the ERP marks as converted is written to the activity log.
 
+### 6.7 Who works tender triage, and the rules for each action
+
+Since 14 November 2026 tender triage is no longer for administrators only. An administrator gives
+access in **Setup → Staff → Roles** (or on the staff member), under **Tenders - Tender Triage**:
+
+| Permission | What you can do |
+|---|---|
+| **View** | Open **Tenders → Triage** and read the queue and each tender's details. You see no action buttons. |
+| **Edit** | Everything in View, plus **Pursue**, **Watch**, **To inbox**, **Dismiss**, **Reopen**, **Link opportunity**, **Not converted** and **Undo**. |
+
+Administrators can always do everything. Staff without either permission don't see **Triage** in
+the menu. Muting an authority or a sub-division stays with administrators, because it hides every
+future tender from it.
+
+The same rules apply on the triage screen and in the mobile app. Each action is offered only from
+the right status:
+
+| Action | Available when the tender is in |
+|---|---|
+| Pursue | Inbox, Watch |
+| Watch | Inbox |
+| To inbox | Watch |
+| Dismiss | Inbox, Watch, Pursue |
+| Reopen | Dismissed |
+| Link opportunity (mark converted) | Pursue |
+| Not converted | Converted |
+
+- **Link opportunity** needs a live (not deleted) opportunity of this tender that no other tender
+  is linked to.
+- **Not converted** is refused when the tender was really converted into that opportunity. It
+  still removes a wrong link made by hand or by the hourly check.
+- **Undo** reverses only the last decision, and only the person who made it or an administrator
+  can undo it.
+- If someone else changed the same tender a moment before you, you see *"This item was changed
+  elsewhere in the meantime. Refresh the page and try again."* Nothing was changed; refresh and
+  look again.
+
+Every decision, and every refused attempt, is written to the activity log.
+
 ## 7. Frequently asked questions
+
+**I can open Tender Triage but there are no action buttons.**
+You have the **View** permission only. Ask an administrator for **Edit** under *Tenders - Tender
+Triage*.
+
+**Why can't I undo a decision?**
+Only the person who made the last decision, or an administrator, can undo it.
 
 **I approved this hold yesterday. Why is it asking again?**
 Either the opportunity was run again (each run needs its own approval), or your approval was
