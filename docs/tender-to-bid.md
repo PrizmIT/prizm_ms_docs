@@ -25,7 +25,7 @@ This guide is for:
 | **Step 0 — Control fixes** | Final human sign-offs can't be switched to Auto, and a hold is released only by a real approval in the current run. | ✅ Closed on 10 November 2026 |
 | **PH0 — Diagnose & freeze** | Shows where bids actually wait and on whom, with a frozen specification. | ✅ Closed on 11 November 2026 |
 | PH1 — Right approver, right wait | Each decision goes to the right person, with a clear waiting time. | In progress |
-| **P00 — Automation** | The run starts on its own, every TenderOps setting is on one tab, and decisions alert people inside the ERP. Tender triage and conversion follow one set of rules (sections 6.4 to 6.7). | In progress — tender triage and conversion done on 14 November 2026; next: the tender stays the source and its changes never overwrite the opportunity |
+| **P00 — Automation** | The run starts on its own, every TenderOps setting is on one tab, and decisions alert people inside the ERP. Tender triage and conversion follow one set of rules (sections 6.4 to 6.7). Tender documents are indexed only after a person approves it (section 6.8). | In progress — tender triage and conversion done on 14 November 2026; Tender Indexing built on 14 November 2026 (released with TenderOps 2.43.0); next: the tender stays the source and its changes never overwrite the opportunity |
 | P01–P06 | The bid stages themselves, from foundation to submission. | Planned |
 
 ## 3. Where to find it
@@ -316,6 +316,69 @@ the right status:
   look again.
 
 Every decision, and every refused attempt, is written to the activity log.
+
+### 6.8 Tender Indexing: which tenders' documents are indexed, and starting it
+
+From TenderOps 2.43.0 a tender's documents are indexed and embedded (PostgreSQL and Qdrant, used
+by the Virtual Tendering Team to answer from the documents) **only after a person approves it**.
+Tenders that were already indexed before this release keep working; nothing is lost.
+
+Open **Tenders → Tender Indexing**. Every converted tender has one row:
+
+![Tender Indexing screen](./tender-to-bid/img/indexing-01-screen.jpg)
+
+1. **Indexing status** filter: show only one status, for example *Not approved* or *Failed*.
+2. **Index selected**: approve and start indexing for the tenders you ticked, up to 20 at a time.
+3. Tick a tender to include it in **Index selected**.
+4. The tender's indexing status (table below).
+5. The number of documents. Click it to see each file.
+6. **Index now**: approve and start indexing for this one tender.
+
+| Status | Meaning |
+|---|---|
+| **Not approved** | Nobody approved indexing for this tender yet. Nothing is indexed automatically. |
+| **Queued** | Approved; the indexing job is waiting for the indexing computer. |
+| **In progress** | The documents are being indexed now. |
+| **Indexed** / **Partly indexed** | All, or some, of the documents are indexed and not yet verified. |
+| **Verified** | Every document is in PostgreSQL and Qdrant and matches the current files. |
+| **Files changed** | Files changed after the last verification; they are re-indexed automatically. |
+| **Failed** | The last run failed. The **Last error** column says why; press **Index now** to try again. |
+
+Pressing **Index now** (or **Index selected**) is the approval. It is recorded with your name and
+the time, and after it any change to the tender's files is kept in step automatically. A tender
+whose job is already waiting is not queued twice. The **Approved by** column shows *Already
+indexed* for tenders approved automatically because they were indexed before this release.
+
+Click the document count to see the state of each file:
+
+![Documents of one tender](./tender-to-bid/img/indexing-02-documents.jpg)
+
+1. The opportunity of the tender.
+2. The file's indexing status.
+3. The PostgreSQL units made from the file.
+4. The Qdrant vectors made from the file.
+
+The tender page also shows the status, next to the **Opportunities** button. Click it to open
+Tender Indexing:
+
+![Indexing status on the tender page](./tender-to-bid/img/indexing-03-tender-badge.jpg)
+
+1. **Opportunities** opens the tender's opportunity.
+2. The indexing status, with indexed / total documents.
+
+An administrator gives access in **Setup → Staff → Roles**, under **Tender Indexing**:
+
+![Tender Indexing permission](./tender-to-bid/img/indexing-04-permission.jpg)
+
+1. The **Tender Indexing** permission group.
+2. **View (Global)**: open the screen and see every tender's status and documents.
+3. **Approve and start indexing**: everything in View, plus **Index now** and **Index selected**.
+
+Administrators can always do both. Staff with neither don't see **Tender Indexing** in the menu or
+the status on the tender page. Every approval and every indexing job is written to the activity
+log.
+
+Tenders that were not converted into an opportunity are not listed yet; that comes in a later step.
 
 ## 7. Frequently asked questions
 
